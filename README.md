@@ -1,9 +1,10 @@
-<style type='text/css'>
-    .markdown-body blockquote { border-left-color: #686868; padding: 5px 10px 5px 15px; }
-    .markdown-body blockquote blockquote { border-left-color: #484848; }
-    .markdown-body blockquote blockquote blockquote { border-left-color: #282828; }
-    .markdown-body .font-color { color: #bbb; }
-</style>
+(setq markdown-xhtml-header-content
+  "<style type='text/css'>
+        .markdown-body blockquote { border-left-color: #686868; padding: 5px 10px 5px 15px; }
+        .markdown-body blockquote blockquote { border-left-color: #484848; }
+        .markdown-body blockquote blockquote blockquote { border-left-color: #282828; }
+        .markdown-body .font-color { color: #bbb; }
+</style>")
 
 # ✍️처음부터 다시 해보자
 
