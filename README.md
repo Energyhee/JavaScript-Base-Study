@@ -29,18 +29,20 @@
 <br />
 
 #### - 나만의 정리 방법 구축
->   #### 01. [문서 정리 방법](../%EB%AC%B8%EC%84%9C%EC%A0%95%EB%A6%AC%EB%B0%A9%EB%B2%95/%EB%AC%B8%EC%84%9C%EC%A0%95%EB%A6%AC%EA%B8%B0%EC%B4%88.md)
->   #### 02. [문서 정리 방법](../%EB%AC%B8%EC%84%9C%EC%A0%95%EB%A6%AC%EB%B0%A9%EB%B2%95/%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4.md)
+>   #### 01. [문서 정리 방법](../self-study-list/01.%20%EB%AC%B8%EC%84%9C%EC%A0%95%EB%A6%AC/01.%20%EB%AC%B8%EC%84%9C%EC%A0%95%EB%A6%AC%EA%B8%B0%EC%B4%88.md)
+>   #### 02. [마크다운이란?](../self-study-list/01.%20%EB%AC%B8%EC%84%9C%EC%A0%95%EB%A6%AC/02.%20%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4.md)
 
 <br />
 
-#### - HTML이란 무엇인가?
->   #### 01. [HTML은 무엇인가?](../HTML%EA%B8%B0%EC%B4%88%EC%A0%95%EB%A6%AC/HTML%EC%A0%95%EC%9D%98.md)
+#### - HTML, CSS란 무엇인가?
+>   #### 01. [W3C](../self-study-list/02.%20HTML%2CCSS/01.%20W3C.md)
+>   #### 01. [HTML](../self-study-list/02.%20HTML%2CCSS/02.%20HTML.md)
+>   #### 01. [CSS](../self-study-list/02.%20HTML%2CCSS/03.%20CSS.md)
 
 <br />
 
-#### - CSS란 무엇인가?
->   #### 01. [CSS란 무엇인가?](../CSS%EA%B8%B0%EC%B4%88%EC%A0%95%EB%A6%AC/CSS%EC%A0%95%EC%9D%98.md)
+#### - Java Script
+>   #### 01. [항목](../self-study-list/03.%20Java%20Script/%ED%95%AD%EB%AA%A9.md)
 
 
 
