@@ -29,18 +29,18 @@
 <br />
 
 #### - 나만의 정리 방법 구축
->   #### 01. [문서 정리 방법](../self-study-list/%EB%AC%B8%EC%84%9C%EC%A0%95%EB%A6%AC%EB%B0%A9%EB%B2%95/%EB%AC%B8%EC%84%9C%EC%A0%95%EB%A6%AC%EA%B8%B0%EC%B4%88.md)
->   #### 02. [문서 정리 방법](../self-study-list/%EB%AC%B8%EC%84%9C%EC%A0%95%EB%A6%AC%EB%B0%A9%EB%B2%95/%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4.md)
+>   #### 01. [문서 정리 방법](../%EB%AC%B8%EC%84%9C%EC%A0%95%EB%A6%AC%EB%B0%A9%EB%B2%95/%EB%AC%B8%EC%84%9C%EC%A0%95%EB%A6%AC%EA%B8%B0%EC%B4%88.md)
+>   #### 02. [문서 정리 방법](../%EB%AC%B8%EC%84%9C%EC%A0%95%EB%A6%AC%EB%B0%A9%EB%B2%95/%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4.md)
 
 <br />
 
 #### - HTML이란 무엇인가?
->   #### 01. [HTML은 무엇인가?](../self-study-list/HTML%EA%B8%B0%EC%B4%88%EC%A0%95%EB%A6%AC/HTML%EC%A0%95%EC%9D%98.md)
+>   #### 01. [HTML은 무엇인가?](../HTML%EA%B8%B0%EC%B4%88%EC%A0%95%EB%A6%AC/HTML%EC%A0%95%EC%9D%98.md)
 
 <br />
 
 #### - CSS란 무엇인가?
->   #### 01. [CSS란 무엇인가?](../self-study-list/CSS%EA%B8%B0%EC%B4%88%EC%A0%95%EB%A6%AC/CSS%EC%A0%95%EC%9D%98.md)
+>   #### 01. [CSS란 무엇인가?](../CSS%EA%B8%B0%EC%B4%88%EC%A0%95%EB%A6%AC/CSS%EC%A0%95%EC%9D%98.md)
 
 
 
