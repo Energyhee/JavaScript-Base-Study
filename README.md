@@ -25,7 +25,7 @@
 <br />
 
 ### ● 정리 방법 학습해보기
->   #### [ 01. 문서 정리 방법](../self-study-list/01.%20%EB%AC%B8%EC%84%9C%EC%A0%95%EB%A6%AC/01.%20%EB%AC%B8%EC%84%9C%EC%A0%95%EB%A6%AC%EA%B8%B0%EC%B4%88.md)
+>   #### [ 01. 문서 정리 방법](/blob/master/01.%20문서정리/01.%20문서정리기초.md)
 >   #### [ 02. 마크다운이란?](../self-study-list/01.%20%EB%AC%B8%EC%84%9C%EC%A0%95%EB%A6%AC/02.%20%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4.md)
 
 <br />
