@@ -47,7 +47,6 @@
 
 
 
-
-
-
-
+웹 개발 시간을 줄여주는 팁 4가지 https://yozm.wishket.com/magazine/detail/1585/
+2022 회고와 2023년 개발 트렌드 (feat. 미국 대학 석사) https://yozm.wishket.com/magazine/detail/1833/
+나쁜 자바스크립트 작성 습관과 작별하기 https://yozm.wishket.com/magazine/detail/1836/
