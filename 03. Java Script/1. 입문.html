@@ -1,10 +1,9 @@
 <script>
-    console.log('========================시작==========================');
 console.log(
-  '%c * var / let / const 차이점',
-  'padding: 2px; background-color: #fff; color: #000;'
+  '%c ○ [0. var 과 let, const 차이점] ============================ ',
+  'padding: 8px 16px; background-color: #fff; color: #000;'
 );
-/* [var 과 let, const 차이점] */
+/* [0. var 과 let, const 차이점] */
 // ver 과 let의 큰 차이점은 var은 값으 바뀌거나 선언을 하는데 있어 제한이 없다.
 // IE10 이하 버전에서는 let, const를 사용할 수 없어 babel과 같은 도구로 구형 브라우저에서도 돌아갈 수 있게끔 변환작업 진행
 // 구형 브라우저 호환을 해야한다면, var을 사용하게 될 수도 있다.
@@ -23,16 +22,21 @@ console.log(
 // c = 2;
 
 console.log(
-  '%c * 변수와 상수 및 선언',
-  'padding: 2px; background-color: #fff; color: #000;'
+  '%c ○ [0. 변수와 상수 및 선언] ================================== ',
+  'padding: 8px 16px; background-color: #fff; color: #000;'
 );
-/* [변수와 상수 및 선언] */
+/* [0. 변수와 상수 및 선언] */
 let value = 1;
 console.log('value :: ' + value); // 1
 
-console.log('%c * 변수', 'padding: 2px; background-color: #fff; color: #000;');
-/* [1. 변수 : 바뀔 수 있는 값을 말한다.] */
+console.log(
+  '%c ○ [1. 변수] ================================================ ', 
+  'padding: 8px 16px; background-color: #fff; color: #000;'
+);
+/* [1. 변수] */
+// 바뀔 수 있는 값을 말한다.
 let value2 = 1;
+console.log('let value2 :: ' + value2); // 1
 value2 = 2;
 console.log('value2 :: ' + value2); // 2
 
@@ -41,21 +45,28 @@ console.log('value2 :: ' + value2); // 2
 // let value3 = 1;
 // let value3 = 2;    // ERROR
 
-console.log('%c * 상수', 'padding: 2px; background-color: #fff; color: #000;');
-/* [2. 상수 : 한번 선언하고 값이 바뀌지 않는 값을 말한다.] */
+console.log(
+  '%c ○ [2. 상수] ================================================ ', 
+  'padding: 8px 16px; background-color: #fff; color: #000;'
+);
+/* [2. 상수] */
+// 한번 선언하고 값이 바뀌지 않는 값을 말한다.
+// 다른 코드블럭에서는 같은 명으로 선언 가능
 // const a = 1;
 // a = 2;             // ERROR
-// console.log(a);
+console.log('const a = 1 선언 후 a = 2 값 초기화 또는 대입 할 경우 ERROR');
 
 // 상수를 선언 할 때 주의 점은 같은 이름으로 선언 할 수 없다.
 // const a = 1;
 // const a = 2;       // ERROR
+console.log('const a = 1 선언 후 새로 const a = 2 선언 할 경우 ERROR');
 
 console.log(
-  '%c * 데이터타입',
-  'padding: 2px; background-color: #fff; color: #000;'
+  '%c ○ [3. 데이터 타입] * ======================================== ',
+  'padding: 8px 16px; background-color: #fff; color: #000;'
 );
 /* [3. 데이터 타입] */
+
 let type01 = 1;
 console.log('type01 :: ' + type01 + ' / ' + typeof type01); // 1 'number'
 let type02 = 'text';
@@ -74,14 +85,15 @@ let type07;
 console.log('type07 :: ' + type07 + ' / ' + typeof type07); // undefined 'undefined'
 
 console.log(
-  '%c * 연산자',
-  'padding: 2px; background-color: #fff; color: #000;'
+  '%c ○ [4. 연산자] * ============================================= ',
+  'padding: 8px 16px; background-color: #fff; color: #000;'
 );
 /* [4. 연산자] */
+
 let example = 1; // 변수 선언
 example = 2; // 변수 초기화
 
-// * 산술 연산자 +, -, *, /
+// ● 산술 연산자 +, -, *, /
 let calculation = 1 + 2 / 2;
 console.log('calculation ::' + calculation); // 2 'number'
 let plus = 1;
@@ -94,7 +106,7 @@ let plusType2 = ++plus;
 console.log('++plus :: ' + plusType2); // 3 'number'
 console.log('plus-- cont :: ' + plus);
 
-// * 대입 연산자
+// ● 대입 연산자
 let number = 2;
 number = number + 2;
 // 아래와 같이 작성도 가능하다.
@@ -107,7 +119,7 @@ number = number + 2;
 // number /= 2;
 console.log('number :: ' + number); // 4 'number'
 
-// * 논리 연산자 : 논리 연산자는 boolean(불리언) 타입을 위한 연산자 이다
+// ● 논리 연산자 : 논리 연산자는 boolean(불리언) 타입을 위한 연산자 이다
 // ! : NOT
 // && : AND
 // || : OR
@@ -179,9 +191,294 @@ console.log(text01 + text02);
 console.log(text02 + text01);
 
 console.log(
-  '%c * 조건문',
-  'padding: 2px; background-color: #fff; color: #000;'
+  '%c ○ [4. 조건문] * ============================================= ',
+  'padding: 8px 16px; background-color: #fff; color: #000;'
+);
+/* [4. 조건문] */
+
+// ● if 문
+const ifNum01 = 1;
+const ifNum02 = 10;
+const ifPlus = 9;
+if(ifNum01 + 9 === ifNum02){
+  console.log('ifNum01(' + ifNum01 + ') + ' + ifPlus + ' 와 ifNum02(' + ifNum02 + ')이 같습니다.');
+}
+
+// const 다른 코드블럭 내 선언
+const ifCodeBlock = 1;
+if (true){
+  const ifCodeBlock = 2;
+  console.log('if 코드블락 내 새로 선언 된 const ifCodeBlock는 ' + ifCodeBlock + '입니다.');
+}
+console.log('if 코드블락 외 처음 선언 되어 있는 const ifCodeBlock는 ' + ifCodeBlock + '입니다.');
+
+// ● else
+const ifCodeBlock02 = 10;
+if(ifCodeBlock02 > 10){
+  console.log('const ifCodeBlock02(' + ifCodeBlock02 + ')이 10보다 클 경우.');
+}else{
+  console.log('const ifCodeBlock02(' + ifCodeBlock02 + ')이 10보다 작거나 같을 경우.');
+}
+
+// ● else if
+const ifCodeBlock03 = 3;
+if(ifCodeBlock03 === 1){
+  console.log('const ifCodeBlock03(' + ifCodeBlock03 + ')이 1일때');
+}else if(ifCodeBlock03 === 2){
+  console.log('const ifCodeBlock03(' + ifCodeBlock03 + ')이 2일때');
+}else{
+  console.log('const ifCodeBlock03(' + ifCodeBlock03 + ')이 1과 2 둘다 아닐때');
+}
+
+// ● switch/cass 문 : break 를 걸어주지 않을 경우 다음 case까지 읽어들인다.
+const firstName = 'han';
+switch (firstName) {
+  case 'han':
+    console.log('성이 ' + firstName + '씨 입니다.');
+    break;
+  case 'kim':
+    console.log('성이 ' + firstName + '씨 입니다.');
+    break;
+  default:
+    // default는 기본 값, case에 맞는 값이 없을 경우 기본으로 노출
+    console.log('성을 알 수 없습니다.');
+}
+
+console.log(
+  '%c ○ [5. 함수] * =============================================== ',
+  'padding: 8px 16px; background-color: #fff; color: #000;'
+);
+/* [5. 함수] */
+// ● 하나의 명령으로 실행 할 수 있게 해주는 기능
+
+// 함수 생성 예저 01
+function plusNum(a, b){ // plusNum이라는 함수를 만들고 파라미터(매개변수)로 a,b 에 대한 값을 받아 온다
+  return a + b; // 받아온 a,b 값을 대입하여 더하고 값을 반환시킨다.
+  // return 하게 될 경우 함수가 끝난다. 아래의 코드들은 호출이 안된다.
+  console.log('plusNum 실행'); // 실행 안됌
+}
+console.log(plusNum(2, 4));  // 6
+
+// 함수 생성 예제 02
+function helloName(name){
+  // 문자열을 조합하기 위해 + 연산자를 사용하지만, ES6의 Template Lireral 문법을 사용하여 좀 더 편하게 작성 가능
+  // 브라우저 버전에 따라 지원하는 Java Script 버전이 다르므로 보통 Babel을 사용하여 최신버전의 Java Script가 구버전 형태로 변환작업을 한다.
+  return console.log('Hello, ' + name);
+}
+helloName('changhee');
+
+// 함수 생성 예저2 (ES6의 Template Lireral)
+function helloName02(name){
+  // 따옴표가 대신 grave(그레이브) 사용
+  return console.log(`Hello, ${name}`);
+}
+helloName02('HanChangHee');
+
+// 함수 생성 예제 03
+function getGrade(score){
+  if (score === 100){
+    return 'A';
+  }else if(score >= 80){
+    return 'B';
+  }else if(score >= 60){
+    return 'C';
+  }else{
+    return 'D';
+  }
+};
+console.log(getGrade(99)); // B
+
+// ● 화살표 함수
+// 함수를 선언하는 방식 중 화살표 함수(=>) 문법을 사용하는 방법도 있다.
+// 화살표 함수(=>)와 function 함수의 차이점은 가르키는 this가 서로 다르다. 
+
+const addPlusNum = (a, b) => {
+  // function 대신 화살표 함수(=>) 사용
+  // 좌측엔 파라미터(매개변수), 우측엔 코드블럭 시작
+  return a + b;
+}
+console.log(addPlusNum(10, 20)); // 30
+
+// 코드블럭 내부에서 바로 return 할 경우 더 간략히 작성 가능
+const addPlusNum02 = (a, b) => a + b;
+console.log(addPlusNum02(20, 20)); // 40
+
+// 화살표 함수(=>) 예제
+const getGrade02 = (score) => {
+  if (score === 100){
+    return 'A';
+  }else if(score >= 80){
+    return 'B';
+  }else if(score >= 60){
+    return 'C';
+  }else{
+    return 'D';
+  }
+};
+console.log(getGrade02(100)); // A
+
+console.log(
+  '%c ○ [6. 객체] * =============================================== ',
+  'width: 900px; padding: 8px 16px; background-color: #fff; color: #000;'
+);
+/* [6. 객체] */
+// ● 변수 또는 상수를 사용 할때 하나의 이름에 여러 종류의 값을 넣을 수 있게 해준다.
+
+const myPet = {
+  // key : value
+  name : '흰둥이',
+  age : 2
+}
+console.log(`이름 : ${myPet.name} / 나이 : ${myPet.age} 살`) // 이름 : 흰둥이 / 나이 : 2 살
+
+const ironMan = {
+  name : '토니 스타크',
+  actor : '로버트 다우니 주니어',
+  alias : '아이언맨'
+}
+const captain = {
+  name : '스티븐 로저스',
+  actor : '크리스 에반스',
+  alias : '캡틴 아메리카'
+}
+
+console.log(ironMan);
+
+// ● 함수에서 객체를 파라미터(매개변수)로 받기
+print = (hero) => {
+  /* 
+    print() 함수에 ironMan 이라는 객체를 넘겨주고 hero라는 파라미터(매개변수)로 받는다.
+    print 함수 내 파라미터(매개변수)로 받아온 hero 내부 값을 조회할 때마다 hero. 를 입력하는데, 
+    이를 객체 비구조화 할당 문법을 이용하여 코드를 더 간결하게 작성 가능.
+    다음 함수 참조.
+  */
+  return console.log(`안녕하세요. 저는 ${ironMan.alias}(${ironMan.name})역을 맡은 ${ironMan.actor} 입니다.`);
+}
+print(ironMan);
+
+// 객체 구조 분해 라고도 불린다.
+print02 = (hero) => {
+  /* 
+    밑의 코드가 객체에서 값들을 추출해서 새로운 상수로 선언
+    더 나아가 파라미터(매개변수) 단계에서 값을 받아올 때부터 객체 비구조화 할당 가능.
+    다음 함수 참조.
+  */
+  const { name, alias, actor } = hero;
+  return console.log(`안녕하세요!!! 저는 ${alias}(${name})역을 맡은 ${actor} 입니다.`);
+}
+print02(captain);
+
+// ● 파라미터(매개변수) 단계에서 값을 받아올 때부터 객체 비구조화 할당
+print03 = ({name, alias, actor} = hero) => {
+  return console.log(`안녕하세요~~ 저는 ${alias}(${name})역을 맡은 ${actor} 입니다.`);
+}
+print03(ironMan);
+
+// ● 객체 안에 함수 넣기
+const dog = {
+  name : '흰둥이',
+  sound : '왈!왈!왈!',
+  /*
+    객체 안에 함수를 넣을 때 화살표 함수(=>)는 에러가 뜬다. 
+    function 으로 선언 할 때는 this가 자신이 속한 객체를 가르키지만, 화살표 함수(=>)는 this를 알 수 없다.
+    여기서 this란 내가 속해 있는 객체를 바라봐야 하며, this.sound 또는 this.name에 접근하기 위함이다.
+    속해있는 객체에 접근 할 필요가 없다면 화살표 함수 사용 가능.
+    say : () => { // ERROR
+  */
+  // 함수를 선언 할 때는 함수명(이름)이 없어도 된다.
+  // say : function talk(){
+  say : function(){
+    // 함수의 this는 자신이 속해있는 객체를 가르킨다.
+    console.log(this.sound); // dog.sound(왈!왈!왈!);
+  }
+}
+
+dog.say(); // 왈!왈!왈!
+
+// ● Getter 함수
+// getterEx.sum() 메서드 호출이 아닌 getterEx.sum로 조회 했을 뿐인데 함수가 실행되고 결과값이 출력된다.
+// 이런식으로 getter 함수는 특정 값을 조회 할 때 우리가 설정한 함수로 연산된 값을 반환.
+const getterEx = {
+  a : 1,
+  b : 2,
+  get sum(){
+      console.log('sum 메서드가 실행 됩니다');
+      return this.a + this.b;
+  }
+}
+console.log(getterEx.sum); // 3
+getterEx.b = 10;
+console.log(getterEx.sum); // 11;
+
+// ● Setter 함수
+const setterEx = {
+  _a : 1,
+  _b : 2,
+  sum : 3,
+  clculate(){
+    console.log('clculate 메서드가 실행 됩니다');
+    this.sum = this._a + this._b;
+  },
+  get a(){
+    return this._a;
+  },
+  get b(){
+    return this._b;
+  },
+  set a(val){
+    console.log('a의 값이 ' + val + '로 변경됩니다.');
+    this._a = val;
+    this.clculate();
+  },
+  set b(val){
+    console.log('b의 값이 ' + val + '로 변경됩니다.');
+    this._b = val;
+    this.clculate();
+  }
+}
+
+console.log(setterEx.sum); // 3
+setterEx.a = 5;
+setterEx.b = 8;
+setterEx.a = 10
+console.log(setterEx.sum); // 16
+console.log(setterEx.sum); // 16
+console.log(setterEx.sum); // 16
+
+console.log(
+  '%c ○ [6-2. 객체 - getter / setter] 개념 추가 * ================== ',
+  'width: 900px; padding: 8px 16px; background-color: #fff; color: #000;'
 );
 
-console.log('=========================끝===========================');
+// 객체 리터럴
+const exGetSet = {
+    // 획득자 getter 메서드 : 객체 리터럴 안에서 get으로 표현
+    // getter 메서드는 obj.propName을 사용해 프로퍼티를 읽으려고 할 때 실행
+    get propName(){
+
+    },
+    // 설정자 setter 메서드 : 객체 리터럴 안에서 set으로 표현
+    // setter 메서드는 obj.propName = value으로 프로퍼티에 값을 할당하려 할 때 실행
+    set propName(value){
+
+    }
+}
+
+// 프로퍼티 firstName 과 lastName 를 가지고 있는 user 라는 객체를 만든다
+let user = {
+  firstName : 'han',
+  LastName : 'changhee',
+  get fullName(){
+    return this.firstName.toUpperCase() + ' ' + this.LastName.toUpperCase();
+  },
+  set fullName(newName){
+    if (newName){
+      [this.firstName, this.LastName] = newName.split(' ');
+    }
+  }
+};
+
+console.log(user.fullName);
+user.fullName = 'kim minjae';
+console.log(user.fullName);
 </script>
