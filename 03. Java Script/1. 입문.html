@@ -446,7 +446,7 @@ console.log(setterEx.sum); // 16
 console.log(setterEx.sum); // 16
 
 console.log(
-  '%c ○ [6-2. 객체 - getter / setter] 개념 추가 * ================== ',
+  '%c ○ [6-2. 객체 - getter / setter] 개념 공부 추가 * ================ ',
   'width: 900px; padding: 8px 16px; background-color: #fff; color: #000;'
 );
 
@@ -464,21 +464,4 @@ const exGetSet = {
     }
 }
 
-// 프로퍼티 firstName 과 lastName 를 가지고 있는 user 라는 객체를 만든다
-let user = {
-  firstName : 'han',
-  LastName : 'changhee',
-  get fullName(){
-    return this.firstName.toUpperCase() + ' ' + this.LastName.toUpperCase();
-  },
-  set fullName(newName){
-    if (newName){
-      [this.firstName, this.LastName] = newName.split(' ');
-    }
-  }
-};
-
-console.log(user.fullName);
-user.fullName = 'kim minjae';
-console.log(user.fullName);
 </script>
