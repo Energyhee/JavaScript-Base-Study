@@ -1,5 +1,13 @@
 <script>
-console.log(
+const cLog = (obj, style) => {
+  if(style){
+    console.log(obj, style);
+  }else{
+    console.log(obj);
+  }
+};
+ 
+cLog(
   '%c ○ [0. var 과 let, const 차이점] ============================ ',
   'padding: 8px 16px; background-color: #fff; color: #000;'
 );
@@ -10,7 +18,7 @@ console.log(
 // var a = 1;
 // var a = 2;
 // a = 3;
-// console.log('a : ' + a);     // 3
+// cLog('a : ' + a);     // 3
 
 // let은 같은 블럭 내에서 같은 이름으로 선언은 불가, 값 변경 가능
 // let b = 1;
@@ -21,31 +29,31 @@ console.log(
 // const c = 1;                 // error
 // c = 2;
 
-console.log(
+cLog(
   '%c ○ [0. 변수와 상수 및 선언] ================================== ',
   'padding: 8px 16px; background-color: #fff; color: #000;'
 );
 /* [0. 변수와 상수 및 선언] */
 let value = 1;
-console.log('value :: ' + value); // 1
+cLog('value :: ' + value); // 1
 
-console.log(
+cLog(
   '%c ○ [1. 변수] ================================================ ', 
   'padding: 8px 16px; background-color: #fff; color: #000;'
 );
 /* [1. 변수] */
 // 바뀔 수 있는 값을 말한다.
 let value2 = 1;
-console.log('let value2 :: ' + value2); // 1
+cLog('let value2 :: ' + value2); // 1
 value2 = 2;
-console.log('value2 :: ' + value2); // 2
+cLog('value2 :: ' + value2); // 2
 
 // 변수를 선언 할 때 주의 점은 같은 이름으로 선언 할 수 없다.
 // 단, 다른 블럭 범위 내에서는 가능하다.
 // let value3 = 1;
 // let value3 = 2;    // ERROR
 
-console.log(
+cLog(
   '%c ○ [2. 상수] ================================================ ', 
   'padding: 8px 16px; background-color: #fff; color: #000;'
 );
@@ -54,37 +62,37 @@ console.log(
 // 다른 코드블럭에서는 같은 명으로 선언 가능
 // const a = 1;
 // a = 2;             // ERROR
-console.log('const a = 1 선언 후 a = 2 값 초기화 또는 대입 할 경우 ERROR');
+cLog('const a = 1 선언 후 a = 2 값 초기화 또는 대입 할 경우 ERROR');
 
 // 상수를 선언 할 때 주의 점은 같은 이름으로 선언 할 수 없다.
 // const a = 1;
 // const a = 2;       // ERROR
-console.log('const a = 1 선언 후 새로 const a = 2 선언 할 경우 ERROR');
+cLog('const a = 1 선언 후 새로 const a = 2 선언 할 경우 ERROR');
 
-console.log(
+cLog(
   '%c ○ [3. 데이터 타입] * ======================================== ',
   'padding: 8px 16px; background-color: #fff; color: #000;'
 );
 /* [3. 데이터 타입] */
 
 let type01 = 1;
-console.log('type01 :: ' + type01 + ' / ' + typeof type01); // 1 'number'
+cLog('type01 :: ' + type01 + ' / ' + typeof type01); // 1 'number'
 let type02 = 'text';
-console.log('type02 :: ' + type02 + ' / ' + typeof type02); // text 'string'
+cLog('type02 :: ' + type02 + ' / ' + typeof type02); // text 'string'
 let type03 = 1 + '1';
-console.log('type03 :: ' + type03 + ' / ' + typeof type03); // 11 'string'
+cLog('type03 :: ' + type03 + ' / ' + typeof type03); // 11 'string'
 let type04 = true;
-console.log('type04 :: ' + type04 + ' / ' + typeof type04); // true 'boolean'
+cLog('type04 :: ' + type04 + ' / ' + typeof type04); // true 'boolean'
 let type05 = false;
-console.log('type05 :: ' + type05 + ' / ' + typeof type05); // false 'boolean'
+cLog('type05 :: ' + type05 + ' / ' + typeof type05); // false 'boolean'
 // null은 '의도적'으로 빈 값을 할당한 상태(빈 객체), 자료형이 있는 상태
 let type06 = null;
-console.log('type06 :: ' + type06 + ' / ' + typeof type06); // null 'object'
+cLog('type06 :: ' + type06 + ' / ' + typeof type06); // null 'object'
 // undefined은 원시값으로 값을 할당하지 않았을 때 자동 할당, 자료형이 없는 상태
 let type07;
-console.log('type07 :: ' + type07 + ' / ' + typeof type07); // undefined 'undefined'
+cLog('type07 :: ' + type07 + ' / ' + typeof type07); // undefined 'undefined'
 
-console.log(
+cLog(
   '%c ○ [4. 연산자] * ============================================= ',
   'padding: 8px 16px; background-color: #fff; color: #000;'
 );
@@ -95,16 +103,16 @@ example = 2; // 변수 초기화
 
 // ● 산술 연산자 +, -, *, /
 let calculation = 1 + 2 / 2;
-console.log('calculation ::' + calculation); // 2 'number'
+cLog('calculation ::' + calculation); // 2 'number'
 let plus = 1;
 let plusType1 = plus++;
 // 연산자가 뒤에 붙을 경우 직전 값을 반환한다.
-console.log('plus++ :: ' + plusType1); // 1 'number'
-console.log('plus++ cont :: ' + plus); // 2
+cLog('plus++ :: ' + plusType1); // 1 'number'
+cLog('plus++ cont :: ' + plus); // 2
 let plusType2 = ++plus;
 // 연산자가 앞에 붙을 경우 이후 값을 반환한다.
-console.log('++plus :: ' + plusType2); // 3 'number'
-console.log('plus-- cont :: ' + plus);
+cLog('++plus :: ' + plusType2); // 3 'number'
+cLog('plus-- cont :: ' + plus);
 
 // ● 대입 연산자
 let number = 2;
@@ -117,7 +125,7 @@ number = number + 2;
 // number -= 2;
 // number *= 2;
 // number /= 2;
-console.log('number :: ' + number); // 4 'number'
+cLog('number :: ' + number); // 4 'number'
 
 // ● 논리 연산자 : 논리 연산자는 boolean(불리언) 타입을 위한 연산자 이다
 // ! : NOT
@@ -126,71 +134,71 @@ console.log('number :: ' + number); // 4 'number'
 
 // !(NOT) 연산자는 반대 상태로 변경해준다.
 const state01 = !true;
-console.log('!true :: ' + state01); // false;
+cLog('!true :: ' + state01); // false;
 const state02 = !false;
-console.log('!false :: ' + state02); // true;
+cLog('!false :: ' + state02); // true;
 
 // &&(AND) 연산자는 양쪽의 값이 둘다 true 일 때만 true
 const ab = true && true;
-console.log('true && true :: ' + ab); // true
+cLog('true && true :: ' + ab); // true
 
 // ||(OR) 연산자는 양쪽의 값 중 어느 하나라도 맞을 경우 true, 둘 다 false 일 때 false
 const abc = false || true;
-console.log('false || true :: ' + abc); // true
+cLog('false || true :: ' + abc); // true
 
 // 논리 연산자 연산 순서는 !(NOT) > &&(AND) -> ||(OR) 순
 const abcd = !((true && false) || (true && false) || !false);
 // !((true && false) || (true && false) || true); NOT 연산자 처리
 // !(false || false || true); AND 연산자 처리
 // !true; 마지막 true 및 NOT 연산자로 인해 false
-console.log('!((true && false) || (true && false) || !false) :: ' + abcd); // false
+cLog('!((true && false) || (true && false) || !false) :: ' + abcd); // false
 
 // 비교 연산자
 // 비교 연사자는 되도록 등호 세개(===)를 쓸 것 그래야 값의 타입까지 상세 비교를 함으로, 실수 유발이 적어진다.
 const left01 = 1;
 const right01 = 1;
-console.log('1 === 1 :: ' + (left01 === right01)); // true
+cLog('1 === 1 :: ' + (left01 === right01)); // true
 
 const left02 = 1; // number
 const right02 = '1'; // string
 // 등호를 세개만 썼을 경우 해당 값의 type까지 검사한다
-console.log('1 === "1" :: ' + (left02 === right02)); // false
+cLog('1 === "1" :: ' + (left02 === right02)); // false
 
 const left03 = 1; // number
 const right03 = '1'; // string
 // 등호를 두개만 썼을 경우 해당 값의 type까지 검사를 하지 않는다.
-console.log('1 == "1" :: ' + (left03 == right03)); // true
+cLog('1 == "1" :: ' + (left03 == right03)); // true
 
 const left04 = 0; // number
 const right04 = false; // object
 // 0과 false는 같은 값으로 간주된다.
-console.log('0 == false :: ' + (left04 == right04)); // true
+cLog('0 == false :: ' + (left04 == right04)); // true
 
 const left05 = null; // number
 const right05 = undefined; // object
 // 0과 false는 같은 값으로 간주된다.
-console.log('null == undefined :: ' + (left05 == right05)); // true
+cLog('null == undefined :: ' + (left05 == right05)); // true
 
 // 크고 작음 (부등호)
 const num01 = 10;
 const num02 = 20;
 const num03 = 20;
 
-console.log('10 < 20 : ' + (num01 < num02)); // true
-console.log('10 > 20 : ' + (num01 > num02)); // false
-console.log('10 <= 20 : ' + (num01 <= num02)); // true
-console.log('10 >= 20 : ' + (num01 >= num02)); // false
-console.log('20 >= 20 : ' + (num02 >= num02)); // true
-console.log('20 < 20 : ' + (num02 < num02)); // false
+cLog('10 < 20 : ' + (num01 < num02)); // true
+cLog('10 > 20 : ' + (num01 > num02)); // false
+cLog('10 <= 20 : ' + (num01 <= num02)); // true
+cLog('10 >= 20 : ' + (num01 >= num02)); // false
+cLog('20 >= 20 : ' + (num02 >= num02)); // true
+cLog('20 < 20 : ' + (num02 < num02)); // false
 
 // 연사자를 이용하여 문자열(string) 합치기도 가능
 const text01 = 'Han';
 const text02 = 'ChangHee';
 
-console.log(text01 + text02);
-console.log(text02 + text01);
+cLog(text01 + text02);
+cLog(text02 + text01);
 
-console.log(
+cLog(
   '%c ○ [4. 조건문] * ============================================= ',
   'padding: 8px 16px; background-color: #fff; color: #000;'
 );
@@ -201,50 +209,50 @@ const ifNum01 = 1;
 const ifNum02 = 10;
 const ifPlus = 9;
 if(ifNum01 + 9 === ifNum02){
-  console.log('ifNum01(' + ifNum01 + ') + ' + ifPlus + ' 와 ifNum02(' + ifNum02 + ')이 같습니다.');
+  cLog('ifNum01(' + ifNum01 + ') + ' + ifPlus + ' 와 ifNum02(' + ifNum02 + ')이 같습니다.');
 }
 
 // const 다른 코드블럭 내 선언
 const ifCodeBlock = 1;
 if (true){
   const ifCodeBlock = 2;
-  console.log('if 코드블락 내 새로 선언 된 const ifCodeBlock는 ' + ifCodeBlock + '입니다.');
+  cLog('if 코드블락 내 새로 선언 된 const ifCodeBlock는 ' + ifCodeBlock + '입니다.');
 }
-console.log('if 코드블락 외 처음 선언 되어 있는 const ifCodeBlock는 ' + ifCodeBlock + '입니다.');
+cLog('if 코드블락 외 처음 선언 되어 있는 const ifCodeBlock는 ' + ifCodeBlock + '입니다.');
 
 // ● else
 const ifCodeBlock02 = 10;
 if(ifCodeBlock02 > 10){
-  console.log('const ifCodeBlock02(' + ifCodeBlock02 + ')이 10보다 클 경우.');
+  cLog('const ifCodeBlock02(' + ifCodeBlock02 + ')이 10보다 클 경우.');
 }else{
-  console.log('const ifCodeBlock02(' + ifCodeBlock02 + ')이 10보다 작거나 같을 경우.');
+  cLog('const ifCodeBlock02(' + ifCodeBlock02 + ')이 10보다 작거나 같을 경우.');
 }
 
 // ● else if
 const ifCodeBlock03 = 3;
 if(ifCodeBlock03 === 1){
-  console.log('const ifCodeBlock03(' + ifCodeBlock03 + ')이 1일때');
+  cLog('const ifCodeBlock03(' + ifCodeBlock03 + ')이 1일때');
 }else if(ifCodeBlock03 === 2){
-  console.log('const ifCodeBlock03(' + ifCodeBlock03 + ')이 2일때');
+  cLog('const ifCodeBlock03(' + ifCodeBlock03 + ')이 2일때');
 }else{
-  console.log('const ifCodeBlock03(' + ifCodeBlock03 + ')이 1과 2 둘다 아닐때');
+  cLog('const ifCodeBlock03(' + ifCodeBlock03 + ')이 1과 2 둘다 아닐때');
 }
 
 // ● switch/cass 문 : break 를 걸어주지 않을 경우 다음 case까지 읽어들인다.
 const firstName = 'han';
 switch (firstName) {
   case 'han':
-    console.log('성이 ' + firstName + '씨 입니다.');
+    cLog('성이 ' + firstName + '씨 입니다.');
     break;
   case 'kim':
-    console.log('성이 ' + firstName + '씨 입니다.');
+    cLog('성이 ' + firstName + '씨 입니다.');
     break;
   default:
     // default는 기본 값, case에 맞는 값이 없을 경우 기본으로 노출
-    console.log('성을 알 수 없습니다.');
+    cLog('성을 알 수 없습니다.');
 }
 
-console.log(
+cLog(
   '%c ○ [5. 함수] * =============================================== ',
   'padding: 8px 16px; background-color: #fff; color: #000;'
 );
@@ -255,22 +263,22 @@ console.log(
 function plusNum(a, b){ // plusNum이라는 함수를 만들고 파라미터(매개변수)로 a,b 에 대한 값을 받아 온다
   return a + b; // 받아온 a,b 값을 대입하여 더하고 값을 반환시킨다.
   // return 하게 될 경우 함수가 끝난다. 아래의 코드들은 호출이 안된다.
-  console.log('plusNum 실행'); // 실행 안됌
+  cLog('plusNum 실행'); // 실행 안됌
 }
-console.log(plusNum(2, 4));  // 6
+cLog(plusNum(2, 4));  // 6
 
 // 함수 생성 예제 02
 function helloName(name){
   // 문자열을 조합하기 위해 + 연산자를 사용하지만, ES6의 Template Lireral 문법을 사용하여 좀 더 편하게 작성 가능
   // 브라우저 버전에 따라 지원하는 Java Script 버전이 다르므로 보통 Babel을 사용하여 최신버전의 Java Script가 구버전 형태로 변환작업을 한다.
-  return console.log('Hello, ' + name);
+  return cLog('Hello, ' + name);
 }
 helloName('changhee');
 
 // 함수 생성 예저2 (ES6의 Template Lireral)
 function helloName02(name){
   // 따옴표가 대신 grave(그레이브) 사용
-  return console.log(`Hello, ${name}`);
+  return cLog(`Hello, ${name}`);
 }
 helloName02('HanChangHee');
 
@@ -286,7 +294,7 @@ function getGrade(score){
     return 'D';
   }
 };
-console.log(getGrade(99)); // B
+cLog(getGrade(99)); // B
 
 // ● 화살표 함수
 // 함수를 선언하는 방식 중 화살표 함수(=>) 문법을 사용하는 방법도 있다.
@@ -297,11 +305,11 @@ const addPlusNum = (a, b) => {
   // 좌측엔 파라미터(매개변수), 우측엔 코드블럭 시작
   return a + b;
 }
-console.log(addPlusNum(10, 20)); // 30
+cLog(addPlusNum(10, 20)); // 30
 
 // 코드블럭 내부에서 바로 return 할 경우 더 간략히 작성 가능
 const addPlusNum02 = (a, b) => a + b;
-console.log(addPlusNum02(20, 20)); // 40
+cLog(addPlusNum02(20, 20)); // 40
 
 // 화살표 함수(=>) 예제
 const getGrade02 = (score) => {
@@ -315,9 +323,9 @@ const getGrade02 = (score) => {
     return 'D';
   }
 };
-console.log(getGrade02(100)); // A
+cLog(getGrade02(100)); // A
 
-console.log(
+cLog(
   '%c ○ [6. 객체] * =============================================== ',
   'width: 900px; padding: 8px 16px; background-color: #fff; color: #000;'
 );
@@ -329,7 +337,7 @@ const myPet = {
   name : '흰둥이',
   age : 2
 }
-console.log(`이름 : ${myPet.name} / 나이 : ${myPet.age} 살`) // 이름 : 흰둥이 / 나이 : 2 살
+cLog(`이름 : ${myPet.name} / 나이 : ${myPet.age} 살`) // 이름 : 흰둥이 / 나이 : 2 살
 
 const ironMan = {
   name : '토니 스타크',
@@ -342,7 +350,7 @@ const captain = {
   alias : '캡틴 아메리카'
 }
 
-console.log(ironMan);
+cLog(ironMan);
 
 // ● 함수에서 객체를 파라미터(매개변수)로 받기
 print = (hero) => {
@@ -352,7 +360,7 @@ print = (hero) => {
     이를 객체 비구조화 할당 문법을 이용하여 코드를 더 간결하게 작성 가능.
     다음 함수 참조.
   */
-  return console.log(`안녕하세요. 저는 ${ironMan.alias}(${ironMan.name})역을 맡은 ${ironMan.actor} 입니다.`);
+  return cLog(`안녕하세요. 저는 ${ironMan.alias}(${ironMan.name})역을 맡은 ${ironMan.actor} 입니다.`);
 }
 print(ironMan);
 
@@ -364,13 +372,13 @@ print02 = (hero) => {
     다음 함수 참조.
   */
   const { name, alias, actor } = hero;
-  return console.log(`안녕하세요!!! 저는 ${alias}(${name})역을 맡은 ${actor} 입니다.`);
+  return cLog(`안녕하세요!!! 저는 ${alias}(${name})역을 맡은 ${actor} 입니다.`);
 }
 print02(captain);
 
 // ● 파라미터(매개변수) 단계에서 값을 받아올 때부터 객체 비구조화 할당
 print03 = ({name, alias, actor} = hero) => {
-  return console.log(`안녕하세요~~ 저는 ${alias}(${name})역을 맡은 ${actor} 입니다.`);
+  return cLog(`안녕하세요~~ 저는 ${alias}(${name})역을 맡은 ${actor} 입니다.`);
 }
 print03(ironMan);
 
@@ -389,79 +397,353 @@ const dog = {
   // say : function talk(){
   say : function(){
     // 함수의 this는 자신이 속해있는 객체를 가르킨다.
-    console.log(this.sound); // dog.sound(왈!왈!왈!);
+    cLog(this.sound); // dog.sound(왈!왈!왈!);
   }
 }
 
 dog.say(); // 왈!왈!왈!
 
-// ● Getter 함수
-// getterEx.sum() 메서드 호출이 아닌 getterEx.sum로 조회 했을 뿐인데 함수가 실행되고 결과값이 출력된다.
-// 이런식으로 getter 함수는 특정 값을 조회 할 때 우리가 설정한 함수로 연산된 값을 반환.
-const getterEx = {
-  a : 1,
-  b : 2,
-  get sum(){
-      console.log('sum 메서드가 실행 됩니다');
-      return this.a + this.b;
-  }
-}
-console.log(getterEx.sum); // 3
-getterEx.b = 10;
-console.log(getterEx.sum); // 11;
-
-// ● Setter 함수
-const setterEx = {
+// ● Getter 와 Setter 함수
+const testGetSet = {
   _a : 1,
   _b : 2,
-  sum : 3,
+  total : 3,
   clculate(){
-    console.log('clculate 메서드가 실행 됩니다');
-    this.sum = this._a + this._b;
+    cLog('clculate 메서드가 실행 됩니다');
+    this.total = this._a + this._b;
   },
-  get a(){
+  // 획득자 getter 메서드 : 객체 리터럴 안에서 get으로 표현
+  // getter 메서드는 obj.propName을 사용해 프로퍼티를 읽으려고 할 때 실행, 프로퍼티로 사용 가능
+  get get_a(){
     return this._a;
   },
-  get b(){
+  get get_b(){
     return this._b;
   },
-  set a(val){
-    console.log('a의 값이 ' + val + '로 변경됩니다.');
+  // 설정자 setter 메서드 : 객체 리터럴 안에서 set으로 표현
+  // setter 메서드는 obj.propName = value으로 프로퍼티에 값을 할당하려 할 때 실행, 프로퍼티로 사용 가능
+  set set_a(val){
+    cLog('a의 값이 ' + val + '로 변경됩니다.');
     this._a = val;
     this.clculate();
   },
-  set b(val){
-    console.log('b의 값이 ' + val + '로 변경됩니다.');
+  set set_b(val){
+    cLog('b의 값이 ' + val + '로 변경됩니다.');
     this._b = val;
     this.clculate();
   }
 }
 
-console.log(setterEx.sum); // 3
-setterEx.a = 5;
-setterEx.b = 8;
-setterEx.a = 10
-console.log(setterEx.sum); // 16
-console.log(setterEx.sum); // 16
-console.log(setterEx.sum); // 16
+// 프로퍼티로 사용가능
+cLog('sum : ' + testGetSet.sum); // 3
+cLog('get_a : ' + testGetSet.get_a); // 1
+cLog('get_b : ' + testGetSet.get_b); // 2
+testGetSet.set_a = 10;
+cLog('total : ' + testGetSet.total); // 12
+testGetSet.set_b = 20;
+cLog('total : ' + testGetSet.total); // 30
 
-console.log(
+
+cLog(
   '%c ○ [6-2. 객체 - getter / setter] 개념 공부 추가 * ================ ',
   'width: 900px; padding: 8px 16px; background-color: #fff; color: #000;'
 );
 
-// 객체 리터럴
-const exGetSet = {
-    // 획득자 getter 메서드 : 객체 리터럴 안에서 get으로 표현
-    // getter 메서드는 obj.propName을 사용해 프로퍼티를 읽으려고 할 때 실행
-    get propName(){
-
-    },
-    // 설정자 setter 메서드 : 객체 리터럴 안에서 set으로 표현
-    // setter 메서드는 obj.propName = value으로 프로퍼티에 값을 할당하려 할 때 실행
-    set propName(value){
-
-    }
+// 예제 01
+class Person{  
+  constructor(name, age){
+    this._name = name;
+    this._age = age;
+  }
+  get GetName(){
+    return `이름 : ${this._name.toUpperCase()}`;
+  }
+  set SetName(newName){
+    if (newName) this._name = newName;
+  }
+  get GetAge(){
+    return `나이 : ${this._age} 살`;
+  }
+  set SetAge(newAge){
+    if (newAge) this._age = newAge;
+  }
 }
 
+let human = new Person('john', 10);
+cLog(`${human.GetName} / ${human.GetAge}`); // JOHN : 10
+human.SetName = 'park';
+human.SetAge = 20;
+cLog(`${human.GetName} / ${human.GetAge}`); // PARK : 20
+human.SetName = 'han';
+human.SetAge = 31;
+cLog(`${human.GetName} / ${human.GetAge}`); // HAN : 31
+
+// 예제 02
+class Time{
+  constructor(start, end){
+    this._start = start;
+    this._end = end;
+    this._duration = end - start;
+  }
+  set SetNewTime(newStart){
+    if (newStart || newStart === 0){
+      this._start = newStart;
+      this._duration = this._end - this._start;
+    }
+  }
+  get GetDuration(){
+    return this._duration = this._end - this._start;
+  }
+}
+
+let time = new Time(10, 40); // 시작시간, 종료시간
+cLog('지속시간초기 : ' + time.GetDuration); // 30 (지속시간)
+time.SetNewTime = 0;
+cLog('지속시간수정 : ' + time.GetDuration); // 40 (지속시간)
+
+cLog(
+  '%c ○ [7. 배열] * =============================================== ',
+  'width: 900px; padding: 8px 16px; background-color: #fff; color: #000;'
+);
+/* [7. 배열] */
+// ● 이전에 배운 객체의 경우 변수 혹은 상수, 여러가지 정보를 담기 위함이였다면 배열은 여러 항목이 들어있는 리스트
+let array01 = [1,2,3,4];
+cLog(array01[0]); // 1
+
+let array02 = [
+  { name : '강아지' },
+  { name : '고양이' }
+];
+cLog(array02[0]); // {name : '강아지'}
+cLog(array02[0].name); // 강아지 
+
+// ● push를 이용한 배열 추가
+let array03 = [
+  { name : '강아지' },
+  { name : '고양이' }
+];
+
+array03.push({
+  name : '코끼리'
+});
+cLog(array03); // {name: '강아지'}, {name: '고양이'}, {name: '코끼리'}
+
+// ● length를 이용한 배열의 크기
+cLog(array03.length); // 3
+
+cLog(
+  '%c ○ [8. 반복문] * ============================================= ',
+  'width: 900px; padding: 8px 16px; background-color: #fff; color: #000;'
+);
+/* [8. 반복문] */
+// ● 반복문은 특정 작업을 반복적으로 사용할 수 있게해준다.
+
+// ● for 가장 기본적인 반복문이며, 특정 조건에 변화를 주어가면서 조건이 맞다면 계속 반복되게 한다.
+let testNum = 5;
+
+// for 문 작성 규칙은 (초기 구문; 조건 구문; 변화 구만)
+for (var i = 1; i <= testNum; i++){ // i(1)이 testNum(5)보다 작을거나 같다면 0부터 +1씩 증감하면서 반복
+  cLog(i); // 1,2,3,4,5
+}
+for (var i = 10; i > testNum; i--){ // i(10)이 testNum(5)보다 크다면 10부터 -1씩 차감하면서 반복
+  cLog(i); // 10,9,8,7,6
+}
+
+// array와 for 함께 사용
+let firstNames = ['kim', 'lee', 'han']
+
+for (var i = 0; i < firstNames.length; i++){
+  cLog(firstNames[i]); // kim, lee, han 각 배열의 원소를 하나하나 출력
+}
+
+// ● while 특정 조건이 참이라면 계속해서 반복하는 반복문
+let idx = 1;
+
+// 무한으로 반복되지 않게 false가 되도록 신경써야한다.
+while (idx <= 10){
+  cLog(idx); // 1 ~ 10까지 숫자 하나 씩 출력
+  idx++;
+}
+
+// ● for...of 배열을 위한 반복문
+let numbers = [10, 20, 30, 40, 50];
+
+for (let n of numbers){
+  cLog(n);
+}
+
+// ● for...in 객체를 위한 반복문
+let doggy = {
+  name : '흰둥이',
+  color : '흰색',
+  age : 2
+} 
+
+cLog(Object.entries(doggy)); // doggy 배열 [[key, value], [key, value]...] 형태로 전체 반환
+cLog(Object.keys(doggy)); // doggy 배열 [key, key...] 형태로 전체 반환
+cLog(Object.values(doggy)); // doggy 배열 [value, value...] 형태로 전체 반환
+
+for (let keys in doggy){
+  // array(doggy)에 key 항목을 keys 담고 array(doggy)에 keys에 담기 key 값을 찾아 value 출력
+  cLog(keys + ' : ' + doggy[keys]);
+}
+
+// ● break 와 continue
+for (let i = 1; i <= 10; i++){
+  if(i === 2) continue; // // 두번째도 반복문이 돌아야하나, i(1씩 증감)가 2 됐을 때 console 출력을 안하고 3으로 바로 넘어감
+  cLog(i);
+  if(i === 8) break; // 10까지 반복문이 돌아야하나, i(1씩 증감)가 8이 됐을 때 최종적으로 반복문 종료
+}
+
+// 예제1) 배열을 파라미터(매개변수)로 넘겨 받아 총합을 구해보자
+const arrayFn = (num) => {
+  let total = 0;
+  for (i = 0; i < num.length; i++){
+    total += num[i];
+  }
+  return total
+}
+
+cLog(arrayFn([1,2,3,4,5])); // 15
+
+// 예제2) 숫자로 이루어진 배열이 주어졌을 때, 해당 숫자 배열안에 들어있는 숫자 중 3보다 큰 숫자로만 이루어진 배열을 새로 만들어서 반환해보세요.
+function biggerThanThree(arrNumbers) {
+  let newArray = [];
+  for (let i = 0; i < arrNumbers.length; i++){
+    if(arrNumbers[i] > 3) newArray.push(arrNumbers[i]);
+    // 또는
+    // if(arrNumbers[i] <= 3) continue; 
+    // newArray.push(arrNumbers[i]);
+  }
+  return newArray;
+}
+
+const arrNumbers = [1, 2, 3, 4, 5, 6, 7];
+cLog(biggerThanThree(arrNumbers)); // 4, 5, 6, 7
+
+cLog(
+  '%c ○ [9. 배열 내장함수] * ========================================= ',
+  'width: 900px; padding: 8px 16px; background-color: #fff; color: #000;'
+);
+/* [9. 배열 내장함수] */
+// 배열을 다룰 때 알고 있으면 너무나 유용한 내장 함수들.
+
+// ● forEach 가장 쉬운 배열 내장함수. for문을 대체가능.
+const hero = ['아이언맨', '캡틴', '토르', '헐크'];
+
+hero.forEach(list => { // 파라미터(매개변수) list라고 명의 후 값을 넘긴다. 함수형태의 파라미터를 전달하는 것을 콜백함수라고 한다. 
+  cLog(list); // 아이언맨, 캡틴, 토르, 헐크
+});
+
+const heroInfo = [
+  {name : '아이언맨', grade : 'S+'},
+  {name : '캡틴', grade : 'S'},
+  {name : '토르', grade : 'A+'},
+  {name : '헐크', grade : 'A'}
+];
+
+heroInfo.forEach(list => {
+  cLog(`활동명 : ${list.name} / 등급 : ${list.grade}`);
+});
+
+// ● map 배열 안의 각 원소를 변환 할 때 사용. 이 과정에서 새로운 배열이 만들어진다.
+const baseArr = [1,2,3,4,5];
+const baseSquared = [];
+for(let i = 0; i < baseArr.length; i++){
+  baseSquared.push(baseArr[i] * 2);
+}
+cLog(baseSquared); // 2, 4, 6, 8, 10
+
+const forSquared = [];
+baseArr.forEach(n => {
+  forSquared.push(n * 2);
+});
+cLog(forSquared); // 2, 4, 6, 8, 10
+
+const square = n => n * n; // map의 파라미터(매개변수) square와 같은 애들을 변화함수라고 부른다.
+// cLog(baseArr.map(square)); 
+cLog(baseArr.map(n => n * n)); // 1, 4, 9, 16, 25
+
+// ● indexOf 는 원하는 항목이 몇번쨰인지 찾아준다.
+cLog(hero.indexOf('헐크')); // 3
+
+// ● findIndex 값이 객체이거나 배열이라면 사용.
+const todos = [
+  {
+    id: 1,
+    text: '자바스크립트 입문',
+    done: true
+  },
+  {
+    id: 2,
+    text: '함수 배우기',
+    done: true
+  },
+  {
+    id: 3,
+    text: '객체와 배열 배우기',
+    done: true
+  },
+  {
+    id: 4,
+    text: '배열 내장함수 배우기',
+    done: false
+  }
+];
+
+// todos를 todo로 넘겨준다.
+cLog(todos.findIndex(todo => todo.id === 1)); // todo id의 값 1을 가진 객체의 순번 - 0
+cLog(todos.findIndex(todo => todo.done === false)); // todo done의 불리언 값 false를 가진 객체의 순번 - 3
+
+// ● find 함수는 findIndex랑 비슷하나, 찾아낸 값이 몇번째 인지 알애는 것이 아닌, 찾아낸 값 자체를 반환.
+cLog(todos.find(todo => todo.id === 1)); // todo id의 값 1을 가진 값 자체 출력
+
+// ● filter 함수는 배열에서 특정 조건을 만족하는 값들만 따로 추출하여 새로운 배열 생성.
+// fileter 파라미터에는 조건을 넣어주며, 파라미터로 각 원소의 값을 받아온다.
+cLog(todos.filter(todo => todo.done)); // true
+cLog(todos.filter(todo => !todo.done)); // false
+
+// ● splice 는 배열에서 특정 항목을 제거할 때 사용.
+const numberList = [10, 20, 30, 40, 50]; // 배열
+const numIdx = numberList.indexOf(20); // 지우고자 하는 항목의 index 찾기
+// 첫번째 파라미터 : 내가 지우고자 하는 index, 두번째 파라미터 : 해당 index부터 몇개를 지울 것인지 명시
+// 아무것도 입력하지 않을 경우 해당 index 부터 다 지움
+numberList.splice(numIdx, 1); 
+cLog(numberList); // [10, 30, 40, 50]
+
+// ● slice 는 위 splice와 조금 비슷하나, 배열을 잘라낼 때 유용하며 기존 배열은 건들지 않는다.
+const numberList2 = [10, 20, 30, 40, 50]; // 배열
+cLog(numberList2.slice(0, 2)); // [10, 20]
+cLog(numberList2); // [10, 20, 30, 40, 50]
+
+// ● shift 와 pop는 서로 비슷하지만 다르다. 
+// shift는 첫번째 원소를 배열에서 추출하며 배열형태로 반환하지 않는다.
+const numberList3 = [1, 2, 3, 4, 5];
+cLog(numberList3.shift()); // 1
+cLog(numberList3); // shift로 첫번째 원소가 추출되어 [2, 3, 4, 5]
+
+// pop는 마지막 원소를 배열에서 추출하며 배열형태로 반환하지 않는다.
+// 설명을 덫붙이자면, push와 반대 성격을 띄우고 있다. push는 마지막에 추가, pop는 마지막 항목 추출
+const numberList4 = [1, 2, 3, 4, 5];
+cLog(numberList4.pop()); // 5
+cLog(numberList4); // shift로 첫번째 원소가 추출되어 [1, 2, 3, 4]
+
+// ● unshift 는 shift의 반대이다. 배열의 맨 앞에 원소 추가
+const ap = ['a', 'b', 'c'];
+ap.unshift('z'); 
+cLog(ap); // ['z', 'a', 'b', 'c']
+
+// ● concat 은 여러개의 배열을 하나로 합쳐준다.
+const con_arr01 = [1, 2, 3];
+const con_arr02 = [4, 5, 6];
+// concat 함수는 배열을 합칠 때 변화를 주지 않는다.
+cLog(con_arr01.concat(con_arr02)); // [1, 2, 3, 4, 5, 6]
+
+// ● join 은 배열 안의 원소 값들을 문자열 형태로 합쳐준다. 
+const join_arr = [1, 2, 3, 4];
+cLog(join_arr.join()); // 1,2,3,4
+cLog(join_arr.join(' ')); // 1 2 3 4
+cLog(join_arr.join(', ')); // 1, 2, 3, 4
+
+// ● reduce 함수는 배열에 대하여 총 합을 구해야 할 때 매우 유용하다.
 </script>
