@@ -746,4 +746,37 @@ cLog(join_arr.join(' ')); // 1 2 3 4
 cLog(join_arr.join(', ')); // 1, 2, 3, 4
 
 // ● reduce 함수는 배열에 대하여 총 합을 구해야 할 때 매우 유용하다.
+const reduceArr = [1, 2, 3, 4, 5];
+/* forEach 를 이용한 배열의 총합 구하기
+reduceArr.forEach(num => {
+  total += num;
+});
+cLog(total); // 15;
+*/ 
+// reduce 를 이용한 배열의 총합 구하기
+// reduc의 a,b 피라미터 값, 두번째 파라미터 값은 reduce함수에서 사용할 초기값
+// a는 초기 세팅 값 또는 a + b 한 값
+// total = reduceArr.reduce((a, b) => a + b, 0)
+let total = reduceArr.reduce((a, b) => {
+  return a + b;
+}, 0);
+cLog('reduce : ' + total); // 15
+
+// a : 초기값(이후부터는 b를 더한 값)
+// b : 더하려는 값
+// c : 순번
+// d : 배열
+let total2 = reduceArr.reduce((a, b, c, d) => {
+    if (c === reduceArr.length - 1){
+      return (a + b) / reduceArr.length;
+    }
+    return a + b;
+}, 0);
+cLog('reduce 평균 값 : ' + total2); // 3
+
+// 배열 및 내장함수 예제 01)
+const arrrrrrrrrrr = [1, 2, 3];
+console.log(arrrrrrrrrrr);
+arrrrrrrrrrr.push(4);
+console.log(arrrrrrrrrrr);
 </script>
