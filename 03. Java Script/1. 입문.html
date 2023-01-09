@@ -1190,5 +1190,25 @@ console.log(1 && 'hello'); // hello - 처음 오는 값이 true
 console.log(1 && 1); // 1 - 처음 오는 값이 true 
 
 /* 4. 함수의 기본 파라미터 */
+// 함수의 기본 파라미터를 설정하는 방법
+// 예제 01) 원의 넓이를 구하는 함수를 만들어보자
+function calculateCircle(r){
+    const radius = r || 1;
+    return Math.PI * radius * radius;
+}
+console.log(calculateCircle()); // 3.14...........
+
+// 예제 02) ES6 더 간결하게 작성해보자
+function calculateCircle2(r = 1){
+    return Math.PI * r * r;
+}
+console.log(calculateCircle2()); // 3.14...........
+
+// 예제 03) 더 깔끔하게 작성해보자
+const calculateCircle3 = (r = 1) => Math.PI * r * r;
+console.log(calculateCircle3(2)); // 12.56...........
+
+
+/* 5. 조건문 더 스마트하게 작성하기 */
 
 </script>
