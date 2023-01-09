@@ -132,6 +132,12 @@ cLog('number :: ' + number); // 4 'number'
 // && : AND
 // || : OR
 
+// console.log(!undefined); true
+// console.log(!null); true
+// console.log(!0); true
+// console.log(!''); true
+// console.log(!NaN); true
+
 // !(NOT) 연산자는 반대 상태로 변경해준다.
 const state01 = !true;
 cLog('!true :: ' + state01); // false;
@@ -451,6 +457,9 @@ cLog(
 
 // 예제 01
 class Person{  
+  // constructor 함수란 객체의 초기 값을 지정하기 위해 객체가 생성될 때 실행되기로 약속된 함수
+  // constructor 함수를 이용하여 객체의 초기 값을 설정 할 수 있으며, Java Script는 개체를 생성할때 자동으로 constructor함수를 자동으로 호출한다.
+  // console.log 를 이용하여 Object.prototype을 보면 값으로 린턴된 객체에는 constructor라는 속성이 들어있다. 이는 서로가 서로의 정보를 가지고 있다.
   constructor(name, age){
     this._name = name;
     this._age = age;
@@ -775,8 +784,411 @@ let total2 = reduceArr.reduce((a, b, c, d) => {
 cLog('reduce 평균 값 : ' + total2); // 3
 
 // 배열 및 내장함수 예제 01)
-const arrrrrrrrrrr = [1, 2, 3];
-console.log(arrrrrrrrrrr);
-arrrrrrrrrrr.push(4);
-console.log(arrrrrrrrrrr);
+function countBiggerThanTen(numbers) {
+    /* 구현해보세요 */
+    // 방법 1
+    // let arr = [];
+    // for (var i = 0; i < numbers.length; i++){
+    //     if (numbers[i] > 10){
+    //         arr.push(numbers[i]);
+    //     }
+    // }
+    // return arr.length;
+
+    // 방법 2
+    // let cnt = 0;
+    // numbers.forEach(n => {
+    //     if (n > 10){
+    //         cnt++;
+    //     }
+    // });
+    // return cnt;
+
+    // 방법 3
+    // return numbers.reduce((a, b) => {
+    //     if (b > 10){ // 각 원소가 10보다 클 경우
+    //         return a + 1; // 해당 기준에 + 1 (0 + 1...) 반복 할 수록 1 + 1, 2 + 1.. 
+    //     }else{
+    //         return a; // 0
+    //     }
+    // }, 0); // 시작 기준
+
+    // 방법 4
+    return numbers.filter(n => n > 10).length;
+}
+
+const count = countBiggerThanTen([1, 2, 3, 5, 10, 20, 30, 40, 50, 60]);
+console.log(count); // 5
+
+cLog(
+  '%c ○ [10. 프로토타입과 클래스] * ========================================= ',
+  'width: 900px; padding: 8px 16px; background-color: #fff; color: #000;'
+);
+/* [10. 프로토타입과 클래스] */
+// 프로토타입과 클래스에 대해 알아보기 전 객체 생성자라는 것을 알아보자.
+
+// ● 객체생성자
+// 객체 생성자는 함수를 통해 새로운 객체를 만들고 그 안에 넣고 싶은 값 혹은 함수들을 구현 할 수 있게해준다.
+// 객체 생성자는 사용 할 때는 보통 함수의 이름 시작을 대문자로 시작하고 새로운 객체를 만들 때에는 new 키워드를 앞에 붙여줘야 한다.
+function Animal(type, name, size){
+    this.type = type,
+    this.name = name;
+    this.size = size;
+    this.info = function() {
+        console.log(`${this.type} - ${this.name} - ${this.size}`);
+    };
+};
+
+const dogInfo = new Animal('강아지', '흰둥이', '소형'); // 파라미터를 이용하여 객체(인스턴스)를 만들어주면 된다.
+const catInfo = new Animal('고양이', '초코칩', '소형');
+
+// dogInfo와 catInfo이 함수(info)가 같은데도 불구하고 객체가 생서될 때 마다 함수도 새로 만들어져서 this.info로 설정되고 있다.
+// 같은 객체 생성자 함수를 사용하는 경우, 특정 함수 또는 값을 재사용 할 수 있는데 이게 바로 프로토타입이다.
+dogInfo.info(); // 강아지 - 흰둥이 - 소형
+catInfo.info(); // 고양이 - 초코칩 - 소형
+
+// ● 프로토타입 - 프로토타입은 다음과 같이 객체 생성자 함수 아래에 .prototype.[원하는키] = [코드] 를 입력하여 설정 할 수 있다.
+function Human(team, type, name, height){
+    this.team = team,
+    this.type = type,
+    this.name = name;
+    this.height = height;
+};
+
+const son = new Human('토트넘', '공격수', '손흥민', '183cm');
+const kim = new Human('나폴리', '수비수', '김민재', '190cm');
+
+Human.prototype.info = function(){
+    console.log(this.name);
+};
+Human.prototype.backNum = (n) => {
+    console.log(`등번호 ${n}`);
+}
+Human.prototype.grade = `월드클래스`;
+
+son.info(); // 손흥민
+kim.info(); // 김민재
+
+son.backNum(7); // 등번호 7
+kim.backNum(13); // 등번호 13
+
+console.log(son.grade); // 월드클래스
+console.log(kim.grade); // 월드클래스
+
+// ● 객체 생성자 상속받기
+/*[ SETP 3 ]*/ function Human02(teamBe, teamAf, name){ // Human02.call로 전달받은 파라미터
+    this.teamBefore = teamBe,
+    this.teamAfter = teamAf,
+    this.name = name;
+    // Human02.call 로 넘겨받은 파라미터 값 history로 호출
+};
+
+/*[ SETP 4 ]*/ Human02.prototype.history = function(){
+    console.log(`${this.name} : ${this.teamBefore} -> ${this.teamAfter} 이적`); // 최종 출력
+}
+
+/*[ SETP 1 ]*/ function Son02(before, after, name){ // Son02(새로운함수)의 인자 값 -> 파라미터
+    Human02.call(this, before, after, name); // 받아온 인자 값 -> Human02(객체 생성자) 파라미터 전달
+}
+/*[ SETP 1 ]*/ function Kim02(before, after, name){
+    Human02.call(this, before, after, name);
+}
+
+/*[ SETP 2 ]*/ Son02.prototype = Human02.prototype; // prototype을 공유해야 하기 때문에 상속받은 객체 생성자 함수를 만돌고 prototype 값 설정
+/*[ SETP 2 ]*/ Kim02.prototype = Human02.prototype;
+
+/*[ SETP 0 ]*/ const sonInfo = new Son02('레버쿠젠', '토트넘', '손흥민'); // Son02(새로운함수) 생성 및 인자 값 전달
+/*[ SETP 0 ]*/ const kimInfo = new Kim02('페네르바체', '나폴리', '김민재');
+
+sonInfo.history(); // 손흥민 : 레버쿠젠 -> 토트넘 이적
+kimInfo.history(); // 김민재 : 페네르바체 -> 나폴리 이적
+
+// ● 클래스
+// 클래스라는 기능은 C++, Java, C#, PHP 등의 다른 프로그래밍 언어에는 있는 기능인데 
+// 자바스크립트에는 없었기 때문에 예전 자바스크립트 (ES5) 에서는 클래스 문법이 따로 없었기 때문에 
+// 위에서 작성한 코드처럼 객체 생성자 함수를 사용하여 비슷한 작업을 구현해왔습니다.
+
+// ES6 에서부터는 class 라는 문법이 추가되었는데요, 우리가 객체 생성자로 구현했던 코드를 조금 더 명확하고, 
+// 깔끔하게 구현 할 수 있게 해줍니다. 추가적으로, 상속도 훨씬 쉽게 해줄 수 있습니다.
+
+// result 라는 함수를 클래스 내부에 선언했는데, 클래스 내부의 함수를 '메서드'라고 부른다.
+// 이렇게 메서드를 만들면 자동으로 prototype으로 등록된다.
+class Team {
+    constructor(league){
+        this.league = league;
+    }
+    result(){ // prototype
+        let contry = '';
+        switch (this.league){
+            case '프리미어리그' : 
+                contry = '영국';
+                break;
+            case '라리가' : 
+                contry = '스페인';
+                break;
+            case '분데스리가' : 
+                contry = '독일';
+                break;
+            default : 
+                return console.log(`"${this.league}"의 정보를 알 수 없습니다.`);
+                break;
+        }
+        if( contry.length > 1 ){
+            console.log(`"${this.league}"은(는) ${contry}의 1부 리그 입니다.`);
+        }
+    }
+};
+
+const leagueType01 = new Team('프리미어리그').result(); // 프리미어리그 은(는) 영국의 1부 리그 입니다.
+const leagueType02 = new Team('분데스리가').result(); // 분데스리가 은(는) 독일의 1부 리그 입니다.
+const leagueType03 = new Team('케이리그').result(); // 케이리그의 정보를 알 수 없습니다.
+
+// 클래스를 사용할 경우 다른 클래스를 쉽게 상속 할 수 있다.
+class TeamSort {
+  // constructor 함수란 객체의 초기 값을 지정하기 위해 객체가 생성될 때 실행되기로 약속된 함수
+  // constructor 함수를 이용하여 객체의 초기 값을 설정 할 수 있으며, Java Script는 개체를 생성할때 자동으로 constructor함수를 자동으로 호출한다.
+  // console.log 를 이용하여 Object.prototype을 보면 값으로 린턴된 객체에는 constructor라는 속성이 들어있다. 이는 서로가 서로의 정보를 가지고 있다.
+    constructor(name, team){
+        this.name = name;
+        this.team = team;
+    }
+    sort(){ // prototype
+        let league = '';
+        let contry = '';
+        switch (this.team){
+            case '토트넘' : 
+                contry = '영국';
+                league = '프리미어리그';
+                break;
+            case '레버쿠젠' : 
+                contry = '독일';
+                league = '분데스리가';
+                break;
+            case '나폴리' : 
+                contry = '이탈리아';
+                league = '세리에';
+                break;
+            default : 
+                return console.log(`${this.name}의 "${this.team}"은(는) 정보가 없습니다.`);
+                break;
+        }
+        if( contry.length > 1 && league.length > 1 ){
+            console.log(`${this.name}의 "${this.team}"은(는) "${contry}"의 "${league}" 소속입니다.`);
+        }
+    }
+};
+
+class Shm extends TeamSort { // ※ 클래스의 자식 클래스 생성 (TeamSort의 Shm은 자식 클래스)
+    constructor(team){
+        super('손흥민', team); // ※ 부모 생성자 호출
+    }
+}
+class Kmj extends TeamSort {
+    constructor(team){
+        super('김민재', team);
+    }
+}
+
+const sonTeam = new Shm('토트넘').sort(); // 손흥민의 "토트넘"은(는) "영국"의 "프리미어리그" 소속입니다.
+const sonTeam2 = new Shm('레버쿠젠').sort(); // 손흥민의 "레버쿠젠"은(는) "독일"의 "분데스리가" 소속입니다.
+const sonTeam3 = new Shm('레알마드리드').sort(); // 손흥민의 "레알마드리드"은(는) 정보가 없습니다.
+const kimTeam = new Kmj('나폴리').sort(); // 김민재의 "나폴리"은(는) "이탈리아"의 "세리에" 소속입니다.
+const kimTeam2 = new Kmj('리버풀').sort(); // 김민재의 "리버풀"은(는) 정보가 없습니다.
+
+// 클래스 예제 01)
+class Food {
+    constructor(name) {
+        this.name = name; // 
+        this.brands = []; // 피자브랜드 명 누적
+    }
+    addBrand(brand) {
+        this.brands.push(brand)
+    }
+    print() {
+        console.log(`--- ${this.name}을/를 파는 음식점들: ---`)
+        console.log(this.brands.join(', ')); // join은 배열의 원소를 문자열로 출력한다. 
+    }
+}
+
+const pizza = new Food('피자'); // pizza라는 객체 생성
+pizza.addBrand('피자헛'); // pizza라는 객체에 addbrand 함수를 호출하고, this.brands 배열에 push 되어 값 누적되며 출력
+pizza.addBrand('도미노 피자'); // 이하 동문
+
+const chicken = new Food('치킨');
+chicken.addBrand('굽네치킨');
+chicken.addBrand('BBQ');
+
+pizza.print() // 출력
+chicken.print();
+
+
+// 클래스 예제 02)
+class FoodSort {
+    constructor(name){
+        this.name = name;
+        this.brand = [];
+    }
+    set SetFood(obj){
+        this.brand.push(obj);
+        this.arr = this.brand;
+    };
+    get GetFood(){
+        console.log(`'${this.name}'을(를) 파는 브랜드는 '${this.arr}'이(가) 있습니다.`);
+    }
+}
+
+const ham = new FoodSort('햄버거');
+ham.SetFood = '버거킹';
+
+const coffee = new FoodSort('커피');
+coffee.SetFood = '스타벅스';
+
+ham.SetFood = '맥도날드';
+ham.GetFood;
+
+coffee.SetFood = '메가커피';
+coffee.GetFood;
+
+
+
+cLog(
+  '%c ○ [1. 알고 있으면 유용한 자바스크립트] ============================ ',
+  'padding: 8px 16px; background-color: #fff; color: #000;'
+);
+/* 1. 삼항 연산자 */
+
+// ● 삼항 연산자(문법) - 이 문법은 ES6 문법은 아니다.
+// 아래는 기본 if문법
+// const array_t = [];
+// let array_txt = '';
+// if (array_t.length === 0){
+//     array_txt = '배열이 비어있습니다.';
+// }else{
+//     array_txt = '배열이 비어있지 않습니다.';
+// }
+// console.log(array_txt);
+
+// 아래는 삼항 연산자(조건 ? true : false)
+const array_t = [];
+let array_txt = array_t.length === 0 ? '배열이 비어있습니다.' : '배열이 비어있지 않습니다.';
+console.log(array_txt);
+
+
+// 라인이 너무 길어질경우 다음과 같이 작성이 가능
+const array_t02 = [1,2];
+let array_txt02 = array_t02.length === 0
+    ? '(작성법2 테스트)배열이 비어있습니다.' 
+    : '(작성법2 테스트)배열이 비어있지 않습니다.';
+console.log(array_txt02);
+
+// 중첩해서 사용도 가능하다.
+const condition1 = false;
+const condition2 = false;
+
+const valued = condition1  
+    ? '와우!'           // condition1이 true 일때
+    : condition2        // condition1이 false 일때 
+        ? 'blabla'      // condition2가 true 일때
+        : 'foo';        // condition2가 false 일때
+
+// condition1이 false이기 때문에 condition2 조건 체크, condition2이 false이기 때문에 최종적으로 foo 출력
+console.log(valued); // foo
+
+/* 2. Truthy and Falsy */
+// Java Script 문법까지는 아니지만, 알아둬야 하는 개념이다.
+// Truthy가 true, Falsy가 false 같은 개념
+
+// 다음과 같은 함수가 있다고 가정
+// 그러나 print_t 함수에 파라미터가 비어진 채 실행 될 경우 에러가 발생한다.
+// function print_t(per_info){ // 파라미터 값을 받아온다
+//     console.log(per_info.name);    
+// }
+// const person_t = {
+//     name : 'Han'
+// }
+// print_t(person_t); // Han 출력
+// print_t(); // 파라미터값을 넘겨주지 않을 경우 에러 발생!
+
+// 아래와 같이 바꿔줄 수 있다.
+function print_t(per_info){
+    if (!per_info){ // !(NOT)연산자는 부정 및 반대되는 상태
+        console.log('파라미터 값이 없거나 값이 잘못된 값 입니다.');
+        return
+    }
+    console.log(per_info.name);    
+}
+const person_t = {
+    name : 'Han'
+}
+// print_t(person_t); // Han 출력
+print_t(); // Han 출력
+
+// true and false
+function comp(obj){
+    let state;
+    obj ? state = true : state = false;
+    console.log(`${obj}의 값은 ${state}입니다.`);
+}
+const comp01 = comp(!undefined); // true
+const comp02 = comp(!null); // true
+const comp03 = comp(!0); // true
+const comp04 = comp(!''); // true
+const comp05 = comp(!NaN); // true
+
+const test06 = comp(!3); // false
+const test07 = comp(!'Hello World'); // false
+const test08 = comp(!['1', '2']); // false
+const test09 = comp(![]); // false
+const test10 = comp(!{key : value}); // false
+
+const test11 = comp(true); // true
+const test12 = comp(!true); // false
+const test13 = comp(false); // false
+const test14 = comp(!false); // true
+
+/* 3. 단축 평가(short-circuit evaluation) 논리 계산법 */
+/* && 또는 || 연산자로 코드 단축하기 */
+// 일전에 배웠던 논리연산자 예)
+// true && true // true
+// true && false // false
+// true || false // true
+// false || true // true
+
+const changhee = {
+    name : 'Chang Hee'
+}
+function fullName(last){
+    // if (last){
+    //     return `Han ${last.name}`; 
+    // }
+    // return undefined; 
+    
+    // && 연산자로 작성문법
+    // A && B 사용하게 될 경우 A가 true한 값이면 B
+    // A가 false한 값이면 결과는 A 값이다. B까지 도달하지 않는다.
+    // return last && last.name;
+
+    const state = last && last.name
+    // || 연산자로 작성문법
+    // A 값이 true한 값이라면 값은 A, A가 false한 값이면 값은 B
+    return state || '파라미터 값을 알 수 없습니다.';
+}
+
+// console.log(fullName()); // 에러
+// console.log(fullName(changhee)); // Han Chang Hee
+console.log(fullName()); // 파라미터 값을 알 수 없습니다.
+
+
+console.log(true && 'hello'); // hello - 처음오는 값이 true
+console.log(false && 'hello'); // false - 처음 오는 값이 false 
+console.log('hello' && 'bye'); // bye - 처음 오는 값이 true
+console.log(null && 'hello'); // null - 처음 오는 값이 false 
+console.log(undefined && 'hello'); // undefined - 처음 오는 값이 false 
+console.log('' && 'hello'); // '' - 처음 오는 값이 false 
+console.log(0 && 'hello'); // 0 - 처음 오는 값이 false 
+console.log(1 && 'hello'); // hello - 처음 오는 값이 true 
+console.log(1 && 1); // 1 - 처음 오는 값이 true 
+
+/* 4. 함수의 기본 파라미터 */
+
 </script>
