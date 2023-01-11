@@ -1055,6 +1055,10 @@ cLog(
   '%c ○ [1. 알고 있으면 유용한 자바스크립트] ============================ ',
   'padding: 8px 16px; background-color: #fff; color: #000;'
 );
+cLog(
+  '%c ○ [1. 삼항 연산자] ============================ ',
+  'padding: 8px 16px; background-color: #fff; color: #000;'
+);
 /* 1. 삼항 연산자 */
 
 // ● 삼항 연산자(문법) - 이 문법은 ES6 문법은 아니다.
@@ -1094,6 +1098,10 @@ const valued = condition1
 // condition1이 false이기 때문에 condition2 조건 체크, condition2이 false이기 때문에 최종적으로 foo 출력
 console.log(valued); // foo
 
+cLog(
+  '%c ○ [2. Truthy and Falsy] ============================ ',
+  'padding: 8px 16px; background-color: #fff; color: #000;'
+);
 /* 2. Truthy and Falsy */
 // Java Script 문법까지는 아니지만, 알아둬야 하는 개념이다.
 // Truthy가 true, Falsy가 false 같은 개념
@@ -1146,6 +1154,10 @@ const test12 = comp(!true); // false
 const test13 = comp(false); // false
 const test14 = comp(!false); // true
 
+cLog(
+  '%c ○ [3. 단축 평가(short-circuit evaluation) 논리 계산법] ============ ',
+  'padding: 8px 16px; background-color: #fff; color: #000;'
+);
 /* 3. 단축 평가(short-circuit evaluation) 논리 계산법 */
 /* && 또는 || 연산자로 코드 단축하기 */
 // 일전에 배웠던 논리연산자 예)
@@ -1189,6 +1201,10 @@ console.log(0 && 'hello'); // 0 - 처음 오는 값이 false
 console.log(1 && 'hello'); // hello - 처음 오는 값이 true 
 console.log(1 && 1); // 1 - 처음 오는 값이 true 
 
+cLog(
+  '%c ○ [4. 함수의 기본 파라미터] ============================ ',
+  'padding: 8px 16px; background-color: #fff; color: #000;'
+);
 /* 4. 함수의 기본 파라미터 */
 // 함수의 기본 파라미터를 설정하는 방법
 // 예제 01) 원의 넓이를 구하는 함수를 만들어보자
@@ -1208,7 +1224,273 @@ console.log(calculateCircle2()); // 3.14...........
 const calculateCircle3 = (r = 1) => Math.PI * r * r;
 console.log(calculateCircle3(2)); // 12.56...........
 
-
+cLog(
+  '%c ○ [5. 조건문 더 스마트하게 작성하기] ============================ ',
+  'padding: 8px 16px; background-color: #fff; color: #000;'
+);
 /* 5. 조건문 더 스마트하게 작성하기 */
+// 특정 값이 여러 값 중 하나인지 확인해야 할 경우
+function return01(text){
+    return text === '고양이' || text === '개';
+}
+console.log(return01('뱀')); // false
+console.log(return01('고양이')); // true
 
+// 배열을 이용하여 좀 더 간결하게 작성해보자
+function return02(text){
+    let animalArr = ['고양이', '개'];
+    return animalArr.includes(text);;
+}
+console.log(return02('뱀')); // false
+console.log(return02('고양이')); // true
+
+// 화살표 함수로 작성하여 좀 더 더 간결하게 작성해보자
+const return03 = (text) => ['고양이', '개'].includes(text);
+console.log(return03('뱀')); // false
+console.log(return03('고양이')); // true
+
+// 코드가 짧다고 해서 무조건 좋은건 아니다. 단 코드가 짧으면서도 읽었을 때 어떤 역할을 하는지 잘 이해가 되어야 좋은 코드다
+
+// 값에 따라 다른 결과물을 반환해야 할때
+// switch문 사용할때 return을 해준다면 break는 생략해도 된다.
+function getSound(type){
+    switch (type) {
+        case '개' :
+            return '멍멍!';
+        case '고양이' :
+            return '야옹!';
+        default :
+            return '..?';
+    }
+}
+console.log(getSound()); // ..?
+console.log(getSound('개')); // 멍멍!
+
+// 객체를 이용하여 위 switch 문보다 더 깔끔하게 작성해보자
+function getSound02(type){
+    const sounds = {
+        개 : '멍멍멍',
+        고양이 : '야옹'
+    }
+    return sounds[type] || '...?';
+}
+console.log(getSound02()); // ...?
+console.log(getSound02('개')); // 멍멍멍!
+
+// 각 조건마다 실행되는 구문이 다를 경우 함수 호출을 이용하여 작성해보자
+// 객체 안에 각각 개와 고양이라는 함수를 담아두고 파라미터로 받아온 값을 sounds[type]() 접근하여 실행
+function getSound03(type){
+    const sounds = {
+        개(){
+            console.log('멍멍멍멍멍멍');
+            console.log('메롱');
+        },
+        고양이(){
+            console.log('야옹야옹야옹');
+        }
+    }
+    if (!sounds[type]){
+        console.log('......?');
+        return
+    }
+     
+    sounds[type]();
+}
+getSound03(); // ......?
+getSound03('개'); // 멍멍멍멍멍멍!
+
+cLog(
+  '%c ○ [6. 비구조화 할당(구조 분해)문법] ============================ ',
+  'padding: 8px 16px; background-color: #fff; color: #000;'
+);
+/* 6. 비구조화 할당(구조 분해)문법 */
+// 비구조 할당 : 객체 안에 있는 값을 추출해서 변수 혹은 상수로 바로 선언
+const object = {a : 1, b: 2};
+const {a, b} = object; // object라는 객체의 a,b 값이 상수 a,b에 바로 선언 - 할당 받을 때 명과 동일해야한다.
+console.log(`비구조 할당 : object의 a 값이 상수 a에 a값 ${a} 바로 선언`); // 1
+console.log(`비구조 할당 : object의 a 값이 상수 b에 b값 ${b} 바로 선언`); // 2
+
+// 함수의 파라미터에 비구조 할당도 가능하다.
+const object02 = {a : 1, b: 2};
+function printObj ({a, b}){
+    console.log(`비구조 할당 : object의 a 값이 파라미터 a에 a값 ${a} 바로 선언`); // 1
+    console.log(`비구조 할당 : object의 a 값이 파라미터 b에 b값 ${b} 바로 선언`); // 2
+}
+printObj(object02);
+
+// b의 값이 주어지지 않았을 경우
+const object03 = {a : 1};
+function printObj02 ({a, b}){
+    console.log(`비구조 할당 : object의 a 값이 파라미터 a에 a값 ${a} 바로 선언`); // 1
+    console.log(`비구조 할당 : object의 a 값이 파라미터 b에 b값 ${b} 바로 선언`); // undefined
+}
+printObj02(object03);
+
+// 비구조화 할당 시 기본값 설정
+const object04 = {a : 1};
+function printObj03 ({a, b = 2}){ // b의 기본값 2 할당
+    console.log(`비구조 할당 : object의 a 값이 파라미터 a에 a값 ${a} 바로 선언`); // 1
+    console.log(`비구조 할당 : object의 a 값이 파라미터 b에 b값 ${b} 바로 선언`); // 2
+}
+printObj03(object04);
+
+// 비구조화 할당 시 기본값 설정 예제 2)
+const object05 = {a2 : 1};
+const {a2, b2 = 2} = object05; // 할당을 받을 때에는 할당 받는 값의 key명과 동일해야한다.
+console.log(a2); // 1
+console.log(b2); // 2
+
+// 비구조화 할당시 이름 바꾸기
+const testAnimal = {
+    name : '흰둥이',
+    tpye : '개'
+}
+
+console.log(testAnimal.name); // 흰둥이
+const { name : nameChange } = testAnimal; // testAnimal라는 객체 안에 name을 nameChange로 선언하겠다.
+console.log(nameChange); // 이름바꿔 선언한 nameChange 출력 (흰둥이)
+
+// 배열 비구조화 할당
+const arrayNum = [1, 2];
+const [one, two] = arrayNum;
+console.log(one, two); // 1, 2
+const [onee] = arrayNum;
+console.log(onee, twoo = 3); // 1, 3 (기본 지정한 값)
+
+// 깊은 값 비구조화 할당
+const deepObject = {
+    list : {
+        human01 : {
+            name : 'Han Chang Hee',
+            lang : ['Ko', 'En', 'Jp', 'Ch'],
+            car : true
+        },
+        human02 : {
+            name : 'Kim Hyeon Young',
+            lang : ['Ko', 'En'],
+            car : false
+        }
+    },
+    length : 2
+}
+
+// 깊은 값 추출 방법 1
+const { name : userName, lang : userLanguages, car : userCar } = deepObject.list.human01; // human01의 각 key, val 값 이름 변경 및 비구조 할당
+const { length } = deepObject; // 객체의 length 비구조할당
+console.log(`이름 : ${userName} / 언어 : ${userLanguages} / 차량유무 : ${userCar}`); // 이름 : Han Chang Hee / 언어 : Ko,En,Jp,Ch / 차량유무 : true
+console.log(length); // 2
+
+const informationTotal = { // 각각 key의 이름으로 선언된 값이 있을 경우 대입 매칭
+    userName, // userName = userName
+    userLanguages, // userLanguages = userLanguages
+    userCar, // ...
+    length // ...
+};
+console.log(informationTotal); // 객체 {userName: 'Han Chang Hee', userLanguages: Array(4), userCar: true, length: 2}
+
+// 깊은 값 추출 방법 2
+// deepObject에 접근하여 각각 이름 변경 및 비구조 할당 형태
+const {
+    list : {
+        human02 : { name : userName2, lang : userLanguages2, car : userCar2 }
+    },
+    langth
+} = deepObject;
+
+const informationTotal2 = {
+    userName2,
+    userLanguages2,
+    userCar2,
+    length
+}
+console.log(informationTotal2); // 객체 {userName2: 'Kim Hyeon Young', userLanguages2: Array(2), userCar2: false, length: 2}
+
+
+cLog(
+  '%c ○ [7. spread와 rest] ============================ ',
+  'padding: 8px 16px; background-color: #fff; color: #000;'
+);
+/* 7. spread와 rest */
+// ES6에서 도입된 spread와 rest 문법에 알아보자. 둘은 서로 완전 다른 문법이지만, 비슷한 부분이 있다.
+
+// spread란 단어가 가지고 있는 의미(펼치다, 퍼트리다) 그대로 spread 문법을 사용하면 객체 혹은 배열을 펼칠 수 있다.
+// 기존의 객체를 건들지않고 새로운 객체를 만들때, 기존의 정보를 그대로 담아 사용이 가능하다.
+const slime = {
+    name: '슬라임'
+};
+
+const cuteSlime = {
+    ...slime, // spread(...) 연산자
+    attribute: 'cute'
+};
+
+const purpleCuteSlime = {
+    ...cuteSlime, // spread(...) 연산자
+    color: 'purple'
+};
+
+console.log(slime); // {name: '슬라임'}
+console.log(cuteSlime); // {name: '슬라임', attribute: 'cute'}
+console.log(purpleCuteSlime); // {name: '슬라임', attribute: 'cute', color: 'purple'}
+
+// spread(...) 연산자를 이용해 배열
+const aaaanimal = ['개', '고양이', '여우'];
+const aaaanimalNum = [1, 2, 3];
+const anotherAaaanimal = [...aaaanimal, '돌고래']; // spread(...) 연산자를 이용하여 기존의 배열은 건들지 않고 내용을 합친다.
+const aaaanotherAaaanimal = [...aaaanimalNum, ...aaaanimal, '돌고래', ...aaaanimalNum]; // spread(...) 연산자는 여러번 이용 가능하다.
+
+
+console.log(aaaanimal); // ['개', '고양이', '여우']
+console.log(anotherAaaanimal); // ['개', '고양이', '여우', '돌고래']
+console.log(aaaanotherAaaanimal); // [1, 2, 3, '개', '고양이', '여우', '돌고래', 1, 2, 3]
+
+// rest의 생김새는 spread와 비슷하나, 역할!이 매우 다르다
+// rest는 객체, 배열, 함수의 파라미터에서 사용이 가능하다.
+// rest의 예제 1 - 객체에서의 예시
+const purpleCuteSlimeBoss = {
+    slime_name : '슬라임',
+    slime_type : 'boss',
+    slime_attribute : 'cute',
+    slime_color: 'purple'
+}
+
+// rest는 객체와 배열에서 사용 할 때는 아래와 같이 비구조화 할당 문법과 함께 사용된다.
+const { slime_color, ...rest} = purpleCuteSlimeBoss;
+console.log(slime_color); // purple
+console.log(rest); // slime_color 제외한 값이 출력 {name: '슬라임', type: 'boss', attribute: 'cute'}
+
+// 추출한 값의 이름을 꼭 rest로 지정할 필요는 없다.
+const { slime_name, ...etc} = purpleCuteSlimeBoss;
+console.log(slime_name); // 슬라임
+console.log(etc); // slime_name 제외한 값 출력 {slime_type: 'boss', slime_attribute: 'cute', slime_color: 'purple'}
+
+// 기존의 객체에 영향을 주지 않는다.
+console.log(purpleCuteSlimeBoss); // {slime_name: '슬라임', slime_type: 'boss', slime_attribute: 'cute', slime_color: 'purple'}
+
+// 배열에서의 rest
+const numberGroup = [0, 1, 2, 3];
+const [_one, ..._etc] = numberGroup;
+console.log(_one); // 0
+console.log(_etc); // 1, 2, 3
+
+// const [...front, _last] = numberGroup; // rest는 앞에 먼저 사용될 수 없다. ERROR
+
+// 함수에서의 rest
+// 함수에서의 rest 예시 - 함수의 파라미터로 넣어준 모든 값들을 합해주는 함수를 만들었다고 가정해보자.
+function sumNum (...rest/*a, b, c, d*/){
+    // let total = 0;
+    // if(a) total += a;
+    // if(b) total += b;
+    // if(c) total += c;
+    // if(d) total += d;
+    // return total;
+
+    // rest를 이용하여 파라미터의 값을 배열로 받아온다.
+    // 불필요하게 파라미터의 값을 일일이 확인할 필요성이 없어진다.
+    return rest.reduce((num, cur) => total = num + cur, 0); // reduce함수는 복습하고 오자. 헷갈리네잉..
+}
+console.log(sumNum(1, 2, 3, 4)); // 10
+console.log(sumNum(1, 2, 3)); // 6
+
+// 함수 인자와 spread
 </script>
