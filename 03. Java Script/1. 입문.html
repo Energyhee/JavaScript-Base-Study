@@ -8,9 +8,78 @@
 		<!-- <link rel="shortcut icon" href="/favicon.ico">
 		<link rel="apple-touch-icon" href="/apple-touch-icon.png"> -->
 		<title>01. Java Script</title>
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
 	</head>
+    <style>
+        /* reset */
+        body, body * { margin: 0; padding: 0; box-sizing: border-box; }
+        body .youtube-test { max-width: 1200px; height: 100vh; margin: 0 auto; border: 1px solid red; }
+
+        /* wrapper */
+        .rb-yt-wrap { display: flex; width: auto; border: 1px solid green; overflow: hidden; font-size: 0; }
+        .rb-yt-wrap > div { overflow: hidden; transition: .4s ease-in-out; }
+        .rb-yt-wrap > div.left { width: 100%; border: 1px solid blue; transform-origin: top left; }
+        .rb-yt-wrap > div.right { width: 0; border: 1px solid yellow; transform-origin: top right; }
+
+        /* video */
+        #rb-yt-video { position: relative; width: 100%; }
+        #rb-yt-video:before { content: ''; display: block; padding-top: 26.36vw; }
+        #rb-yt-video iframe { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+
+        /* info */
+        #rb-yt-info { padding: 20px; }
+        #rb-yt-info p { font-size: 20px; }
+
+        /* chat */
+        #rb-yt-chat { width: 350px; height: 100%; }
+        #rb-yt-chat #chat-embed { width: 100%; height: 100%; }
+
+        /* wrapper active */
+        .rb-yt-wrap.chat-active .left { width: calc(100% - 350px); }
+        .rb-yt-wrap.chat-active .right { width: 350px; }
+    </style>
 	<body>
-        
+        <div class="youtube-test">
+            <div class="rb-yt-wrap">
+                <!-- # 좌측 영역 -->
+                <div class="left">
+                    <!-- # 영상 -->
+                    <div id="rb-yt-video">
+                        <iframe src="https://www.youtube.com/embed/pVQUqSso2Ac?autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                    <!-- # 정보 -->
+                    <div id="rb-yt-info">
+                        <p>테스트 정보 영역</p>
+                        <button type="button" class="rb-chat-act">채팅열기</button>
+                    </div>
+                </div>
+                <!-- # 우측 영역 -->
+                <div class="right">
+                    <!-- # 채팅 -->
+                    <div id="rb-yt-chat"></div>
+                </div>
+            </div>
+        </div>
+        <script>  
+            // 채팅창 열기, 닫기 버튼
+            $('.rb-chat-act').on('click', function(){
+                $('.rb-yt-wrap').toggleClass('chat-active');
+            });
+
+            // iframe 생성
+            let frame_wrap = document.getElementById('rb-yt-chat')
+            ,   frame_cont = document.createElement('iframe')
+            ,   frame_id = 'pVQUqSso2Ac'
+            ,   frame_domain = window.location.hostname
+            ,   frame_theme = 1;
+
+            frame_cont.id = 'chat-embed';
+            frame_cont.frameBorder = '0';
+            frame_cont.referrerPolicy = 'origin';
+            frame_cont.src = 'https://www.youtube.com/live_chat?v=' + frame_id + '&embed_domain=' + frame_domain + '&dark_theme=' + frame_theme;
+
+            frame_wrap.appendChild(frame_cont);
+        </script>
 	</body>
     <script>
         const cLog = (obj, style) => {
