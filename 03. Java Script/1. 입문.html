@@ -39,27 +39,24 @@
         .rb-yt-wrap.chat-active .right { width: 350px; }
     </style>
 	<body>
+        
         <div class="youtube-test">
             <div class="rb-yt-wrap">
-                <!-- # 좌측 영역 -->
                 <div class="left">
-                    <!-- # 영상 -->
                     <div id="rb-yt-video">
                         <iframe src="https://www.youtube.com/embed/pVQUqSso2Ac?autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
-                    <!-- # 정보 -->
                     <div id="rb-yt-info">
                         <p>테스트 정보 영역</p>
                         <button type="button" class="rb-chat-act">채팅열기</button>
                     </div>
                 </div>
-                <!-- # 우측 영역 -->
                 <div class="right">
-                    <!-- # 채팅 -->
                     <div id="rb-yt-chat"></div>
                 </div>
             </div>
         </div>
+        
         <script>  
             // 채팅창 열기, 닫기 버튼
             $('.rb-chat-act').on('click', function(){
@@ -1134,7 +1131,7 @@
         
 
         cLog(
-            '%c ○ [1. 알고 있으면 유용한 자바스크립트] ============================ ',
+            '%c ○ [2. 알고 있으면 유용한 자바스크립트] ============================ ',
             'padding: 8px 16px; background-color: #fff; color: #000;'
         );
         cLog(
@@ -1678,6 +1675,160 @@
         console.log('global scope: ');
         console.log(vvvalue); // hello!
         // anotherVvvalue는 mmmyFunction내부에 선언된 함수 선언이므로 mmmyFunction외부에서는 호출 불가
-        console.log(anotherVvvalue); // ERROR
+        // console.log(anotherVvvalue); // ERROR
+
+        // * Hoisting
+        // Hoisting이란 자바스크립트에서 아직 선언되지 않은 함수/변수를 [끌어올려서] 사용 할 수 있는 자바스크립트의 작동 방식을 의미한다.
+
+        // Hoisting 예제 1
+        // 아래와 같이 myFunctionTest 함수가 선언되기전 myFunctionTest를 호출 햇는데 정상작동이 된다.
+        // myFunctionTest();
+
+        // function myFunctionTest() {
+        //     console.log('hello world!');
+        // }
+
+        // ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+        // 잘 작동하는 이유는 자바스크립트 엔진이 코드를 해석하는 과정에서 아래와 같이 받아들이기 때문이다.
+        function myFunctionTest() {
+            console.log('hello world!');
+        }
+
+        myFunctionTest();
+        // 이러한 현상을 Hoisting이라고 한다.
+
+        // Hoisting 예제 2
+        // console.log(hoiNum); ERROR
+
+        // console.log(hoiNum);
+        // var hoiNum = 2; // undefined
+
+        // ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+        // 잘 작동하는 이유는 자바스크립트 엔진이 코드를 해석하는 과정에서 아래와 같이 받아들이기 때문이다.
+        var hoiNum;
+        console.log(hoiNum); // undefined
+        hoiNum = 2
+        // 위 Hoisting 예제에서 let 또는 const를 쓰지 않은 이유는 두가지 선언 방식은 hoisting가 발생하지 않고 에러가 발생한다.
+        // 다만 Babel 이라는 도구를 이용하면 const와 let을 var로 변환되어 작성이 가능하다.
+        // Hoisting은 자바스크립트 언젠이 갖고 있는 성질이며, Hoisting을 일부러 할 피룡는 없지만, 방치하지 않는 것이 좋다.
+        // 왜냐하면 Hoisting이 발생하는 코드는 이해하기 어렵고, 유지보수도 힘들지며 의도치 않는 결과물이 나타나기 쉽다.
+        // Hoisting을 방지하기 위해서는 함수의 경우 꼭 선언 후 호출하도록 주의하며 ver대신 const, let을 위주로 사용한다.
+        // 추가적으로 나중에 자바스크립트 개발을 본격적으로 하게 될 때에는 ESLint 라는 것을 사용하여, Hoisitng이 발생하는 코드는 에디터상에서 쉽게 발견이 가능하다.
+
+        cLog(
+            '%c ○ [3. 자바스크립트에서 비동기 처리 다루기] ============================ ',
+            'padding: 8px 16px; background-color: #fff; color: #000;'
+        );
+        cLog(
+            '%c ○ [1. 비동기 처리 정의] ============================ ',
+            'padding: 8px 16px; background-color: #fff; color: #000;'
+        );
+        /* 1. 비동기 처리와 비동기 처리 방법 */  
+        // 만약 작업을 동기적으로 처리한다면 작업이 끝날 때까지 기다리는 동안 중지 상태가 되기 때문에 다른 작업을 할 수 없습니다.
+        // 그리고 작업이 끝나야 비로소 그 다음 예정된 작업을 할 수 있다. 하지만 이를 이동기적으로 처리한다면 흐름이 멈추지 않기 때문에 
+        // 동시에 여러 가지 작업을 처리 할 수도 있고, 기다리는 과정에서 다른 함수도 호출할 수 있다.
+        // 한번코드를 보고 이해보자
+        function work(){
+            const start = Date.now(); // 현재 시간(자바스크립트의 내장함수)
+            for(let i = 0; i < 1000000000; i++){} // 1,000,000,000 번 루프
+            const end = Date.now(); // 루프가 다 돌고 나서 현재 시간
+            console.log(end - start + 'ms'); // 두 시간의 간극 계산 및 출력
+        }
+        work(); // work 함수 호출
+        console.log('다음 작업');
+
+        // work() 함수가 호출되면 for문이 돌아갈 때는 다른 작업은 처리하지 않고 온전히 for문만 실행하고 있다.
+        // 만약 이 작업이 진행되는 동안 다른 작업도 하고 싶다면 함수를 비동기 형태로 전환해주어야 한다.
+        // 그렇게 하기위해서는 setTimeout 이라는 함수를 사용해주어야 한다.
+        function work2(){
+            setTimeout(() => {
+                const start = Date.now(); // 현재 시간(자바스크립트의 내장함수)
+                for(let i = 0; i < 1000000000; i++){} // 1,000,000,000 번 루프
+                const end = Date.now(); // 루프가 다 돌고 나서 현재 시간
+                console.log(end - start + 'ms'); // 두 시간의 간극 계산 및 출력
+            }, 0)
+        }
+        console.log('작업 시작');
+        work2();
+        console.log('다음 작업');
+        // setTimeout 함수는 첫번째 파라미터에 넣은 함수를 두번째 파라미터에 넣은 시간(ms단위)이 흐른 후 호출 해줍니다. 
+        // 지금은 두번째 파라미터에 0을 넣줬으니, 이 함수는 바로 실행됩니다. 0ms이후에 실행한다는 의미이지만, 실제로는 4ms 이후에 실행된다.
+        // setTimeout을 사용하면 우리가 정한 작업이 백그라운드에서 수행되기 때문에 기존의 코드 흐름을 막지 않고 동시에 다른 작업들을 진행하게 할 수 있다.
+        // 출력된 결과물을 확인해보면, 작업시작 이후 work2 함수가 호출되어 for문이 돌고 있는 동안, 다음 작업이 출력되고 이후 for문이 끝나고 정상적으로 얼마나 걸렸는지 출력된다.
+
+        // 만약 work라는 함수가 끝난 다음에 어떠한 작업을 처리하고 싶다면 어떻게 해야 할까?
+        // 이럴 땐 콜백 함수를 파라미터로 전달해주면 된다. 콜백 함수란, 함수 타입의 값을 파라미터로 넘겨줘, 파라미터로 넘겨받은 함수를 특정 작업이 끝나고 호출해주는 것을 의미한다.
+        console.log('---------work3---------');
+        function work3(callback){
+            setTimeout(() => {
+                const start = Date.now();
+                for (let i = 0; i < 1000000000; i++){}
+                const end = Date.now();
+                console.log(end - start + 'ms');
+                callback();
+            }, 0);
+        }
+
+        console.log('작업 시작');
+        work3(() => {
+            console.log('작업이 끝났습니다');
+        });
+        console.log('다음 작업');
+
+        // 다음과 같은 작업들은 주로 비동기적으로 처리하게 된다.
+        // 1. Ajax Web Api 요청 : 만약 서버쪽에서 데이터를 받아와야 할 때는 요청을 하고 서버에서 응답을 할 때까지 대기를 해야되기 때문에 작업을 비동기적으로 처리
+        // 2. 파일 읽기 : 주로 서버쪽에서 파일을 읽어야 하는 상황에서는 비동기적 처리
+        // 3. 암호화/복호화 : 암호화/복호화를 할 때에는 바로 처리가 되지 않고, 시간이 어느 정도 걸리는 경우가 있기 떄문에 비동기적으로 처리한다.
+        // 4. 작업 예약 : 단순히 어떤 작업을 몇초 후에 스케쥴링 해야하는 상황에는, setTimeout을 사용하여 비동기적으로 처리한다.
+
+        // 비동기 작업을 다룰 때에는 callback 함수 외에도 Promise, 그리고 async/await 라는 문법을 사용하여 처리 할 수 있습니다. 이번 챕터에서는 이에 대하여 알아보게 됩니다.
+
+        /* Promise */
+        // 프로미스는 비동기 작업을 조금 더 편하게 처리 할 수 있도록 ES6에 도입된 기능이다.
+        // 이전에는 비동기 작업을 처리 할 때에는 콜백 함수로 처리를 해야 했었는데, 콜백 함수로 처리하게되면 비동기 작업이 많이 질 경우 코드가 쉽게 난잡해지게 되었다.
+
+        // callback 비효율 적인 비동기 작업
+        // 숫자 n을 파라미터로 받아와, 다섯번에 걸쳐 1초마다 1씩 더해서 출력하는 작업을 setTimeout으로 구현
+        function inc(n, callback){
+            setTimeout(() => {
+                const incNum = n + 1;
+                console.log(incNum);
+                if (callback){
+                    callback(incNum);
+                }
+            }, 1000);
+        }
+
+        inc(0, n => {
+            inc(n, n => {
+                inc(n, n => {
+                    inc(n, n => {
+                        inc(n, n => {
+                            console.log('끝');
+                        });
+                    });
+                }); 
+            });
+        });
+        // 위와 같이 구현 할 경우 코드 읽기가 복잡하며, 이런 식의 코드를 Callback Hell(콜백지옥)이라고 부른다.
+
+        // 위와같이 비동기적으로 처리를 해야하는 일이 많아 질수록 코드의 깊이가 계속 깊어지는 현상이 있는데, 
+        // Promise를 사용하면 이렇게 코드의 깊이가 깊어지는 현상을 방지 할 수 있다.
+        // Promise 만들기
+        const myPromise = new Promise((resolve, reject) => {
+            // 구현 할 코드..
+        });
+        // Promise는 성공 할 수도 있고, 실패 할 수도 있다. 성공 할 때에는 resolve를 호출해주면 되고, 실패할 경우 reject를 호출해주면 된다.
+        // 지금 예제의 경우 실패하는 상황은 고려하지 않고, 1초 뒤에 성공 시키는 상황에 대해서만 구현을 해보자
+        const myPromise2 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve(1);
+            }, 1000);
+        });
+
+        myPromise2.then(n => {
+            console.log(n);
+        });
+        
     </script>
 </html>
