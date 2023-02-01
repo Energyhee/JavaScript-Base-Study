@@ -40,24 +40,171 @@
     </style>
 	<body>
         
-        <div class="youtube-test">
+        <section class="yt-wrapper">
+			<button type="button" class="toggle-header"><span class="ft-none">헤더 접기</span></button>
             <div class="rb-yt-wrap">
                 <div class="left">
-                    <div id="rb-yt-video">
-                        <iframe src="https://www.youtube.com/embed/pVQUqSso2Ac?autoplay=1&mute=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                    <div id="rb-yt-info">
-                        <p>테스트 정보 영역</p>
-                        <button type="button" class="rb-chat-act">채팅열기</button>
+                	<!-- # 영상 append 영역 -->
+                    <div class="rb-yt-video"></div>
+                    <!-- # 정보 append 영역 -->
+                    <div class="rb-yt-info">
+                    	<div class="controll">
+                    		<!-- # 각 버튼 클릭 시 active class 추가 -->
+                   	 		<button type="button" class="chat-act">채팅창<span class="ft-none">열기</span></button>
+                   	 		<button type="button" class="wish-alarm active">관심 차량 알림</button>
+                   	 		<button type="button" class="user-idea active">시청자 의견</button>
+                   	 	</div>
+                   	 	<button type="button" class="dec-more">더보기</button>
+                    	<div class="top-title">
+                 	 		<div class="live-state live"><div class="live-signal"><span></span></div>방송중</div>
+                 	 		<div class="live-state consult">라이브 상담</div>
+                 	 		<div class="live-state past">지난 방송</div> 
+                 	 		<h2>리본카 쇼핑 라이브, <b>리쇼라</b></h2>
+                 	 		<div class="live-schedule">평일 10:00 ~ 20:00</div>
+               	 		</div>
                     </div>
                 </div>
                 <div class="right">
-                    <div id="rb-yt-chat"></div>
+                	<!-- # 채팅 append 영역 -->
+                    <div class="rb-yt-chat"></div>
                 </div>
             </div>
-        </div>
+        </section>
         
-        <script>  
+        <script>
+        // # textarea 높이값 유동(최대 4줄까지 이후 스크롤)
+		$('.write-box > textarea').on('input', function(){
+			$(this).css('height', '60px');
+			if ( $(this).outerHeight() <= 130 ){
+				$(this).css('height', '60px');
+				$(this).css('height', $(this).prop('scrollHeight') + 2 + 'px');
+			}else{
+				$(this).css('height', '132px');
+			}
+		});
+		
+		// # 헤더 접기 & 펼치기
+		$('.toggle-header').on('click', function(){
+			$('#new-header').slideToggle(400);
+			$(this).toggleClass('active');
+		});
+		
+		// # 설명 더보기
+		$('.dec-more').on('click', function(){
+			$('.rb-yt-info').toggleClass('more');
+			( $('.rb-yt-info').hasClass('more') ) ? $(this).text('간략히') : $(this).text('더보기');
+		});
+		
+		// # 채팅창 열기, 닫기 버튼
+        $('.chat-act').on('click', function(){
+        	$(this).toggleClass('active');
+			( $(this).hasClass('active') ) ? $(this).find('span').text('닫기') : $(this).find('span').text('열기');
+            $('.rb-yt-wrap').toggleClass('chat-active');
+        });
+		
+		// # 영상 ID
+		var playId  = 'eHPWCGmlIww';
+		
+		// # 퍼블 화면을 위한 함수
+		function makeYoutube(id){
+			var videoId = id;
+			
+			// # 영상 생성 
+			var videoSrc = 'https://www.youtube.com/embed/' + videoId
+			,	muteState = 1
+			,	autoPlay = 1
+			,	mVideo;
+
+			mVideo = '<iframe src="https://www.youtube.com/embed/' + videoId + '?autoplay=' + autoPlay + '&mute=' + muteState + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+			$('.rb-yt-video').append(mVideo);
+			
+			// # 채팅 생성			
+			var cSrc = 'https://www.youtube.com/live_chat?v=' + videoId
+			,	cDomain = window.location.hostname
+			,	cTheme = 'light'
+			,	cFrame;	
+
+			cFrame = '<iframe frameborder="0" referrerpolicy="origin" src=' + cSrc + '&embed_domain=' + cDomain + '&theme=' + cTheme +'></iframe>';
+     		$('.rb-yt-chat').append(cFrame);
+     		
+     		// # 정보 생성
+   			$.get(
+   				"https://www.googleapis.com/youtube/v3/videos", {
+   					part: 'snippet',
+   					maxResults: 1,
+   					id: videoId,
+   					key: 'AIzaSyDJ4qoqSETsQRn7uNPcSw4Ug1faQBLIxVI' // 테스트 키
+   				},
+   				function (data) {
+   					var dFrame;
+   					if( data.items.length ){
+   						$.each(data.items, function (i, item) {
+   	   						dFrame = '<div class="yt-info">';
+   		   						dFrame += '<strong class="yt-title">' + item.snippet.title + '</strong>';
+   		   						dFrame += '<div class="yt-desc"><pre>' + item.snippet.description + '</pre></div>';
+   	   						dFrame += '</div>';
+   	   						
+   	   						$('.rb-yt-info').append(dFrame);
+   	   					});	   						
+   					}
+   				}
+   			);
+		}
+		
+		makeYoutube(playId); // 실시간 영상 ID
+
+
+            // 영상 ID 값
+            var playId  = 'H37mCvkz1Ek';
+            
+            // 영상정보 생성
+            function makeInfo(infoId){
+                $.get(
+                    "https://www.googleapis.com/youtube/v3/videos", {
+                        part: 'snippet',
+                        maxResults: 1,
+                        id: infoId,
+                        key: 'AIzaSyDJ4qoqSETsQRn7uNPcSw4Ug1faQBLIxVI'
+                    },
+                    function (data) {
+                        var info = '';
+                        $.each(data.items, function (i, item) {
+                            var mInfo = '';
+
+                            // vTitle = item.snippet.title;
+                            // vId = item.snippet.channelId;
+                            // vDe = item.snippet.description;
+                            // vTh = item.snippet.channelTitle;
+                            // vaaa = item.snippet.thumbnails.standard.url;
+                            
+                            mInfo += '<div class="yt-info">';
+                                mInfo += '<strong class="yt-title">' + item.snippet.title + '</strong>';
+                                mInfo += '<p class="yt-desc">' + item.snippet.description + '</p>';
+                            mInfo += '</div>';
+                            
+                            $('.rb-yt-info .info').append(mInfo);
+                        })
+                    }
+                );
+
+            }
+            
+            // 채팅창 생성
+            function makeChat(chatId){
+                var fr_src = 'https://www.youtube.com/live_chat?v=' + chatId;
+                var fr_domain = window.location.hostname;
+                var fr_theme = 1;
+                var mFrame;
+                
+                mFrame = '<iframe frameborder="0" referrerpolicy="origin" src=' + fr_src + '&embed_domain=' + fr_domain + '&dark_theme=' + fr_theme +'></iframe>';
+                
+                $('.rb-yt-chat').append(mFrame);
+            };
+            
+            makeInfo(playId);
+            makeChat(playId);
+
+
             // 채팅창 열기, 닫기 버튼
             $('.rb-chat-act').on('click', function(){
                 $('.rb-yt-wrap').toggleClass('chat-active');
