@@ -1896,7 +1896,7 @@
 
         // 위와같이 비동기적으로 처리를 해야하는 일이 많아 질수록 코드의 깊이가 계속 깊어지는 현상이 있는데, 
         // Promise를 사용하면 이렇게 코드의 깊이가 깊어지는 현상을 방지 할 수 있다.
-        // Promise 만들기
+        // Promise 만들기 첫번째 파라미터는 성공했을 때, 두번째 파라미터는 실패했을 때
         const myPromise = new Promise((resolve, reject) => {
             // 구현 할 코드..
         });
@@ -1904,13 +1904,47 @@
         // 지금 예제의 경우 실패하는 상황은 고려하지 않고, 1초 뒤에 성공 시키는 상황에 대해서만 구현을 해보자
         const myPromise2 = new Promise((resolve, reject) => {
             setTimeout(() => {
-                resolve(1);
+                resolve(1000);
             }, 1000);
         });
 
-        myPromise2.then(n => {
-            console.log(n);
+        // myPromise2 (1초 후  resolve(1000)을 호출)이 끝난 후 실행
+        myPromise2.then(n => { // resolve의 파라미터 값을 n으로 받아온다
+            console.log(n); // resolve의 파라미터 값 n 출력
         });
-        
+
+        // Promise 실패 구현해보자 성공할 때는 aa, 실패할 때는 bb
+        // 실패하는 상황에서는 bb(reject)을 사용한다
+        const myPromise3 = new Promise((aa, bb) => {
+            setTimeout(() => {
+                bb(new Error()); // reject 값
+            }, 1000);
+        })
+
+        myPromise3
+            .then(nn => { // reject 당하므로 then은 건너뛴다.
+                console.log(nn);
+                console.log(123123123);
+            })
+            .catch(error => { // catch를 통해 reject 됐을 때 수행 할 작업을 설정가능하다
+                console.log(error);
+            });
+
+        // Promise 를 만드는 함수를 작성해보자
+        function increaseAndPrint(n) { // increaseAndPrint 이라는 함수생성
+            return new Promise((resolve, reject) => { // 생성자 함수 new로 새로 Promise 생성
+                setTimeout(() => { // 1초 후 실행
+                    const value = n + 1 // n(파라미터)에 1을 더한 값을 value라는 상수 선언
+                    if (value === 5){ // valus 값이 5가 됐을 때!
+                        const error = new Error(); // 에러 선언
+                        error.name = 'Value is Five Error'; // 선언된 에러의 이름 설정
+                        reject(error); // error 출력
+                        return;
+                    }
+                    console.log(value);
+                    resolve(value);
+                }, 1000);
+            });
+        }
     </script>
 </html>
