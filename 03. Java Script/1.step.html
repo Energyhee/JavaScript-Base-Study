@@ -1935,14 +1935,16 @@
             return new Promise((resolve, reject) => { // 생성자 함수 new로 새로 Promise 생성
                 setTimeout(() => { // 1초 후 실행
                     const value = n + 1 // n(파라미터)에 1을 더한 값을 value라는 상수 선언
-                    if (value === 5){ // valus 값이 5가 됐을 때!
+                    // valus 값이 5와 같을 경우 아래 if문!
+                    if (value === 5){ 
                         const error = new Error(); // 에러 선언
                         error.name = 'Value is Five Error'; // 선언된 에러의 이름 설정
                         reject(error); // error 출력
                         return;
                     }
-                    console.log(value);
-                    resolve(value);
+                    // valus 값이 5가 아닐 경우 위 if문은 건너뛰고 아래 실행
+                    console.log(value); // value 값 호출
+                    resolve(value); // 
                 }, 1000);
             });
         }
