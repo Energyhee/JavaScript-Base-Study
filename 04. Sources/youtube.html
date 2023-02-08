@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="description" content="test">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- <link rel="shortcut icon" href="/favicon.ico">
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png"> -->
+		<title>01. Java Script</title>
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+	</head>
+    <style>
+        /* reset */
+        body, body * { margin: 0; padding: 0; box-sizing: border-box; }
+        body .youtube-test { max-width: 1200px; height: 100vh; margin: 0 auto; border: 1px solid red; }
+
+        /* wrapper */
+        .rb-yt-wrap { display: flex; width: auto; border: 1px solid green; overflow: hidden; font-size: 0; }
+        .rb-yt-wrap > div { overflow: hidden; transition: .4s ease-in-out; }
+        .rb-yt-wrap > div.left { width: 100%; border: 1px solid blue; transform-origin: top left; }
+        .rb-yt-wrap > div.right { width: 0; border: 1px solid yellow; transform-origin: top right; }
+
+        /* video */
+        #rb-yt-video { position: relative; width: 100%; }
+        #rb-yt-video:before { content: ''; display: block; padding-top: 26.36vw; }
+        #rb-yt-video iframe { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
+
+        /* info */
+        #rb-yt-info { padding: 20px; }
+        #rb-yt-info p { font-size: 20px; }
+
+        /* chat */
+        #rb-yt-chat { width: 350px; height: 100%; }
+        #rb-yt-chat #chat-embed { width: 100%; height: 100%; }
+
+        /* wrapper active */
+        .rb-yt-wrap.chat-active .left { width: calc(100% - 350px); }
+        .rb-yt-wrap.chat-active .right { width: 350px; }
+    </style>
+	<body>
+        <section class="yt-wrapper">
+			<button type="button" class="toggle-header"><span class="ft-none">헤더 접기</span></button>
+            <div class="rb-yt-wrap">
+                <div class="left">
+                	<!-- # 영상 append 영역 -->
+                    <div class="rb-yt-video"></div>
+                    <!-- # 정보 append 영역 -->
+                    <div class="rb-yt-info">
+                    	<div class="controll">
+                    		<!-- # 각 버튼 클릭 시 active class 추가 -->
+                   	 		<button type="button" class="chat-act">채팅창<span class="ft-none">열기</span></button>
+                   	 		<button type="button" class="wish-alarm active">관심 차량 알림</button>
+                   	 		<button type="button" class="user-idea active">시청자 의견</button>
+                   	 	</div>
+                   	 	<button type="button" class="dec-more">더보기</button>
+                    	<div class="top-title">
+                 	 		<div class="live-state live"><div class="live-signal"><span></span></div>방송중</div>
+                 	 		<div class="live-state consult">라이브 상담</div>
+                 	 		<div class="live-state past">지난 방송</div> 
+                 	 		<h2>리본카 쇼핑 라이브, <b>리쇼라</b></h2>
+                 	 		<div class="live-schedule">평일 10:00 ~ 20:00</div>
+               	 		</div>
+                    </div>
+                </div>
+                <div class="right">
+                	<!-- # 채팅 append 영역 -->
+                    <div class="rb-yt-chat"></div>
+                </div>
+            </div>
+        </section>
+	</body>
+    <script>
+        // # textarea 높이값 유동(최대 4줄까지 이후 스크롤)
+        $('.write-box > textarea').on('input', function(){
+            $(this).css('height', '60px');
+            if ( $(this).outerHeight() <= 130 ){
+                $(this).css('height', '60px');
+                $(this).css('height', $(this).prop('scrollHeight') + 2 + 'px');
+            }else{
+                $(this).css('height', '132px');
+            }
+        });
+        
+        // # 헤더 접기 & 펼치기
+        $('.toggle-header').on('click', function(){
+            $('#new-header').slideToggle(400);
+            $(this).toggleClass('active');
+        });
+        
+        // # 설명 더보기
+        $('.dec-more').on('click', function(){
+            $('.rb-yt-info').toggleClass('more');
+            ( $('.rb-yt-info').hasClass('more') ) ? $(this).text('간략히') : $(this).text('더보기');
+        });
+        
+        // # 채팅창 열기, 닫기 버튼
+        $('.chat-act').on('click', function(){
+            $(this).toggleClass('active');
+            ( $(this).hasClass('active') ) ? $(this).find('span').text('닫기') : $(this).find('span').text('열기');
+            $('.rb-yt-wrap').toggleClass('chat-active');
+        });
+        
+        // # 퍼블 화면을 위한 함수
+        function makeYoutube(id){
+            var videoId = id;
+            
+            var videoEl = $('.rb-yt-video'); // 영상 붙여 넣을 곳
+            var chatEl = $('.rb-yt-chat'); // 채팅 붙여 넣을 곳
+            var infoEl = $('.rb-yt-info'); // 정보 붙여 넣을 곳
+            
+            // # 영상 생성 
+            if ( videoEl.length > 0 ){
+                var vSrc = 'https://www.youtube.com/embed/' + videoId
+                ,	muteState = 1
+                ,	autoPlay = 1
+                ,	mVideo;
+
+                mVideo = '<iframe src="' + vSrc + '?autoplay=' + autoPlay + '&mute=' + muteState + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+                videoEl.append(mVideo);	
+            }
+            
+            // # 채팅 생성
+            if ( chatEl.length > 0 ){
+                var cSrc = 'https://www.youtube.com/live_chat?v=' + videoId
+                ,	cDomain = window.location.hostname
+                ,	cTheme = 'light'
+                ,	cFrame;	
+
+                cFrame = '<iframe frameborder="0" referrerpolicy="origin" src=' + cSrc + '&embed_domain=' + cDomain + '&theme=' + cTheme +'></iframe>';
+                chatEl.append(cFrame);
+            }
+            
+            // # 정보 생성
+            if( infoEl.length > 0 ){
+                $.get(
+                    "https://www.googleapis.com/youtube/v3/videos", {
+                        part: 'snippet',
+                        maxResults: 1,
+                        id: videoId,
+                        key: 'AIzaSyDJ4qoqSETsQRn7uNPcSw4Ug1faQBLIxVI' // 테스트 키
+                    },
+                    function (data) {
+                        var dFrame;
+                        if( data.items.length ){
+                            $.each(data.items, function (i, item) {
+                                dFrame = '<div class="yt-info">';
+                                    dFrame += '<strong class="yt-title">' + item.snippet.title + '</strong>';
+                                    dFrame += '<div class="yt-desc"><pre>' + item.snippet.description + '</pre></div>';
+                                dFrame += '</div>';
+                                
+                                infoEl.append(dFrame);
+                            });	   						
+                        }
+                    }
+                );	
+            }
+        }
+        
+        makeYoutube('H3uur6g_9CA'); // 실시간 영상 ID
+    </script>
+</html>
