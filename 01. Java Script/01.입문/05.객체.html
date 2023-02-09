@@ -158,9 +158,15 @@
                 this._end = end;
                 this._duration = end - start;
             }
-            set SetNewTime(newStart){
+            set SetNewStart(newStart){
                 if (newStart || newStart === 0){
                     this._start = newStart;
+                    this._duration = this._end - this._start;
+                }
+            }
+			set SetNewEnd(endStart){
+                if (endStart || endStart === 0){
+                    this._end = endStart;
                     this._duration = this._end - this._start;
                 }
             }
@@ -169,9 +175,17 @@
             }
         }
         
-        let time = new Time(10, 40); // 시작, 종료
-        log('지속시간초기 : ' + time.GetDuration); // 30 (지속시간)
-        time.SetNewTime = 0;
-        log('지속시간수정 : ' + time.GetDuration); // 40 (지속시간)
+        let time = new Time(10, 40);	// start, end
+		log(time._start);				// 10
+		log(time._end);					// 40
+		log(time._duration);			// 30
+
+		time.SetNewStart = 30;
+		log(time._duration);			// 10
+		log(time.GetDuration);			// 10
+		
+		time.SetNewEnd = 100;
+		log(time._duration);			// 70
+		log(time.GetDuration);			// 70
     </script>
 </html>
