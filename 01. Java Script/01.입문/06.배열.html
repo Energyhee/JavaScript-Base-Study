@@ -9,6 +9,34 @@
     </body>
     <script>
         const log = console.log;
-      
+
+
+		// [배열] : 이전에 배운 객체의 경우 변수 혹은 상수, 여러가지 정보를 담기 위함이였다면 배열은 여러 항목이 들어있는 리스트
+        let arr = [1, 2, 3, 4];
+        log(arr[0]); // 1
+        
+
+        let arr02 = [
+            { name : '강아지' },
+            { name : '고양이' }
+        ];
+        log(arr02[0]); // key : value - {name : '강아지'} (객체로 반환)
+        log(arr02[0].name); // value - 강아지 
+        
+
+        // ● push를 이용한 배열 추가
+        let arr03 = [
+            { name : '강아지' },
+            { name : '고양이' }
+        ];
+        
+        arr03.push({
+            name : '코끼리'
+        });
+        log(arr03); // {name: '강아지'}, {name: '고양이'}, {name: '코끼리'}
+        
+
+        // ● length를 이용한 배열의 크기
+        log(arr03.length); // 3
     </script>
 </html>
