@@ -70,69 +70,66 @@
             // say : function talk(){
             say : function(){
                 // 함수의 this는 자신이 속해있는 객체를 가르킨다.
-                log(this.sound); // dog.sound(왈!왈!왈!);
+                log(this.sound);	// dog.sound 
             }
         }
-        dog.say(); // 왈!왈!왈!
+        dog.say();	// 왈!왈!왈!
 
         
         // ● Getter 와 Setter 함수
-        const testGetSet = {
-            _a : 1,
-            _b : 2,
+        const fnGetSet = {
+            a : 1,
+            b : 2,
             total : 3,
             clculate(){
                 log('clculate 메서드가 실행 됩니다');
-                this.total = this._a + this._b;
+                this.total = this.a + this.b;
             },
             // 획득자 getter 메서드 : 객체 리터럴 안에서 get으로 표현
             // getter 메서드는 obj.propName을 사용해 프로퍼티를 읽으려고 할 때 실행, 프로퍼티로 사용 가능
             get get_a(){
-                return this._a;
+                return this.a;
             },
             get get_b(){
-                return this._b;
+                return this.b;
             },
             // 설정자 setter 메서드 : 객체 리터럴 안에서 set으로 표현
             // setter 메서드는 obj.propName = value으로 프로퍼티에 값을 할당하려 할 때 실행, 프로퍼티로 사용 가능
             set set_a(val){
-                cLog('a의 값이 ' + val + '로 변경됩니다.');
-                this._a = val;
+                log('a의 값이 ' + val + '로 변경됩니다.');
+                this.a = val;
                 this.clculate();
             },
             set set_b(val){
-                cLog('b의 값이 ' + val + '로 변경됩니다.');
-                this._b = val;
+                log('b의 값이 ' + val + '로 변경됩니다.');
+                this.b = val;
                 this.clculate();
             }
         }
         
-        // 프로퍼티로 사용가능
-        cLog('sum : ' + testGetSet.sum); // 3
-        cLog('get_a : ' + testGetSet.get_a); // 1
-        cLog('get_b : ' + testGetSet.get_b); // 2
-        testGetSet.set_a = 10;
-        cLog('total : ' + testGetSet.total); // 12
-        testGetSet.set_b = 20;
-        cLog('total : ' + testGetSet.total); // 30
+		
+        // ● 프로퍼티로 사용가능
+        log('sum : ' + fnGetSet.total); // 3
+        log('get_a : ' + fnGetSet.get_a); // 1
+        log('get_b : ' + fnGetSet.get_b); // 2
+        fnGetSet.set_a = 8;
+        log('total : ' + fnGetSet.total); // 10
+        fnGetSet.set_b = 20;
+        log('total : ' + fnGetSet.total); // 28
         
         
-        cLog(
-            '%c ○ [6-2. 객체 - getter / setter] 개념 공부 추가 * ================ ',
-            'width: 900px; padding: 8px 16px; background-color: #fff; color: #000;'
-        );
-        
+    	// [내용 추가 getter / setter] ※ 더 봐야할 것
         // 예제 01
         class Person{  
             // constructor 함수란 객체의 초기 값을 지정하기 위해 객체가 생성될 때 실행되기로 약속된 함수
             // constructor 함수를 이용하여 객체의 초기 값을 설정 할 수 있으며, Java Script는 개체를 생성할때 자동으로 constructor함수를 자동으로 호출한다.
-            // console.log 를 이용하여 Object.prototype을 보면 값으로 린턴된 객체에는 constructor라는 속성이 들어있다. 이는 서로가 서로의 정보를 가지고 있다.
+            // console.log 를 이용하여 Object.prototype을 보면 값으로 리턴된 객체에는 constructor라는 속성이 들어있다. 이는 서로가 서로의 정보를 가지고 있다.
             constructor(name, age){
+				this._age = age;
                 this._name = name;
-                this._age = age;
             }
-            get GetName(){
-                return `이름 : ${this._name.toUpperCase()}`;
+			set SetAge(newAge){
+                if (newAge) this._age = newAge;
             }
             set SetName(newName){
                 if (newName) this._name = newName;
@@ -140,19 +137,19 @@
             get GetAge(){
                 return `나이 : ${this._age} 살`;
             }
-            set SetAge(newAge){
-                if (newAge) this._age = newAge;
+			get GetName(){
+                return `이름 : ${this._name.toUpperCase()}`;
             }
         }
         
         let human = new Person('john', 10);
-        cLog(`${human.GetName} / ${human.GetAge}`); // JOHN : 10
+        log(`${human.GetName} / ${human.GetAge}`); // 이름 : JOHN / 나이 : 10 살
         human.SetName = 'park';
         human.SetAge = 20;
-        cLog(`${human.GetName} / ${human.GetAge}`); // PARK : 20
+        log(`${human.GetName} / ${human.GetAge}`); // 이름 : PARK / 나이 : 20 살
         human.SetName = 'han';
         human.SetAge = 31;
-        cLog(`${human.GetName} / ${human.GetAge}`); // HAN : 31
+        log(`${human.GetName} / ${human.GetAge}`); // 이름 : HAN / 나이 : 31 살
         
         // 예제 02
         class Time{
@@ -172,9 +169,9 @@
             }
         }
         
-        let time = new Time(10, 40); // 시작시간, 종료시간
-        cLog('지속시간초기 : ' + time.GetDuration); // 30 (지속시간)
+        let time = new Time(10, 40); // 시작, 종료
+        log('지속시간초기 : ' + time.GetDuration); // 30 (지속시간)
         time.SetNewTime = 0;
-        cLog('지속시간수정 : ' + time.GetDuration); // 40 (지속시간)
+        log('지속시간수정 : ' + time.GetDuration); // 40 (지속시간)
     </script>
 </html>
