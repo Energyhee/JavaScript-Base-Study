@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="utf-8">
+		<title>Java Script - 01.입문 - 01.변수</title>
+	</head>
+	<body>
+		[var 과 let, const 차이점]
+        ver 과 let의 큰 차이점은 var은 값으 바뀌거나 선언을 하는데 있어 제한이 없다.
+        IE10 이하 버전에서는 let, const를 사용할 수 없어 babel과 같은 도구로 구형 브라우저에서도 돌아갈 수 있게끔 변환작업 진행
+        구형 브라우저 호환을 해야한다면, var을 사용하게 될 수도 있다.
+
+        [변수]
+        바뀔 수 있는 값을 말한다.        
+        변수를 선언 할 때 주의 점은 같은 이름으로 선언 할 수 없다.
+        단, 다른 블럭 범위 내에서는 가능하다.
+
+        [상수]
+        한번 선언하고 값이 바뀌지 않는 값을 말한다.
+        다른 코드블럭에서는 같은 명으로 선언 가능
+        상수를 선언 할 때 주의 점은 같은 이름으로 선언 할 수 없다.
+    </body>
+    <script>
+        const log = console.log;
+
+
+        /* var과 let, const 차이 */
+		var a = 1;
+        var a = 2;
+        a = 3;
+        log('a : ' + a);                // a : 3
+        
+        // 블럭 내에서 같은 이름으로 선언 불가, 값 변경 가능
+        let b = 1;
+        // let b = 2;                   // ERROR
+        if(b === 1) b = 2;
+        log('b : ' + b);                // 2
+        
+        // 블럭 내에서 같은 이름으로 선언 불가, 값 변경 불가
+        const c = 2;
+        // const c = 3                  // ERROR
+        // c = 4                        // ERROR
+        log('c : ' + c);                // c : 2
+
+
+        /* 변수 선언 */
+        let value = 1;
+        value = 2;
+        log('value : ' + value);        // value : 2
+
+
+        /* 상수 선언 */
+        const value2 = 1;               
+        // value2 = 2;                  // ERROR
+        log('value2 : ', value2);
+    </script>
+</html>
