@@ -9,6 +9,77 @@
     </body>
     <script>
         const log = console.log;
-      
+
+
+		// [함수] : 하나의 명령으로 실행 할 수 있게 해주는 기능
+        
+        // ● 예제 01
+        function plusNum(a, b){ 				// plusNum 함수를 만들고 파라미터 a,b 에 대한 값을 받아 온다
+            return a + b; 						// 파라미터 a,b 값을 대입하여 더하고 값을 반환시킨다.
+			// return 하게 될 경우 함수가 끝난다. 아래의 코드들은 호출이 안된다.
+        	log('plusNum 실행');				// 호출 불가
+        }
+        log(plusNum(1, 2));						// 3
+        
+
+        // ● 예제 02
+        function helloName(name){
+            // Template Lireral 문법을 사용하여 좀 더 편하게 작성 가능
+            // 브라우저 버전에 따라 지원하는 Java Script 버전이 다르므로 보통 Babel을 사용하여 구버전 형태로 변환작업을 한다.
+            return log('Hello, ' + name);		// hello, ChangHee
+        }
+        helloName('Chang Hee');
+        
+
+        // ● 예제 02-02 (ES6의 Template Lireral)
+        function helloName02(name){
+            // 따옴표가 대신 grave(그레이브) 사용
+            return log(`Hello, ${name}`);		// hello, Han Chang Hee 
+        }
+        helloName02('Han Chang Hee');
+        
+
+        // ● 예제 03
+        function getGrade(score){
+            if (score === 100){
+                return 'A';
+            }else if(score >= 80){
+                return 'B';
+            }else if(score >= 60){
+                return 'C';
+            }else{
+                return 'D';
+            }
+        };
+		log(getGrade(100));						// A
+        log(getGrade(99));						// B
+        
+
+        // ● 화살표 함수
+        // 함수를 선언하는 방식 중 화살표 함수(=>) 문법을 사용하는 방법도 있다.
+        // 화살표 함수(=>)와 function 함수의 차이점은 가르키는 this가 서로 다르다. 
+        const addPlusNum = (a, b) => {			// 파라미터(매개변수), 화살표함수, 코드블럭 시작
+            return a + b;
+        }
+        log(addPlusNum(10, 20)); 				// 30
+        
+        // 코드블럭 내부에서 바로 return 할 경우 더 간략히 작성 가능
+        const addPlusNum02 = (a, b) => a + b;
+        log(addPlusNum(20, 20));				// 40
+        
+        // 예제 01
+        const getGrade02 = (score) => {
+            if (score === 100){
+                return 'A';
+            }else if(score >= 80){
+                return 'B';
+            }else if(score >= 60){
+                return 'C';
+            }else{
+                return 'D';
+            }
+        };
+        log(getGrade02(100));					// A
+		log(getGrade02(99));					// B
     </script>
 </html>

@@ -8,7 +8,84 @@
 
     </body>
     <script>
-        const log = console.log;
+		const log = console.log;
       
+
+		// [연산자]
+        let example = 1; // 변수 선언
+        example = 2; // 변수 초기화
+        
+
+        // ● 산술 연산자 +, -, *, /
+        let calculation = 1 + 2 / 2;		// 2
+
+        let plus = 1;
+        let plusAafterNum = plus++;			// 연산자가 뒤에 붙을 경우 직전 값을 반환한다.
+		log(plus); 							// 2
+		log(plusAafterNum);					// 1
+
+        let plusBeforeNum = ++plus;			// 연산자가 앞에 붙을 경우 이후 값을 반환한다.
+        log(plusBeforeNum);					// 3
+        
+        
+        // ● 대입 연산자
+        let number = 2;
+        number = number + 2;				// 4
+        number += 2;						// 4
+        number -= 2;						// 0
+        number *= 2;						// 4
+        number /= 2;						// 1
+        
+
+        // ● 논리 연산자 : 논리 연산자는 boolean(불리언) 타입을 위한 연산자 이다
+        // ! : NOT - 반대 상태
+        log(!undefined);					// true
+        log(!null);							// true
+        log(!0);							// true
+        log(!'');							// true
+        log(!NaN);							// true
+		log(!true);							// false
+		log(!false);						// true;
+		log(!!false);						// false
+		
+
+		// && : AND - 양쪽 값 모두
+		log(true && true);					// true
+		log(true && false);					// false
+
+
+        // || : OR - 양쪽 값 중 하나
+		log(false || true);					// true
+        log(true || true);					// true
+		log(false || false);				// false
+
+
+		// 논리 연산자 연산 순서는 !(NOT) > &&(AND) -> ||(OR) 순
+		log(!((true && false) || (true && false) || !false));			// false
+        // !((true && false) || (true && false) || true); NOT 연산자 처리
+        // !(false || false || true); AND 연산자 처리
+        // !true; 마지막 true 및 NOT 연산자로 인해 false
+        
+    
+		// ● 비교 연산자 : 비교 연사자는 되도록 등호 세개(===)를 쓸 것 그래야 값의 타입까지 상세 비교를 함으로, 실수 유발이 적어진다.
+		log(1 === 1); 						// true
+		log('1' === 1);						// false (string === number) 타입까지 검사
+		log('1' == 1);						// true (string == number) 타입까지 검사하지 않음
+		log(0 == false)						// true 0은 false와 같은 값으로 간주됌
+		log(null == undefined)				// true 
+        
+
+        // ● 크고 작음 (부등호)
+		const num01 = 1;
+        const num02 = 2;
+		log(num01 < num02);					// true
+		log(num01 > num02);					// false
+		log(num01 == num02);				// false
+		log(num01 <= num02);				// true
+		log(num01 >= num02);				// false
+
+        
+        // ● 연사자를 이용하여 문자열(string) 합치기도 가능
+        log('Han' + 'ChangHee')				// HanChangHee
     </script>
 </html>
