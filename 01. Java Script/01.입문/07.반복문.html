@@ -9,6 +9,92 @@
     </body>
     <script>
         const log = console.log;
-      
+
+
+		/* [8. 반복문] */
+        // ● 반복문은 특정 작업을 반복적으로 사용할 수 있게해준다.
+        
+        // ● for 가장 기본적인 반복문이며, 특정 조건에 변화를 주어가면서 조건이 맞다면 계속 반복되게 한다.
+        let testNum = 5;
+        
+        // for 문 작성 규칙은 (초기 구문; 조건 구문; 변화 구만)
+        for (var i = 1; i <= testNum; i++){ // i(1)이 testNum(5)보다 작을거나 같다면 0부터 +1씩 증감하면서 반복
+            log(i); // 1,2,3,4,5
+        }
+        for (var i = 10; i > testNum; i--){ // i(10)이 testNum(5)보다 크다면 10부터 -1씩 차감하면서 반복
+            log(i); // 10,9,8,7,6
+        }
+        
+        // array와 for 함께 사용
+        let firstNames = ['kim', 'lee', 'han']
+        
+        for (var i = 0; i < firstNames.length; i++){
+            log(firstNames[i]); // kim, lee, han 각 배열의 원소를 하나하나 출력
+        }
+        
+        // ● while 특정 조건이 참이라면 계속해서 반복하는 반복문
+        let idx = 1;
+        
+        // 무한으로 반복되지 않게 false가 되도록 신경써야한다.
+        while (idx <= 10){
+            log(idx); // 1 ~ 10까지 숫자 하나 씩 출력
+            idx++;
+        }
+        
+        // ● for...of 배열을 위한 반복문
+        let numbers = [10, 20, 30, 40, 50];
+        
+        for (let n of numbers){
+            log(n);
+        }
+        
+        // ● for...in 객체를 위한 반복문
+        let doggy = {
+            name : '흰둥이',
+            color : '흰색',
+            age : 2
+        } 
+        
+        log(Object.entries(doggy)); // doggy 배열 [[key, value], [key, value]...] 형태로 전체 반환
+        log(Object.keys(doggy)); // doggy 배열 [key, key...] 형태로 전체 반환
+        log(Object.values(doggy)); // doggy 배열 [value, value...] 형태로 전체 반환
+        
+        for (let keys in doggy){
+            // array(doggy)에 key 항목을 keys 담고 array(doggy)에 keys에 담기 key 값을 찾아 value 출력
+            log(keys + ' : ' + doggy[keys]);
+        }
+        
+        // ● break 와 continue
+        for (let i = 1; i <= 10; i++){
+            if(i === 2) continue; // // 두번째도 반복문이 돌아야하나, i(1씩 증감)가 2 됐을 때 console 출력을 안하고 3으로 바로 넘어감
+            log(i);
+            if(i === 8) break; // 10까지 반복문이 돌아야하나, i(1씩 증감)가 8이 됐을 때 최종적으로 반복문 종료
+        }
+        
+        // 예제1) 배열을 파라미터(매개변수)로 넘겨 받아 총합을 구해보자
+        const arrayFn = (num) => {
+            let total = 0;
+            for (i = 0; i < num.length; i++){
+                total += num[i];
+            }
+            return total
+        }
+        
+        log(arrayFn([1,2,3,4,5])); // 15
+        
+        // 예제2) 숫자로 이루어진 배열이 주어졌을 때, 해당 숫자 배열안에 들어있는 숫자 중 3보다 큰 숫자로만 이루어진 배열을 새로 만들어서 반환해보세요.
+        function biggerThanThree(arrNumbers) {
+            let newArray = [];
+            for (let i = 0; i < arrNumbers.length; i++){
+                if(arrNumbers[i] > 3) newArray.push(arrNumbers[i]);
+                // 또는
+                // if(arrNumbers[i] <= 3) continue; 
+                // newArray.push(arrNumbers[i]);
+            }
+            return newArray;
+        }
+        
+        const arrNumbers = [1, 2, 3, 4, 5, 6, 7];
+        log(biggerThanThree(arrNumbers)); // 4, 5, 6, 7
     </script>
 </html>
