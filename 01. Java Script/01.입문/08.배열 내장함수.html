@@ -10,5 +10,192 @@
     <script>
         const log = console.log;
       
+
+		// [배열 내장함수] : 배열을 다룰 때 알고 있으면 너무나 유용한 내장 함수들
+        
+        // ● forEach 가장 쉬운 배열 내장함수. for문을 대체가능.
+        const hero = ['아이언맨', '캡틴', '토르', '헐크'];
+        
+        hero.forEach(list => { // 파라미터(매개변수) list라고 명의 후 값을 넘긴다. 함수형태의 파라미터를 전달하는 것을 콜백함수라고 한다. 
+            log(list); // 아이언맨, 캡틴, 토르, 헐크
+        });
+        
+        const heroInfo = [
+            {name : '아이언맨', grade : 'S+'},
+            {name : '캡틴', grade : 'S'},
+            {name : '토르', grade : 'A+'},
+            {name : '헐크', grade : 'A'}
+        ];
+        
+        heroInfo.forEach(list => {
+            log(`활동명 : ${list.name} / 등급 : ${list.grade}`);
+        });
+        
+        // ● map 배열 안의 각 원소를 변환 할 때 사용. 이 과정에서 새로운 배열이 만들어진다.
+        const arr = [1,2,3,4,5];
+        const baseSquared = [];
+
+        for(let i = 0; i < arr.length; i++){
+            baseSquared.push(arr[i] * 2);
+        }
+        log(baseSquared); // [2, 4, 6, 8, 10]
+        
+        const forSquared = [];
+        arr.forEach(n => {
+            forSquared.push(n * 2);
+        });
+        log(forSquared); // [2, 4, 6, 8, 10]
+        
+        const square = n => n * 3; // map의 파라미터(매개변수) square와 같은 애들을 변화함수라고 부른다.
+        log(arr.map(square)); // [3, 6, 9, 12, 15]
+        log(arr.map(n => n * 2)); // [2, 4, 6, 8, 10]
+        
+        // ● indexOf 는 원하는 항목이 몇번쨰인지 찾아준다.
+        log(hero.indexOf('헐크')); //  3 : 헐크가 몇번째 항목인지 찾는다
+        
+        // ● findIndex 값이 객체이거나 배열이라면 사용.
+        const todos = [
+            {
+                id: 1,
+                text: '자바스크립트 입문',
+                done: true
+            },
+            {
+                id: 2,
+                text: '함수 배우기',
+                done: true
+            },
+            {
+                id: 3,
+                text: '객체와 배열 배우기',
+                done: true
+            },
+            {
+                id: 4,
+                text: '배열 내장함수 배우기',
+                done: false
+            }
+        ];
+        
+        // ● findIndex : 찾고자 하는 값의 순번을 반환
+        log(todos.findIndex(todo => todo.id === 1)); //  0 : todo.id의 값 1을 가진 객체의 순번
+        log(todos.findIndex(todo => todo.done === false)); // 3 : todo.done의 boolean 값 false를 가진 객체의 순번
+        
+        // ● find : 찾아낸 값 자체를 반환
+        log(todos.find(todo => todo.id === 1)); // todo.id의 값 1을 지니고 있는 객체 자체 출력
+        
+        // ● filter : 배열에서 특정 조건을 만족하는 값들만 따로 추출하여 새로운 배열 생성.
+        log(todos.filter(todo => todo.done)); // todo.done의 boolean값 true를 포함하는 객체를 추출하여 새로운 배열로 반환
+        log(todos.filter(todo => !todo.done)); // (!논리연산자) todo.done의 boolean값 false를 포함하는 객체를 추출하여 새로운 배열로 반환
+        
+        // ● splice : 배열에서 특정 항목을 제거할 때 사용.
+        const numberList = [10, 20, 30, 40, 50];
+        // 내가 지우고자 하는 index, 해당 index부터 몇개를 지울 것인지 명시, 아무것도 입력하지 않을 경우 해당 index부터 다 지움
+        numberList.splice(numberList.indexOf(20), 1); 
+        log(numberList); // [10, 30, 40, 50]
+        
+        // ● slice : 배열을 잘라낼 때 유용하며 기존 배열은 건들지 않는다.
+        const numberList2 = [10, 20, 30, 40, 50]; // 배열
+        log(numberList2.slice(0, 2)); // [10, 20]
+        log(numberList2); // [10, 20, 30, 40, 50]
+        
+        // ● shift : 첫번째 원소를 배열에서 추출하며 배열형태로 반환하지 않는다.
+        const numberList3 = [1, 2, 3, 4, 5];
+        log(numberList3.shift()); // 1
+        log(numberList3); // shift로 첫번째 원소가 추출되어 [2, 3, 4, 5]
+        
+        // ● pop : 마지막 원소를 배열에서 추출하며 배열형태로 반환하지 않는다.
+        const numberList4 = [1, 2, 3, 4, 5];
+        log(numberList4.pop()); // 5
+        log(numberList4); // shift로 첫번째 원소가 추출되어 [1, 2, 3, 4]
+        
+        // ● unshift 는 shift의 반대이다. 배열의 맨 앞에 원소 추가
+        const ap = ['a', 'b', 'c'];
+        ap.unshift('z'); 
+        log(ap); // ['z', 'a', 'b', 'c']
+
+		// ● push : 배열 마지막에 원소를 추가
+        const numberList5 = [1, 2, 3];
+        log(numberList5.push(100));
+        log(numberList5); // [1, 2, 3, 100]
+        
+        // ● concat : 배열을 하나로 합쳐준다.
+        const concat_List1 = [11, 22, 33];
+        const concat_List2 = [44, 55, 66];
+        // concat 함수는 배열을 합칠 때 변화를 주지 않는다.
+        log(concat_List1.concat(concat_List2)); // [11, 22, 33, 44, 55, 66]
+        
+        // ● join : 배열 안의 원소 값들을 문자열 형태로 합쳐준다. 
+        const join_arr = [1, 2, 3, 4];
+        log(join_arr.join()); // 1,2,3,4
+        log(join_arr.join(' ')); // 1 2 3 4
+        log(join_arr.join(',')); // 1, 2, 3, 4
+		log(join_arr.join(', ')); // 1, 2, 3, 4
+        
+        // ● reduce : 배열에 대하여 총 합을 구해야 할 때 매우 유용하다.
+        const reduceArr = [1, 2, 3, 4, 5];
+        /* forEach 를 이용한 배열의 총합 구하기
+        reduceArr.forEach(num => {
+          total += num;
+        });
+        log(total); // 15;
+        */ 
+        // reduce 를 이용한 배열의 총합 구하기
+        // reduc의 a,b 피라미터 값, 두번째 파라미터 값은 reduce함수에서 사용할 초기값
+        // a는 초기 세팅 값 또는 a + b 한 값
+        // total = reduceArr.reduce((a, b) => a + b, 0)
+        let total = reduceArr.reduce((a, b) => {
+            return a + b;
+        }, 0);
+        log('reduce : ' + total); // 15
+        
+        // a : 초기값(이후부터는 b를 더한 값)
+        // b : 더하려는 값
+        // c : 순번
+        // d : 배열
+        let total2 = reduceArr.reduce((a, b, c, d) => {
+            if (c === reduceArr.length - 1){
+              return (a + b) / reduceArr.length;
+            }
+            return a + b;
+        }, 0);
+        log('reduce 평균 값 : ' + total2); // 3
+        
+        // 배열 및 내장함수 예제 01)
+        function countBiggerThanTen(numbers) {
+            /* 구현해보세요 */
+            // 방법 1
+            // let arr = [];
+            // for (var i = 0; i < numbers.length; i++){
+            //     if (numbers[i] > 10){
+            //         arr.push(numbers[i]);
+            //     }
+            // }
+            // return arr.length;
+        
+            // 방법 2
+            // let cnt = 0;
+            // numbers.forEach(n => {
+            //     if (n > 10){
+            //         cnt++;
+            //     }
+            // });
+            // return cnt;
+        
+            // 방법 3
+            // return numbers.reduce((a, b) => {
+            //     if (b > 10){ // 각 원소가 10보다 클 경우
+            //         return a + 1; // 해당 기준에 + 1 (0 + 1...) 반복 할 수록 1 + 1, 2 + 1.. 
+            //     }else{
+            //         return a; // 0
+            //     }
+            // }, 0); // 시작 기준
+        
+            // 방법 4
+            return numbers.filter(n => n > 10).length; // numbers 파라미터로 받아온 값 들 중 10보다 큰 값의 개수 반환
+        }
+        
+        const count = countBiggerThanTen([1, 2, 3, 5, 10, 20, 30, 40, 50, 60]);
+        console.log(count); // 5
     </script>
 </html>
