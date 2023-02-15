@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Content-Language" content="ko-KR">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="stylesheet" href="./css/font.cdn.css">
+    <link rel="stylesheet" href="./css/style.css"/>
+    <title>계산기</title>
+</head>
+<body>
+    <div id="wrap">
+        <!-- header -->
+        <header id="header"></header>
+        <!--// header -->
+
+        <!-- container -->
+        <div id="container">
+            <div class="word">
+                <table>
+                    <tbody class="write">
+                        <tr class="addCon">
+                            <td colspan="2">
+                                <div class="flex">
+                                    <div class="f-col"><input type="text" value="" class="name" placeholder="항목을 추가해주세요."></div>
+                                    <div class="f-col"><button type="button" class="add">항목추가</button></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="plus">
+                            <th><span class="name">추가소득</span></th>
+                            <td><span class="data"><input type="text" value=""></span></td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr class="result">
+                            <th><span class="name">급여</span></th>
+                            <td><span class="data"><input type="text" value=""></span></td>
+                        </tr>
+                        <tr class="total">
+                            <th><span class="name">지출</span></th>
+                            <td><span class="data"></span></td>
+                        </tr>
+                        <tr class="etc">
+                            <th><span class="name">남은비용</span></th>
+                            <td><span class="data"></span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="button" class="resultBtn"><span>계산</span></button>
+            </div>
+        </div>
+        <!--// container -->
+
+        <!-- footer -->
+        <footer id="footer"></footer>
+        <!--// footer -->
+    </div>
+    
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <script src="./js/calculator.js"></script>
+</body>
+</html>

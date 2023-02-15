@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Content-Language" content="ko-KR">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="stylesheet" href="./css/font.cdn.css">
+    <link rel="stylesheet" href="./css/style.css"/>
+    <title>강화테스트</title>
+</head>
+<body>
+    <div id="wrap">
+        <!-- header -->
+        <header id="header"></header>
+        <!--// header -->
+
+        <!-- container -->
+        <div id="container">
+            <div class="luckyEl">
+                <div class="chk_wrap">
+                    강화 실패 시 팝업 노출 여부
+                    <span class="chk">
+                        <input type="checkbox" id="state">
+                        <label for="state">POPUP SHOW</label>
+                    </span>
+                </div>
+                <h3>강화시도 횟수 <span class="clickNum">0</span></h3>
+                <h3>강화성공 횟수 <span class="clickSucc">0</span></h3>
+                <h3>강화실패 횟수 <span class="clickFail">0</span></h3>
+                <h3><span class="com1">2</span>카&nbsp;성공확률 <span class="com2">100</span>%</h3>
+                <p><span>[<b class="chap">2강</b>]</span> 시도 합니다.</p>
+                <div class="result_pop">
+                    <div class="result_inner">
+                        <div class="result_pop_close">닫기</div>
+                        <strong>강화 결과<span class="result"></span></strong>
+                        <h4 class="info"><p>● 성공 확률 :: <span class="me">0</span></p><p>○ 나의 확률 :: <span class="chn">0</span></p></h4>
+                        <strong class="restore"></strong>
+                    </div>
+                </div>
+                <div class="inner">
+                    <div class="sel">
+                        <select name="luck-list" id="luck">
+                            <option value="2">2강</option>
+                            <option value="3">3강</option>
+                            <option value="4">4강</option>
+                            <option value="5">5강</option>
+                            <option value="6">6강</option>
+                            <option value="7">7강</option>
+                            <option value="8">8강</option>
+                        </select>
+                        <div class="arr"></div>
+                    </div>
+                    <button type="button">실행</button>
+                </div>
+            </div>
+        </div>
+        <!--// container -->
+
+        <!-- footer -->
+        <footer id="footer"></footer>
+        <!--// footer -->
+    </div>
+    
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <script src="./js/luck.js"></script>
+</body>
+</html>

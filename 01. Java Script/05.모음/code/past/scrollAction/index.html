@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Content-Language" content="ko-KR">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="stylesheet" href="./css/font.cdn.css">
+    <link rel="stylesheet" href="./css/style.css"/>
+    <title>스크롤애니메이션</title>
+</head>
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+    <div id="wrap">
+        <!-- header -->
+        <header id="header" class="pos-fixed ani-a06">
+            <div class="logo pos-relative x-center dp-inline ft-we700 ft-c00 ft-sz30 ft-shadow">
+                <p>기능구현</p>
+            </div>
+            <div class="side-allmenu-btn">
+                메뉴보기
+                <span class="line1"></span>
+                <span class="line2"></span>
+                <span class="line3"></span>
+            </div>
+        </header>
+        <!--// header -->
+
+
+
+        
+        <!-- container -->
+        <div id="container">
+            <!--
+                Html Element Example
+                data-motion="slide-up" 
+                data-duration="1" 
+                data-delay=".4"
+            -->
+            <section class="text" data-section="sec01">
+                <div class="tit" data-motion="text-up" data-duration="1" data-delay=".4">
+                    <em class="txt">H</em>
+                    <em class="txt">E</em>
+                    <em class="txt">L</em>
+                    <em class="txt">L</em>
+                    <em class="txt">O</em>
+                    <em class="txt">,</em>
+                    <em class="txt"></em>
+                    <em class="txt">T</em>
+                    <em class="txt">E</em>
+                    <em class="txt">S</em>
+                    <em class="txt">T</em>
+                </div>
+            </section>
+            <section class="text" data-section="sec02">
+                <div class="tit" data-motion="text-down" data-duration="1" data-delay=".4">
+                    <em class="txt">H</em>
+                    <em class="txt">E</em>
+                    <em class="txt">L</em>
+                    <em class="txt">L</em>
+                    <em class="txt">O</em>
+                    <em class="txt">,</em>
+                    <em class="txt"></em>
+                    <em class="txt">T</em>
+                    <em class="txt">E</em>
+                    <em class="txt">S</em>
+                    <em class="txt">T</em>
+                </div>
+            </section>
+            <section class="text" data-section="sec03">
+                <div class="tit" data-motion="slide-up" data-duration="1" data-delay=".4">HELLO, TEST</div>
+            </section>
+            <section class="text" data-section="sec04">
+                <div class="tit" data-motion="slide-down" data-duration="1" data-delay=".4">HELLO, TEST</div>
+            </section>
+            <section class="text" data-section="sec05">
+                <div class="tit" data-motion="slide-left" data-duration="1" data-delay=".4">HELLO, TEST</div>
+            </section>
+            <section class="text" data-section="sec06">
+                <div class="tit" data-motion="slide-right" data-duration="1" data-delay=".4">HELLO, TEST</div>
+            </section>
+            <section class="text" data-section="sec07">
+                <div class="tit" data-motion="scale-up" data-duration="1" data-delay=".4">HELLO, TEST</div>
+            </section>
+            <section class="text" data-section="sec08">
+                <div class="tit" data-motion="scale-down" data-duration="1" data-delay=".4">HELLO, TEST</div>
+            </section>
+        </div>
+        <!--// container -->
+
+        <!-- footer -->
+        <footer id="footer"></footer>
+        <!--// footer -->
+
+        <div class="side-allmenu-wrap">
+            <div class="side-allmenu-inner">
+                <ul class="allMenu">
+                    <li title="sec01 이동" data-scope="sec01"><p class="underscore">section 01</p></li>
+                    <li title="sec02 이동" data-scope="sec02"><p class="underscore">section 02</p></li>
+                    <li title="sec03 이동" data-scope="sec03"><p class="underscore">section 03</p></li>
+                    <li title="sec04 이동" data-scope="sec04"><p class="underscore">section 04</p></li>
+                    <li title="sec05 이동" data-scope="sec05"><p class="underscore">section 05</p></li>
+                    <li title="sec06 이동" data-scope="sec06"><p class="underscore">section 06</p></li>
+                    <li title="sec07 이동" data-scope="sec07"><p class="underscore">section 07</p></li>
+                    <li title="sec08 이동" data-scope="sec08"><p class="underscore">section 08</p></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="side-progressbar"><span style="height: 12.5%;"></span></div>
+    </div>
+    
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <script src="./js/scrollAct.js"></script>
+</body>
+</html>
