@@ -1,0 +1,30 @@
+	<!-- 
+		이미지 맵핑 좌표
+		https://www.image-map.net/ 참고
+	-->
+	<div class="test">
+		<style>
+			.test { border: 1px solid red; }
+		</style>	
+		<!-- 
+			shape : 좌표의 모양 (rect : 사각형좌표, circle : 원형좌표, poly : 다각형좌표)
+			coords : 이미지 좌표 x,y,x,y (시작점x,시작점y,끝점x,끝점y)
+			target : 링크여는 형태 (_self : 현재창, _blank : 새창에서)
+		-->
+		<img src="https://cdn.autoplus.co.kr/PRODUCT/C22041800007/thumbnail/IMG01.jpg?v=202204281616" usemap="#image-map" id="imgMap">
+		<map name="image-map">
+		    <area target="_blank" alt="첫번째" title="첫번째" href="#01" coords="57,53,39" shape="circle">
+		    <area target="_blank" alt="두번째" title="두번째" href="#02" coords="656,45,34" shape="circle">
+		    <area target="_blank" alt="세번째" title="세번째" href="#03" coords="55,411,39" shape="circle">
+		    <area target="_blank" alt="네번째" title="네번째" href="#04" coords="657,422,35" shape="circle">
+		    <area target="_blank" alt="다섯번째" title="다섯번째" href="#05" coords="355,235,44" shape="circle">
+		</map>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="http://mattstow.com/experiment/responsive-image-maps/jquery.rwdImageMaps.min.js"></script>
+		<script>
+			$(function(){
+				$('img[usemap]').rwdImageMaps();
+				$("#imgMap").width("100%");
+			});
+		</script>
+	</div>
