@@ -1,1 +1,344 @@
-*,*:after,*:before{box-sizing:border-box;text-size-adjust:none;-webkit-tap-highlight-color:rgba(255,255,255,0);-webkit-font-smoothing:antialiased}html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;word-break:keep-all;word-wrap:break-word;white-space:normal;line-height:1}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}ol,ul{list-style:none}table{border-collapse:collapse;border-spacing:0;table-layout:fixed}audio,embed,iframe,img,object,video{max-width:100%}img{height:auto;vertical-align:top}address,i{font-style:normal}em{font-style:inherit}a,s{text-decoration:none;color:inherit}b,h1,h2,h3,h4,h5,strong,th{font-weight:400}:focus{outline:0}button,select{text-transform:none}button{cursor:pointer;box-sizing:border-box}form button,input,optgroup,select,textarea{appearance:none;-moz-appearance:none;margin:0;padding:0;background-color:rgba(0,0,0,0);border-radius:0;border:0;font-family:inherit;font-size:inherit;letter-spacing:inherit;line-height:inherit}input::-ms-clear{display:none}select::-ms-expand{display:none}html{font-size:62.5%}body,html{font-family:"Noto Sans KR",Dotum,Gulim,Sans-serif;font-weight:400;line-height:1.4;letter-spacing:-0.5px;color:#333;-webkit-overflow-scrolling:touch}#container{padding:20rem 40rem}#container .luckyEl{width:30rem;margin:0 auto;text-align:center}#container .luckyEl h3~h3{margin-top:0.5rem}#container .luckyEl h3 span{display:inline-block;min-width:5rem;text-align:right}#container .luckyEl h3 span.com1{min-width:unset}#container .luckyEl h4{margin-top:2rem;font-size:1.4rem}#container .luckyEl h4 .me{margin-right:2rem}#container .luckyEl h4.info p~p{display:none}#container .luckyEl>p{margin-top:1rem;font-size:2rem;font-weight:500;line-height:1.2;color:#000}#container .luckyEl>p .chap{font-weight:700;color:#b00}#container .luckyEl strong{display:block;margin-top:1rem;font-size:1.4rem;font-weight:700;line-height:1.2;color:#000}#container .luckyEl strong .result{display:block;min-height:2.6rem;margin-top:2rem;font-size:2.6rem;font-weight:700;background-image:linear-gradient(to right, #00FF8C, #242CBF);background-clip:text;-moz-background-clip:text;-webkit-background-clip:text;color:rgba(0,0,0,0)}#container .luckyEl strong .result.gray{background-image:linear-gradient(to right, #eb0000, #242CBF)}#container .luckyEl strong.restore{margin-top:2rem;line-height:1.4;word-break:keep-all}#container .luckyEl strong.restore b{display:block;margin-bottom:1rem;line-height:1.2;font-family:"IMPACT";font-size:2rem;font-weight:700;line-height:1.2;color:#000;background-image:linear-gradient(to right, #eb0000, #242CBF);background-clip:text;-moz-background-clip:text;-webkit-background-clip:text;color:rgba(0,0,0,0)}#container .luckyEl .chk_wrap{margin-bottom:3rem;text-align:center}#container .luckyEl .chk{position:relative;display:block}#container .luckyEl .chk input{position:absolute;left:0;top:0;width:0.1rem;height:0.1rem;background-color:rgba(0,0,0,0)}#container .luckyEl .chk input:checked+label{border-color:#555;background-color:#555}#container .luckyEl .chk input:checked+label:before{transform:translateX(2.4rem)}#container .luckyEl .chk label{position:relative;display:block;width:6rem;height:3.6rem;margin:1rem auto 0;border:0.2rem solid #ddd;box-sizing:border-box;border-radius:2rem;background-color:#eee;cursor:pointer;font-size:0;line-height:0;color:#fff;letter-spacing:0;transition-duration:.4s}#container .luckyEl .chk label:before{content:"";position:absolute;left:0;top:0;width:3.2rem;height:3.2rem;border-radius:100%;background-color:#fff;transition-duration:.4s}#container .luckyEl .inner{margin-top:20px;text-align:center}#container .luckyEl .inner .sel{position:relative}#container .luckyEl .inner .sel select{display:block;width:100%;height:4rem;border:0.1rem solid #ddd;padding:0 2rem;font-size:1.4rem;font-weight:400;line-height:1;color:#333}#container .luckyEl .inner .sel .arr{position:absolute;right:1rem;top:50%;width:2rem;height:2rem;margin-top:-1rem;pointer-events:none;transition-duration:.4s}#container .luckyEl .inner .sel .arr:before,#container .luckyEl .inner .sel .arr:after{content:"";position:absolute;top:50%;width:0.8rem;height:0.2rem;margin-top:-0.1rem;border-radius:0.2rem;background-color:#555}#container .luckyEl .inner .sel .arr:before{left:50%;margin-left:-0.6rem;transform:rotate(45deg)}#container .luckyEl .inner .sel .arr:after{right:50%;margin-right:-0.7rem;transform:rotate(-45deg)}#container .luckyEl .inner .sel .arr.open{transform:rotate(180deg)}#container .luckyEl .inner button{width:100%;height:4.4rem;margin-top:2rem;border:0.1rem solid #aaa;border-radius:5px;background-color:#fff;font-size:1.8rem;font-weight:700;line-height:1;color:#333}#container .luckyEl .result_pop{position:fixed;left:0;top:0;z-index:10;width:100%;height:100%;pointer-events:none;opacity:0;transition-duration:.4s}#container .luckyEl .result_pop .result_inner{position:absolute;left:50%;top:50%;z-index:1;width:calc(100% - 4rem);height:auto;max-width:34rem;max-height:calc(100% - 4rem);border-radius:1rem;padding:2rem 2rem 4rem;box-shadow:0 0.4rem 0.6rem rgba(0,0,0,.3);background-color:#fff;transform:translate(-50%, -50%)}#container .luckyEl .result_pop:before{content:"";position:fixed;left:0;top:0;z-index:-1;width:100vw;height:100vh;background-color:rgba(0,0,0,.3)}#container .luckyEl .result_pop.open{opacity:1;pointer-events:auto}/*# sourceMappingURL=style.css.map */
+*, *:after, *:before {
+  box-sizing: border-box;
+  -webkit-text-size-adjust: none;
+     -moz-text-size-adjust: none;
+          text-size-adjust: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-font-smoothing: antialiased;
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  word-break: keep-all;
+  word-wrap: break-word;
+  white-space: normal;
+  line-height: 1;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed;
+}
+
+audio, embed, iframe, img, object, video {
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+  vertical-align: top;
+}
+
+address, i {
+  font-style: normal;
+}
+
+em {
+  font-style: inherit;
+}
+
+a, s {
+  text-decoration: none;
+  color: inherit;
+}
+
+b, h1, h2, h3, h4, h5, strong, th {
+  font-weight: 400;
+}
+
+:focus {
+  outline: 0;
+}
+
+button, select {
+  text-transform: none;
+}
+
+button {
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+form button, input, optgroup, select, textarea {
+  -webkit-appearance: none;
+          appearance: none;
+  -moz-appearance: none;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border-radius: 0;
+  border: 0;
+  font-family: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body, html {
+  font-family: "Noto Sans KR", Dotum, Gulim, Sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.5px;
+  color: #333;
+  -webkit-overflow-scrolling: touch;
+}
+
+#container {
+  padding: 20rem 40rem;
+}
+#container .luckyEl {
+  width: 30rem;
+  margin: 0 auto;
+  text-align: center;
+}
+#container .luckyEl h3 ~ h3 {
+  margin-top: 0.5rem;
+}
+#container .luckyEl h3 span {
+  display: inline-block;
+  min-width: 5rem;
+  text-align: right;
+}
+#container .luckyEl h3 span.com1 {
+  min-width: unset;
+}
+#container .luckyEl h4 {
+  margin-top: 2rem;
+  font-size: 1.4rem;
+}
+#container .luckyEl h4 .me {
+  margin-right: 2rem;
+}
+#container .luckyEl h4.info p ~ p {
+  display: none;
+}
+#container .luckyEl > p {
+  margin-top: 1rem;
+  font-size: 2rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: #000;
+}
+#container .luckyEl > p .chap {
+  font-weight: 700;
+  color: #b00;
+}
+#container .luckyEl strong {
+  display: block;
+  margin-top: 1rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #000;
+}
+#container .luckyEl strong .result {
+  display: block;
+  min-height: 2.6rem;
+  margin-top: 2rem;
+  font-size: 2.6rem;
+  font-weight: 700;
+  background-image: linear-gradient(to right, #00FF8C, #242CBF);
+  background-clip: text;
+  -moz-background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+#container .luckyEl strong .result.gray {
+  background-image: linear-gradient(to right, #eb0000, #242CBF);
+}
+#container .luckyEl strong.restore {
+  margin-top: 2rem;
+  line-height: 1.4;
+  word-break: keep-all;
+}
+#container .luckyEl strong.restore b {
+  display: block;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  font-family: "IMPACT";
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #000;
+  background-image: linear-gradient(to right, #eb0000, #242CBF);
+  background-clip: text;
+  -moz-background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+#container .luckyEl .chk_wrap {
+  margin-bottom: 3rem;
+  text-align: center;
+}
+#container .luckyEl .chk {
+  position: relative;
+  display: block;
+}
+#container .luckyEl .chk input {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0.1rem;
+  height: 0.1rem;
+  background-color: transparent;
+}
+#container .luckyEl .chk input:checked + label {
+  border-color: #555;
+  background-color: #555;
+}
+#container .luckyEl .chk input:checked + label:before {
+  transform: translateX(2.4rem);
+}
+#container .luckyEl .chk label {
+  position: relative;
+  display: block;
+  width: 6rem;
+  height: 3.6rem;
+  margin: 1rem auto 0;
+  border: 0.2rem solid #ddd;
+  box-sizing: border-box;
+  border-radius: 2rem;
+  background-color: #eee;
+  cursor: pointer;
+  font-size: 0;
+  line-height: 0;
+  color: #fff;
+  letter-spacing: 0;
+  transition-duration: 0.4s;
+}
+#container .luckyEl .chk label:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3.2rem;
+  height: 3.2rem;
+  border-radius: 100%;
+  background-color: #fff;
+  transition-duration: 0.4s;
+}
+#container .luckyEl .inner {
+  margin-top: 20px;
+  text-align: center;
+}
+#container .luckyEl .inner .sel {
+  position: relative;
+}
+#container .luckyEl .inner .sel select {
+  display: block;
+  width: 100%;
+  height: 4rem;
+  border: 0.1rem solid #ddd;
+  padding: 0 2rem;
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 1;
+  color: #333;
+}
+#container .luckyEl .inner .sel .arr {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  width: 2rem;
+  height: 2rem;
+  margin-top: -1rem;
+  pointer-events: none;
+  transition-duration: 0.4s;
+}
+#container .luckyEl .inner .sel .arr:before, #container .luckyEl .inner .sel .arr:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 0.8rem;
+  height: 0.2rem;
+  margin-top: -0.1rem;
+  border-radius: 0.2rem;
+  background-color: #555;
+}
+#container .luckyEl .inner .sel .arr:before {
+  left: 50%;
+  margin-left: -0.6rem;
+  transform: rotate(45deg);
+}
+#container .luckyEl .inner .sel .arr:after {
+  right: 50%;
+  margin-right: -0.7rem;
+  transform: rotate(-45deg);
+}
+#container .luckyEl .inner .sel .arr.open {
+  transform: rotate(180deg);
+}
+#container .luckyEl .inner button {
+  width: 100%;
+  height: 4.4rem;
+  margin-top: 2rem;
+  border: 0.1rem solid #aaa;
+  border-radius: 5px;
+  background-color: #fff;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #333;
+}
+#container .luckyEl .result_pop {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0;
+  transition-duration: 0.4s;
+}
+#container .luckyEl .result_pop .result_inner {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: calc(100% - 4rem);
+  height: auto;
+  max-width: 34rem;
+  max-height: calc(100% - 4rem);
+  border-radius: 1rem;
+  padding: 2rem 2rem 4rem;
+  box-shadow: 0 0.4rem 0.6rem rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+  transform: translate(-50%, -50%);
+}
+#container .luckyEl .result_pop:before {
+  content: "";
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+#container .luckyEl .result_pop.open {
+  opacity: 1;
+  pointer-events: auto;
+}/*# sourceMappingURL=style.css.map */
