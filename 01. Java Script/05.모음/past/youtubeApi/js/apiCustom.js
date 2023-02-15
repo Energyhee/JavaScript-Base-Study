@@ -16,7 +16,7 @@ function makeYoutube(id, pip){
     var wrapper = $('.yt-wrapper') // wrapper
     ,   videoEl = $('.yt-video') // 영상 붙여 넣을 곳
     ,   chatEl = $('.yt-chat') // 채팅 붙여 넣을 곳
-    ,   infoEl = $('.yt-info'); // 정보 붙여 넣을 곳
+    ,   infoEl = $('.yt-infomation'); // 정보 붙여 넣을 곳
     
     // # 영상 생성 
     if ( videoEl.length > 0 ){
@@ -71,7 +71,7 @@ function makeYoutube(id, pip){
             var winScr = $(window).scrollTop();
             var vTop = wrapper.offset().top;
             
-            if (winScr >= vTop){
+            if (winScr > vTop){
                 videoEl.addClass('pip');
                 if (wrapper.find('.left .dummy').length < 1) wrapper.find('.left').prepend('<div class="dummy"></div>');
             }else{
@@ -91,6 +91,6 @@ function makeYoutube(id, pip){
     $('.chat-act').on('click', function(){
         $(this).toggleClass('active');
         ( $(this).hasClass('active') ) ? $(this).find('span').text('닫기') : $(this).find('span').text('열기');
-        wrapper.toggleClass('chat-active');
+        wrapper.find('.yt-inner').toggleClass('chat-active');
     });
 }

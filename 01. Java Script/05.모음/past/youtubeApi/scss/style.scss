@@ -29,7 +29,6 @@ body,html{
 }
 html {
     font-size:62.5%;
-    overflow: hidden;
 }
 select{
 	overflow:hidden;
@@ -97,53 +96,216 @@ select{
 	opacity: 0;
 }
 
-.yt-innerper {
-	border: 1px solid red;
-	.yt-inner {
-		border: 1px solid yellow;
+.live-signal {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	width: px(26);
+	height: px(26);
+	border-radius: 100%;
+	background-color: #000;
+	&:before, &:after {
+		content: '';
+		position: absolute;
+		@include pos($p: absolute, $l: 0, $t: px(7), $z: 1);
+		width: 100%;
+		height: px(6);
+		background: url('../images/img_signal_line02.png') no-repeat center/auto;
+		opacity: 0;
+		animation: signalEf 1.2s 0s infinite linear alternate;
+		animation-delay: .6s;
+	}
+	&:after {
+		top: px(12);
+		height: px(4);
+		background-image: url('../images/img_signal_line01.png');
+		animation-delay: .4s;
+	}
+	&.small {
+		transform: scale(.8);
+	}
+	.dot {
+		display: block;
+		width: px(2);
+		height: px(2);
+		padding: 0;
+		margin: px(18) auto 0;
+		border-radius: 100%;
+		background-color: #fff;
+		opacity: 0;
+		animation: signalEf 1.2s 0s infinite linear alternate;
 	}
 }
 
-
-.live-signal { display: flex; flex-direction: column; position: relative; width: 26px; height: 26px; border-radius: 100%; background-color: #000; }
-.live-signal:before,
-.live-signal:after { content: ''; position: absolute; left: 0; top: 7px; width: 100%; height: 6px; background: url('../images/img_signal_line02.png') no-repeat center/auto; opacity: 0; animation: signalEf 1.2s 0s infinite linear alternate; animation-delay: .6s; }
-.live-signal:after { top: 12px; height: 4px; background-image: url('../images/img_signal_line01.png'); animation-delay: .4s; }
-.live-signal .dot { display: block !important; width: 2px !important; height: 2px !important; padding: 0 !important; margin: 18px auto 0 !important; border-radius: 100%; background-color: #fff; opacity: 0; animation: signalEf 1.2s 0s infinite linear alternate; }
-.live-signal.small { transform: scale(.8); }
-
-.yt-inner { display: flex; width: auto; overflow: hidden; font-size: 0; }
-.yt-inner > div { overflow: hidden; transition: .4s ease-in-out; }
-.yt-inner > div.left { width: 100%; transform-origin: top left; }
-.yt-inner > div.right { width: 0; transform-origin: top right; }
-.yt-inner > div.left .dummy { position: relative; }
-.yt-inner > div.left .dummy:before { content: ''; display: block; padding-top: 26.36vw; background-color: #333; }
-.yt-inner > div.left .dummy:after { content: 'PIP'; position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; font-family: "SUIT", sans-serif; font-size: 40px; font-weight: 800; color: #555; } 
-.yt-video { position: relative; width: 100%; }
-.yt-video.pip { position: fixed; right: 40px; bottom: 100px; width: calc((100% - 1200px) / 3); box-shadow: 0 4px 8px rgb(0 0 0 / 40%); }
-.yt-video.pip:before { padding-top: 56.5%; }
-.yt-video:before { content: ''; display: block; padding-top: 26.36vw; }
-.yt-video iframe { position: absolute; left: 0; top: 0; width: 100%; height: 100%; }
-.yt-info { position: relative; padding: 30px 160px 60px 0; }
-.yt-info .dec-more { position: absolute; left: 0; bottom: 30px; padding-right: 16px; font-size: 14px; font-weight: 700; color: #000; line-height: 18px; }
-.yt-info.more .dec-more:after { transform: rotate(180deg); }
-.yt-info .top-title { display: flex; align-items: center; flex-wrap: wrap; }
-.yt-info .top-title h2 { margin-right: 20px; font-size: 26px; line-height: 32px; color: #000; }
-.yt-info .top-title h2 b { font-weight: 700; }
-.yt-info .top-title .live-state { position: relative; height: 28px; margin: 0 15px 0 0; padding: 0 15px 0 32px; border: 1px solid #cd0000; border-radius: 50px; font-size: 13px; font-weight: 700; line-height: 26px; color: #cd0000; }
-.yt-info .top-title .live-state .live-signal { position: absolute; left: 0; top: 0; background-color: #cd0000; }
-.yt-info .yt-title { display: block; font-size: 20px; font-weight: 500; color: #333; line-height: 25px; }
-.yt-info .yt-info { margin-top: 25px; }
-.yt-info .yt-desc { height: 40px; margin-top: 20px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; transition-duration: .4s; }
-.yt-info.more .yt-desc { display: block; height: auto; }
-.yt-info .yt-desc pre { width: 100%; white-space: pre-line; }
-.yt-info .controll { position: absolute; top: 30px; right: 0; transition-duration: .4s; }
-.yt-info .controll button ~ button { margin-top: 4px; }
-.yt-info .controll button.chat-act:after { content: '열기'; margin-left: 5px; }
-.yt-info .controll button.chat-act.active:after { content: '닫기'; }
-.yt-chat { position: relative; width: 350px; height: 100%; border-left: 1px solid #e0e0e0; border-right: 1px solid #e0e0e0; }
-.yt-chat:after { content: ''; position: absolute; left: 0; bottom: 0; width: 100%; border-bottom: 1px solid #e0e0e0; }
-.yt-chat iframe { width: 100%; height: 100%; }
-.yt-inner.chat-active .left { width: calc(100% - 350px); }
-.yt-inner.chat-active .right { width: 350px; }
-.yt-inner.chat-active .yt-info .controll { right: 20px; }
+.yt-wrapper {
+	max-width: px(1000); 
+	margin: 0 auto;
+	* {
+		font-family: 'SUIT', sans-serif;
+	}
+	.yt-inner {
+		display: flex; 
+		width: auto; 
+		overflow: hidden; 
+		font-size: 0;
+		&.chat-active {
+			.left {
+				width: calc(100% - px(350));
+			}
+			.right {
+				width: px(350);
+			}
+			.yt-info .controll { 
+				right: px(20); 
+			}
+		}
+		> div {
+			overflow: hidden; 
+			transition: .4s ease-in-out;
+			&.left {
+				width: 100%; 
+				transform-origin: top left;
+				.dummy {
+					position: relative;
+					&:before {
+						content: ''; 
+						display: block; 
+						padding-top: 26.36vw; 
+						background-color: #333;
+					}
+					&:after {
+						content: 'PIP'; 
+						@include pos($p: absolute, $l: 0, $t: 0);
+						@include font($s: px(40), $w: 800, $l: 1.2, $c: #555, $t : px(-.5), $a: center);
+						width: 100%; 
+						height: 100%; 
+						display: flex; 
+						align-items: center; 
+						justify-content: center;
+					}
+				}
+			}
+			&.right {
+				width: 0;
+				transform-origin: top right;
+			}
+		}
+		.yt-video {
+			position: relative; 
+			width: 100%;
+			&:before {
+				content: ''; 
+				display: block; 
+				padding-top: 26.36vw;
+			}
+			&.pip {
+				@include pos($p: fixed, $r: px(40), $b: px(100));
+				width: calc((100% - 1200px) / 3);
+				box-shadow: 0 px(4) px(8) rgba(0, 0, 0, .4);
+				&:before {
+					padding-top: 56.5%;
+				}
+			}
+			iframe {
+				@include pos($p: absolute, $l: 0, $t: 0);
+				width: 100%;
+				height: 100%;
+			}
+		}
+		.yt-infomation {
+			position: relative;
+			padding: px(30) px(160) px(60) 0;
+			&.more {
+				.dec-more:after {
+					transform: rotate(180deg);
+				}
+				.yt-info .yt-desc { 
+					display: block; 
+					height: auto; 
+				}
+			}
+			.controll { 
+				@include pos($p: absolute, $r: 0, $t: px(30));
+				transition-duration: .4s;
+				button {
+					&.chat-act:after { content: '열기'; margin-left: px(5); } 
+					&.chat-act.active:after { content: '닫기'; }
+				} 
+			}
+			.dec-more {
+				@include pos($p: absolute, $l: 0, $b: px(30));
+				@include font($s: px(14), $w: 700, $l: px(18), $c: #000, $t : px(-.5));
+				padding-right: px(16);
+				&:after {
+					content: ''; 
+					@include pos($p: absolute, $r: 0, $t: px(6));
+					width: px(11); 
+					height: px(6); 
+					background: url('../images/icon_btn_more.png') no-repeat center/auto; 
+				}
+			}
+			.top-title {
+				display: flex; 
+				align-items: center; 
+				flex-wrap: wrap;
+				h2 {
+					@include font($s: px(26), $l: px(32), $c: #000, $t : px(-.5));
+					b {
+						font-weight: 700;
+					}
+				}
+				.live-state {
+					position: relative; 
+					height: px(28);
+					margin: 0 px(15) 0 0; 
+					padding: 0 px(15) 0 px(32); 
+					border: px(1) solid #cd0000; 
+					border-radius: px(50); 
+					@include font($s: px(13), $w: 700, $l: px(26), $c: #cd0000, $t : px(-.5));
+					.live-signal {
+						@include pos($p: absolute, $l: 0, $t: 0);
+						background-color: #cd0000;
+					}
+				}
+			}
+			.yt-info {
+				margin-top: px(25);
+				.yt-title {
+					display: block; 
+					@include font($s: px(20), $w: 500, $l: px(26), $c: #333, $t : px(-.5));
+				}
+				.yt-desc {
+					height: px(40); 
+					margin-top: px(20); 
+					display: -webkit-box; 
+					-webkit-line-clamp: 2; 
+					-webkit-box-orient: vertical; 
+					overflow: hidden; 
+					text-overflow: ellipsis; 
+					transition-duration: .4s;
+					pre {
+						width: 100%; 
+						white-space: pre-line;
+						@include font($s: px(16), $w: 400, $l: px(20), $c: #000, $t : px(-.5));
+					}	
+				}
+			}
+		}
+		.yt-chat {
+			position: relative; 
+			width: px(350); 
+			height: 100%; 
+			border-left: px(1) solid #e0e0e0; 
+			border-right: px(1) solid #e0e0e0;
+			&:after {
+				content: ''; 
+				@include pos($p: absolute, $l: 0, $b: 0);
+				width: 100%; border-bottom: px(1) solid #e0e0e0;
+			}
+			iframe {
+				width: 100%; 
+				height: 100%;
+			}
+		}
+	}
+}
