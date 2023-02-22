@@ -121,13 +121,13 @@ select {
   display: grid;
   gap: 20px;
   grid-template-columns: repeat(2, 2fr);
-  width: 1000px;
-  height: 1000px;
+  width: 100%;
   margin: 0 auto;
 }
 .chart-wrapper .gird-box .items {
   display: flex;
   align-items: center;
+  width: 100%;
   height: 100%;
   border: 1px solid #ccc;
 }
@@ -135,4 +135,7 @@ select {
   display: grid;
   gap: 10px;
   grid-template-columns: repeat(2, 2fr);
+}
+.chart-wrapper .gird-box .items > div {
+  width: 100%;
 }/*# sourceMappingURL=style.css.map */
