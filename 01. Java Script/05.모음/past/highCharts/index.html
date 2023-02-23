@@ -42,6 +42,17 @@
 	<script src="https://code.highcharts.com/highcharts.js"></script>
 	<script src="https://code.highcharts.com/highcharts-more.js"></script>
     <script type="text/javascript">
+		// 날짜설정 (현재, 한달전)
+		function dateCalc(type){
+			var nDate = new Date()
+			,	year = nDate.getFullYear()
+			,	month = (type === 'prev') ? nDate.getMonth() - 1 : nDate.getMonth()
+			,	day = (type === 'prev') ? nDate.getDate() + 1 : nDate.getDate();
+
+			return Date.UTC(year, month, day);
+		}
+
+		// 콤마
 		Highcharts.setOptions({
 			lang: {
 				thousandsSep: ','
@@ -422,6 +433,8 @@
                     format: '{value:%Y-%m-%d}',
                 },
 				gridLineWidth: 1,
+				min: dateCalc('prev'),
+				max: dateCalc(),
 				tickInterval : 24 * 3600 * 1000 * 3,
 			},
 			yAxis: {
@@ -438,7 +451,7 @@
 					}
 				},
 				series:  {
-					pointStart: Date.UTC(2023, 0, 14),
+					pointStart: dateCalc('prev'),
                     pointInterval: 24 * 3600 * 1000 * 3,
 					states: {
 						inactive: {
@@ -475,7 +488,6 @@
 				}
 			]
 		});
-
 		
 		// 최근 한달간 매물 추이
 		var chart03 = Highcharts.chart('line-type02', {
@@ -488,7 +500,9 @@
                 labels: {
                     format: '{value:%Y-%m-%d}',
                 },
-				tickInterval : 24 * 3600 * 1000 * 3,
+				min: dateCalc('prev'),
+				max: dateCalc(),
+				tickInterval : 24 * 3600 * 1000 * 3
 			},
 			yAxis: {
 				title: {
@@ -502,7 +516,7 @@
 			},
 			plotOptions: {
 				series: {
-                    pointStart: Date.UTC(2023, 0, 14),
+                    pointStart: dateCalc('prev'),
                     pointInterval: 24 * 3600 * 1000,
                 },
 				line: {
@@ -516,7 +530,13 @@
 				{
 					name: '대',
 					color: 'rgb(192,80,77)',
-					data: [163, 160, 159, 159, 139, 153, 161, 155, 154, 161, 149, 154, 158, 160, 158, 137, 147, 142, 150, 158, 153, 152, 152, 161, 150, 155, 147, 145, 155, 151]
+					data: [
+						163, 160, 159, 159, 139, 153, 161, 
+						155, 154, 161, 149, 154, 158, 160, 
+						158, 137, 147, 142, 150, 158, 153, 
+						152, 152, 161, 150, 155, 147, 145, 
+						155, 151
+					]
 				}
 			],
 		});
