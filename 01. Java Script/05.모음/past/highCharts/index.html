@@ -35,6 +35,12 @@
 				<div class="items">
 					<div id="line-type02"></div>
 				</div>
+				<div class="items">
+					<div id="test"></div>
+				</div>
+				<div class="items">
+					<div id="test2"></div>
+				</div>
 			</div>
 		</div>
     </div>
@@ -57,6 +63,151 @@
 			lang: {
 				thousandsSep: ','
 			}
+		});
+
+		// 차트 생성 함수
+		function loadMakeCharts(opt){
+			if( $('#' + opt.target).length ){
+				if ( opt.type === 'pie' ){
+					var pieOpt = {
+							plotBackgroundColor: null,
+							plotBorderWidth: null,
+							plotShadow: false,
+						}
+				}
+
+				Highcharts.chart(opt.target, {
+					chart: {
+						pieOpt,
+						type: opt.type
+					},
+					title: {
+						text: opt.title.text,
+						align: opt.title.align
+					},
+					accessibility: {
+						point: {
+							valueSuffix: opt.acc.pt.val
+						}
+					},
+					plotOptions: {
+						pie: {
+							allowPointSelect: true,
+							cursor: 'pointer',
+							dataLabels: {
+								enabled: true,
+								format: '{point.percentage:.1f} %',
+								distance: -50,
+								filter: {
+									property: 'percentage',
+									operator: '>',
+									value: 4
+								}
+							}
+						}
+					},
+					series: opt.dataList
+				});
+			}
+		};
+
+		// 테스트 그래프 생성
+		var test = new loadMakeCharts({
+			target : 'test',
+			type : 'pie',
+			title: {
+				text: 'test',
+				align: 'center'
+			},
+			acc: {
+				pt: {
+					vs: '%'
+				}
+			},
+			dataList: [{
+				name: '비율',
+				data: [
+					{
+						name: '가솔린',
+						// color: 'rgb(221,217,195)',
+						y: 45
+					},
+					{
+						name: '디젤',
+						// color: 'rgb(192,80,77)',
+						y: 25
+					},
+					{
+						name: 'LPG',
+						// color: 'rgb(155,186,88)',
+						y: 30
+					}
+				]
+			}]
+		});
+
+		var test2 = new loadMakeCharts({
+			target : 'test2',
+			type: 'scatter',
+			title: {
+				text: 'testtest',
+				align: 'center'
+			},
+			xAxis: [{
+				categories: ['1월', '2월', '3월', '4월', '5월', '6월','7월', '8월', '9월', '10월', '11월', '12월'],
+				crosshair: true
+			}],
+			tooltip: {
+				shared: true
+			},
+			acc: {
+				pt: {
+					vs: '개'
+				}
+			},
+			yAxis: [
+				{
+					min: 0,
+					title: {
+						text: null,
+					},
+					labels: {
+						format: '{value:,.0f}',
+					},
+					opposite: true
+				},
+				{
+					min: 0,
+					title: {
+						text: null,
+					},
+					labels: {
+						format: '{value:,.0f}',
+					}
+				}
+			],
+			dataList: [{
+				data: [
+					{
+						name: '가솔린',
+						// color: 'rgb(221,217,195)',
+						x: 25,
+						y: 45
+					},
+					{
+						name: '디젤',
+						// color: 'rgb(192,80,77)',
+						x: 5,
+						y: 25
+					},
+					{
+						name: 'LPG',
+						// color: 'rgb(155,186,88)',
+						x: 10,
+						y: 30
+					}
+				]
+			}]
 		});
 
 		// 원형 그래프 생성
