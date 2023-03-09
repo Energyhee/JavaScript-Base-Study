@@ -1,0 +1,112 @@
+@charset "utf-8";
+/* reset */
+*,*:after,*:before{ box-sizing:border-box; text-size-adjust:none; -webkit-tap-highlight-color:rgba(255,255,255,0); -webkit-font-smoothing:antialiased; }
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{ margin:0; padding:0; word-break:keep-all; word-wrap:break-word; white-space:normal; box-sizing: border-box; }
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{ display:block; }
+ol,ul{ list-style:none; }
+table{ border-collapse:collapse; border-spacing:0; table-layout:fixed; }
+audio,embed,iframe,img,object,video{ max-width:100%; }
+img { max-width:100%; height:auto; vertical-align:top; }
+address,i{ font-style:normal; }
+em{ font-style:inherit; }
+a,s{ text-decoration:none; color:inherit; }
+b,h1,h2,h3,h4,h5,strong,th{ font-weight:400; }
+:focus{ outline:0; }
+button,select{ text-transform:none; }
+button{ cursor:pointer; box-sizing:border-box; }
+form button,input,optgroup,select,textarea{ appearance:none; -moz-appearance:none; margin:0; padding:0; background-color:rgba(0,0,0,0); border-radius:0; border:0; font-family:inherit; font-size:inherit; letter-spacing:inherit; line-height:inherit; }
+input::-ms-clear{ display:none; }
+select::-ms-expand{ display:none; }
+select{ overflow:hidden; white-space:nowrap; text-align:left; }
+body,html{ -webkit-overflow-scrolling: touch; font-family: 'Noto Sans KR', Dotum, Gulim, Sans-serif; font-weight: 400; line-height: 1.2; letter-spacing: -.02rem; color:#333; }
+html{ font-size:62.5%; overflow:hidden; }
+
+/* media */
+@media screen and (max-width: 380px) {
+    html { font-size: 50%; }
+}
+@media screen and (max-width: 320px) {
+    html { font-size: 40%; }
+}
+
+/* keyframe */
+@keyframes wd-typing {
+    from { width: 0; }
+    to { width: 21.2rem; }
+}
+@keyframes bk-caret {
+    from,to { border-color: rgba(0,0,0,0); } 
+    50% { border-color: #a7a7a7; }
+}
+@keyframes fade-in {
+    0% { opacity: 0; } 
+    100% { opacity: 1; }
+}
+@keyframes fade-out {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* */
+.opt-btn { position: relative; }
+.opt-btn input { position: absolute; left: -9999px; top: 0; }
+.opt-btn p { display: block; position: relative; padding-left: 2.8rem; font-size: 1.6rem; font-weight: 400; line-height: 2.4rem; color: #333; }
+.opt-btn p:before { content: ''; position: absolute; left: 0; top: 50%; width: 2rem; height: 2rem; margin-top: -1rem; border-radius: 100%; border: .1rem solid #999; border: 0; background: url('../images/icon_total_group.png') no-repeat -16rem center/auto 2rem #fff;  overflow: hidden; }
+.opt-btn input:checked + p:before { background-position: -18rem center; }
+
+.opt-btn.btn p { height: 5rem; padding: 0 1.5rem; border-radius: .5rem; background-color: #F6F6F6; font-size: 1.8rem; color: #000; line-height: 5rem; }
+.opt-btn.btn p:before { display: none; left: auto; right: 1.2rem; width: 2rem; height: 2rem;  }
+.opt-btn.btn input:checked + p { border: .1rem solid #0096FF; box-shadow: 0 .2rem .4rem rgba(0, 0, 0, .16); background-color: #fff; line-height: 4.8rem; color: #0096FF; }
+.opt-btn.btn input:checked + p:before { display: block; background-position: -10rem center; }
+
+.opt-btn.box p { padding-left: 3rem; }
+.opt-btn.box p:before { width: 2.4rem; height: 2.4rem; margin-top: -1.1rem; border-radius: 0; border: 1px solid #ddd; background-position: -11.9rem center; }
+.opt-btn.box input:checked + p:before { border-color: #0096ff; background-position: -13.8rem center; background-color: #0096ff; }
+
+.inp input { width: 100%; height: 4.2rem; padding: 0 1.5rem; border: .1rem solid #ddd; border-radius: .3rem; background-color: #fff; font-size: 1.6rem; line-height: 2rem; color: #666; }
+.inp.number { position: relative; width: calc(100% - 5.6rem); margin: 0 auto; padding: 0 4.8rem; border: .2rem solid #333; border-radius: .5rem; box-shadow: 0 .3rem .6rem rgba(0, 0, 0, .16); }
+.inp.number:before,
+.inp.number:after { content: ''; position: absolute; left: .8rem; top: 50%; width: .8rem; height: .8rem; margin-top: -.4rem; border-radius: .8rem; box-shadow: 0 .2rem .5rem rgba(0, 0, 0, .16); background-color: #fff; }
+.inp.number:before  { left: auto; right: .8rem; }
+.inp.number input { height: 7rem; padding: 0; border: 0; font-size: 3.2rem; font-weight: 700; color: #000; }
+
+/* contents */
+.cont-wrap { display: block; width: 100%; height: 100vh; overflow: hidden; }
+.cont-wrap .inner { width: 100%; height: 100%; overflow-y: auto; }
+.cont-wrap.center { display: flex; align-items: center; justify-content: center; }
+.cont-wrap.center .inner { width: calc(100% - 6rem); height: auto; overflow: hidden; }
+.cont-wrap .icon { position: relative; display: block; width: 2rem; height: 2rem; background: url('../images/icon_total_group.png') no-repeat left center/auto 100%; }
+.cont-wrap .btn-base { display: block; width: 100%; height: 6rem; margin-top: 2.8rem; border-radius: .5rem; background-color: #0096FF; text-align: center; font-size: 2rem; font-weight: 700; line-height: 6rem; color: #fff; }
+
+.toggle-wrap {  }
+.toggle-wrap li {  }
+.toggle-wrap li ~ li { border-top: .1rem solid #ddd; }
+.toggle-wrap .toggle-btn { position: relative; padding: 1.6rem 2rem; }
+.toggle-wrap .toggle-btn strong { font-size: 2rem; font-weight: 500; line-height: 2.8rem; color: #000; }
+.toggle-wrap .toggle-btn .icon { position: absolute; right: 2rem; top: 2.2rem; transition-duration: .4s; }
+.toggle-wrap .toggle-btn.active .icon { transform: rotate(180deg); }
+.toggle-wrap .toggle-cont { padding: 0 2rem 2.2rem; }
+.toggle-wrap .toggle-cont .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .5rem; }
+.toggle-wrap .toggle-cont .list { display: block; }
+.toggle-wrap .toggle-cont .list .item ~ .item { margin-top: 1.4rem; }
+
+/* intro */
+.intro .inner { padding-bottom: 6rem; }
+.intro .title { margin: 0 2rem; font-size: 4.8rem; font-weight: 700; color: #000; line-height: 5.8rem; }
+.intro .logo { position: absolute; left: 50%; bottom: 1.4rem; width: 11.4rem; text-align: center; transform: translateX(-50%); }
+.intro .logo a { display: block; }
+.intro ul { margin-top: 1.2rem; }
+.intro ul li { position: relative; padding-left: 4rem; font-size: 1.6rem; line-height: 2.4rem; color: #666; }
+.intro ul li ~ li { margin-top: .2rem; }
+.intro ul li .icon { position: absolute; left: 1.6rem; top: .2rem; background-position: -6rem 0; }
+.intro ul li ~ li .icon { background-position: -8rem 0; }
+.intro .img { position: relative; width: 100%; margin-top: 2.6rem; background: url('../images/img_intro_bg.png') no-repeat center/auto 100%; }
+.intro .img:before { content: ''; display: block; padding-top: 56.8%; }
+.intro .img .car-number { position: absolute; left: 50%; top: calc(50% - 1rem); width: 22rem; transform: translate(-50%, -50%); }
+.intro .img .car-number:after { content: ''; position: absolute; left: 0; bottom: -2.5rem; z-index: -1; width: 100%; height: 2.6rem; background: url('../images/img_intro_light.png') no-repeat center top/100%; }
+.intro .img .car-number .number { position: relative; width: 100%; height: 7rem; padding: 0 3rem; border: .4rem solid #000; border-radius: .5rem; background-color: #fff; overflow: hidden; }
+.intro .img .car-number .number:before,
+.intro .img .car-number .number:after { content: ''; position: absolute; left: .8rem; top: 50%; width: .8rem; height: .8rem; margin-top: -.4rem; border-radius: .8rem; box-shadow: 0 .2rem .5rem rgba(0, 0, 0, .16); background-color: #fff; }
+.intro .img .car-number .number:before  { left: auto; right: .8rem; }
+.intro .img .car-number .number > p { position: absolute; left: 0; top: 0; width: 100%; height: 100%; text-align: center; font-size: 2.2rem; font-weight: 500; line-height: 6.2rem; color: #ddd; animation: fade-out .2s linear 1s forwards, fade-in .1s linear 2.5s forwards, fade-out .1s linear 1s forwards; }
+.intro .img .car-number .number > p.effect02 { font-size: 3rem; font-weight: 700; color: #000; opacity: 0; text-align: left; text-indent: 3rem; animation: fade-in .4s linear 1s forwards, wd-typing 1s steps(40, end) 1s forwards, bk-caret .75s step-end infinite; }

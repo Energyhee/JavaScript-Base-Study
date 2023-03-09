@@ -1,0 +1,358 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Content-Language" content="ko-KR">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="stylesheet" href="./css/style.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+    <title>번호판 제작</title>
+</head>
+<body>
+    <div id="wrap">
+        <section class="cont-wrap">
+            <div class="inner">
+                <ul class="toggle-wrap">
+                    <!-- # 구청 -->
+                    <li>
+                        <div class="toggle-btn">
+                            <strong>방문접수 구청</strong>
+                            <i class="icon"></i>
+                        </div>
+                        <div class="toggle-cont">
+                            <div class="grid">
+                                <div class="item">
+                                    <label class="opt-btn btn">
+                                        <input type="radio" name="option01">
+                                        <p>강서구청</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn btn">
+                                        <input type="radio" name="option01">
+                                        <p>영등포구청</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn btn">
+                                        <input type="radio" name="option01">
+                                        <p>양천구청</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn btn">
+                                        <input type="radio" name="option01">
+                                        <p>서대문구청</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn btn">
+                                        <input type="radio" name="option01">
+                                        <p>마포구청</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn btn">
+                                        <input type="radio" name="option01">
+                                        <p>구로구청</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn btn">
+                                        <input type="radio" name="option01">
+                                        <p>은평구청</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn btn">
+                                        <input type="radio" name="option01">
+                                        <p>관악구청</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn btn">
+                                        <input type="radio" name="option01">
+                                        <p>금천구청</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn btn">
+                                        <input type="radio" name="option01">
+                                        <p>강북구청</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn btn">
+                                        <input type="radio" name="option01">
+                                        <p>종로구청</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn btn">
+                                        <input type="radio" name="option01">
+                                        <p>용산구청</p>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- // -->
+                    <!-- # 차량번호 -->
+                    <li>
+                        <div class="toggle-btn">
+                            <strong>제작할 차량번호</strong>
+                            <i class="icon"></i>
+                        </div>
+                        <div class="toggle-cont">
+                            <div class="box">
+                                <div class="item">
+                                    <div class="inp number">
+                                        <input type="text" placeholder="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- // -->
+                    <!-- # 구분 -->
+                    <li>
+                        <div class="toggle-btn">
+                            <strong>구분</strong>
+                            <i class="icon"></i>
+                        </div>
+                        <div class="toggle-cont">
+                            <div class="list">
+                                <div class="item">
+                                    <label class="opt-btn">
+                                        <input type="radio" name="option03">
+                                        <p>신규</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn">
+                                        <input type="radio" name="option03">
+                                        <p>재교부</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn">
+                                        <input type="radio" name="option03">
+                                        <p>이전</p>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- // -->
+                    <!-- # 종류 -->
+                    <li>
+                        <div class="toggle-btn">
+                            <strong>종류 선택</strong>
+                            <i class="icon"></i>
+                        </div>
+                        <div class="toggle-cont">
+                            <div class="list">
+                                <div class="item">
+                                    <label class="opt-btn">
+                                        <input type="radio" name="option04">
+                                        <p>영업용(노란색)</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn">
+                                        <input type="radio" name="option04">
+                                        <p>렌트(허, 하, 호)</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn">
+                                        <input type="radio" name="option04">
+                                        <p>일반</p>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- // -->
+                    <!-- # 형식 -->
+                    <li>
+                        <div class="toggle-btn">
+                            <strong>형식 선택</strong>
+                            <i class="icon"></i>
+                        </div>
+                        <div class="toggle-cont">
+                            <div class="list">
+                                <div class="item">
+                                    <label class="opt-btn">
+                                        <input type="radio" name="option05">
+                                        <p>필름 홀로그램</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn">
+                                        <input type="radio" name="option05">
+                                        <p>전기차</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn">
+                                        <input type="radio" name="option05">
+                                        <p>페인트(흰색)</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn">
+                                        <input type="radio" name="option05">
+                                        <p>페인트(노란색)</p>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- // -->
+                    <!-- # 규격 -->
+                    <li>
+                        <div class="toggle-btn">
+                            <strong>규격 선택</strong>
+                            <i class="icon"></i>
+                        </div>
+                        <div class="toggle-cont">
+                            <div class="grid">
+                                <div class="item">
+                                    <label class="opt-btn">
+                                        <input type="radio" name="option06">
+                                        <p>앞긴 1장</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn">
+                                        <input type="radio" name="option06">
+                                        <p>뒤긴 1장</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn">
+                                        <input type="radio" name="option06">
+                                        <p>앞뒤긴(조)</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn">
+                                        <input type="radio" name="option06">
+                                        <p>외부장치</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn">
+                                        <input type="radio" name="option06">
+                                        <p>앞단형 1장</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn">
+                                        <input type="radio" name="option06">
+                                        <p>뒤단형 1장</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn">
+                                        <input type="radio" name="option06">
+                                        <p>앞뒤단형(조)</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn">
+                                        <input type="radio" name="option06">
+                                        <p>이륜</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn">
+                                        <input type="radio" name="option06">
+                                        <p>앞대형 1장</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn">
+                                        <input type="radio" name="option06">
+                                        <p>뒤대형 1장</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn">
+                                        <input type="radio" name="option06">
+                                        <p>앞뒤대형(조)</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn">
+                                        <input type="radio" name="option06">
+                                        <p>대형혼합(조)</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn">
+                                        <input type="radio" name="option06">
+                                        <p>단형혼합(조)</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn">
+                                        <input type="radio" name="option06">
+                                        <p>트레일러</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn">
+                                        <input type="radio" name="option06">
+                                        <p>비천공</p>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- // -->
+                    <!-- # 수령 -->
+                    <li>
+                        <div class="toggle-btn">
+                            <strong>번호판 수령시 지참서류</strong>
+                            <i class="icon"></i>
+                        </div>
+                        <div class="toggle-cont">
+                            <div class="info">
+                                <ul>
+                                    <li></li>
+                                </ul>
+                            </div>
+                            <strong>지참서류 미비시 번호판 수령 불가</strong>
+                            <div class="grid">
+                                <div class="item">
+                                    <label class="opt-btn box">
+                                        <input type="radio" name="option07" checked>
+                                        <p>동의</p>
+                                    </label>
+                                </div>
+                                <div class="item">
+                                    <label class="opt-btn box">
+                                        <input type="radio" name="option07">
+                                        <p>비동의</p>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <!-- // -->
+                </ul>
+            </div>
+        </section>
+    </div>
+    
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <script src="./js/custom.js"></script>
+</body>
+</html>
