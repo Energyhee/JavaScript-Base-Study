@@ -153,6 +153,13 @@ html{ font-size:62.5%; overflow:hidden; }
 .apply .bottom .row ~ .row { margin-top: 2rem; }
 .apply .bottom .row strong { display: block; font-size: 1.8rem; font-weight: 700; line-height: 2.4rem; color: #000; }
 .apply .bottom .row .inp { margin-top: .5rem; }
+.apply .bottom .row .inp.cal,
+.apply .bottom .row .inp.time { position: relative; }
+.apply .bottom .row .inp.cal input,
+.apply .bottom .row .inp.time input { padding-left: 5rem; }
+.apply .bottom .row .inp.cal:before,
+.apply .bottom .row .inp.time:before { content: ''; position: absolute; left: 1.5rem; top: 50%; width: 2rem; height: 2rem; margin-top: -1rem; background: url('../images/icon_total_group.png') no-repeat -4rem center/auto 100%; }
+.apply .bottom .row .inp.time:before { background-position: -2rem center; }
 
 /* result */
 .result .title { text-align: center; font-size: 2.8rem; font-weight: 700; line-height: 3.4rem; color: #000; }
