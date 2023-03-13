@@ -166,3 +166,13 @@ html{ font-size:62.5%; overflow:hidden; }
 .result .title:before { content: ''; display: block; width: 6.5rem; height: 6.5rem; margin: 0 auto 2.6rem; background: url('../images/icon_result_chk.png') no-repeat center/auto 100%; }
 .result .make-check { margin-top: 3.2rem; }
 .result .btn-base { margin-top: 4.5rem; }
+
+/* datepicker */
+#ui-datepicker-div { width: calc(100% - 4rem); margin: auto; border-radius: 10px; box-shadow: 0 0 50px 0 rgba(0,0,0,0.2); background-color: #fff; overflow: hidden; }
+#ui-datepicker-div .ui-datepicker-header {  }
+#ui-datepicker-div .ui-datepicker-calendar { width: 100%; text-align: center; }
+#ui-datepicker-div .ui-datepicker-calendar head { color: #ccc; }
+#ui-datepicker-div .ui-datepicker-calendar th,
+#ui-datepicker-div .ui-datepicker-calendar td { padding-bottom: .5rem; }
+#ui-datepicker-div .ui-datepicker-calendar td a { color: #444; text-decoration: none; display: block; margin: 0 auto; width: 35px; height: 35px; line-height: 35px; border-radius: 50%; border: 1px solid transparent; cursor: pointer; }
+#ui-datepicker-div .ui-datepicker-calendar td a.ui-state-highlight { border-color: #D24D57; color: #D24D57; }
