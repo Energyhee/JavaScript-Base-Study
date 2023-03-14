@@ -19,7 +19,7 @@ input::-ms-clear{ display:none; }
 select::-ms-expand{ display:none; }
 select{ overflow:hidden; white-space:nowrap; text-align:left; }
 body,html{ -webkit-overflow-scrolling: touch; font-family: 'Noto Sans KR', Dotum, Gulim, Sans-serif; font-weight: 400; line-height: 1.2; letter-spacing: -.02rem; color:#333; }
-html{ font-size:62.5%; overflow:hidden; }
+html{ font-size:62.5%; }
 
 /* media */
 @media screen and (max-width: 380px) {
@@ -69,17 +69,21 @@ html{ font-size:62.5%; overflow:hidden; }
 .inp.number:before,
 .inp.number:after { content: ''; position: absolute; left: .8rem; top: 50%; width: .8rem; height: .8rem; margin-top: -.4rem; border-radius: .8rem; box-shadow: 0 .2rem .5rem rgba(0, 0, 0, .16); background-color: #fff; }
 .inp.number:before  { left: auto; right: .8rem; }
-.inp.number input { height: 7rem; padding: 0; border: 0; font-size: 3.2rem; font-weight: 700; color: #000; }
+.inp.number input { height: 7rem; padding: 0; border: 0; text-align: center; font-size: 3.2rem; font-weight: 700; color: #000; }
+.inp.etc { position: relative; display: flex; align-items: center; }
+.inp.etc:after { content: ''; display: none; position: absolute; top: 50%; right: -.5rem; width: 2rem; height: 2rem; margin-top: -1rem; background: url('../images/icon_total_group.png') no-repeat -10rem center/auto 2rem #fff; }
+.inp.etc span { font-size: 1.6rem; font-weight: 400; line-height: 2.4rem; color: #000; }
+.inp.etc input { width: 100%; height: 2.4rem; border: 0; padding: 0 .5rem; color: #000; }
 
 /* contents */
-.cont-wrap { display: block; width: 100%; height: 100vh; overflow: hidden; }
-.cont-wrap .inner { width: 100%; height: 100%; overflow-y: auto; }
-.cont-wrap .inner.fix { height: calc(100vh - 10rem); padding-bottom: 2rem; }
-.cont-wrap.center { display: flex; align-items: center; justify-content: center; }
+.cont-wrap { display: block; width: 100%; background-color: #fff; }
+.cont-wrap .inner { width: 100%; }
+.cont-wrap.center { display: flex; align-items: center; justify-content: center; height: 100vh; overflow: hidden; }
 .cont-wrap.center .inner { width: calc(100% - 6rem); height: auto; overflow: hidden; }
+.cont-wrap.fixed { position: relative; height: calc(100vh - 10rem); padding-bottom: 2rem; overflow-y: auto; }
+.cont-wrap.fixed .btn-wrap { position: fixed; left: 0; bottom: 0; z-index: 1; width: 100%; margin-top: 0; }
 .cont-wrap .icon { position: relative; display: block; width: 2rem; height: 2rem; background: url('../images/icon_total_group.png') no-repeat left center/auto 100%; }
 .cont-wrap .btn-wrap { padding: 2rem; margin: 2rem 0 0; background-color: #fff; }
-.cont-wrap .btn-wrap.fix { position: fixed; left: 0; bottom: 0; z-index: 1; width: 100%; margin-top: 0; }
 .cont-wrap .btn-wrap .btn-base { margin-top: 0; font-weight: 500; }
 .cont-wrap .btn-base { display: block; width: 100%; height: 6rem; margin-top: 2.8rem; border-radius: .5rem; background-color: #0096FF; text-align: center; font-size: 2rem; font-weight: 700; line-height: 6rem; color: #fff; }
 .cont-wrap .btn-base.gray { color: #fff; background-color: #C5C2C2; }
@@ -92,8 +96,8 @@ html{ font-size:62.5%; overflow:hidden; }
 .toggle-wrap .toggle-btn strong { font-size: 2rem; font-weight: 500; line-height: 2.8rem; color: #000; }
 .toggle-wrap .toggle-btn .sel-data { display: flex; gap: .2rem; margin-top: .6rem; text-align: left; }
 .toggle-wrap .toggle-btn .sel-data span { font-size: 1.6rem; line-height: 2rem; color: #0096FF; }
-.toggle-wrap .toggle-btn .icon { position: absolute; right: 2rem; top: 2.2rem; transition-duration: .4s; }
-.toggle-wrap .toggle-btn.active .sel-data { display: none; }
+.toggle-wrap .toggle-btn .icon { position: absolute; right: 2rem; top: 2rem; transition-duration: .4s; }
+.toggle-wrap .toggle-btn.active .sel-data { display: none !important; }
 .toggle-wrap .toggle-btn.active .icon { transform: rotate(180deg); }
 .toggle-wrap .toggle-cont { height: 0; overflow: hidden; }
 .toggle-wrap .toggle-cont.on { height: auto; }
@@ -101,6 +105,12 @@ html{ font-size:62.5%; overflow:hidden; }
 .toggle-wrap .toggle-cont .sub-tit { margin-top: 3rem; font-size: 1.8rem; font-weight: 700; line-height: 2.4rem; color: #000; }
 .toggle-wrap .toggle-cont .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem .5rem; }
 .toggle-wrap .toggle-cont .grid.gap5 { gap: .5rem; }
+.toggle-wrap .toggle-cont .grid .last { display: flex; align-items: center; grid-column: auto / span 2; padding: 1.2rem 1.5rem; margin-top: 1rem; border: .1rem solid #ddd; border-radius: .5rem; background-color: #fff; }
+.toggle-wrap .toggle-cont .grid .last p { width: 6.6rem; font-size: 1.8rem; line-height: 2.6rem; font-weight: 400; color: #000; }
+.toggle-wrap .toggle-cont .grid .last .inp { flex: auto; margin-left: .5rem; padding-right: 2rem; }
+.toggle-wrap .toggle-cont .grid .last.focus { border-color: #0096FF; box-shadow: 0 .2rem .4rem rgba(0, 0, 0, .16); }
+.toggle-wrap .toggle-cont .grid .last.focus .inp.etc:after { display: block; }
+.inp.etc.focus:after { display: block; }
 .toggle-wrap .toggle-cont .list { display: block; }
 .toggle-wrap .toggle-cont .list .item ~ .item { margin-top: 1.4rem; }
 .toggle-wrap .toggle-cont .info .grid  { margin-top: 1.6rem; }
@@ -184,7 +194,7 @@ html{ font-size:62.5%; overflow:hidden; }
 #ui-datepicker-div .ui-datepicker-calendar th,
 #ui-datepicker-div .ui-datepicker-calendar td { padding-bottom: .5rem; }
 #ui-datepicker-div .ui-datepicker-calendar td:last-child a { color: #d00000; }
-#ui-datepicker-div .ui-datepicker-calendar td a { color: #444; text-decoration: none; display: block; margin: 0 auto; width: 3.5rem; height: 3.5rem; line-height: 3.5rem; font-size: 1.6rem; border-radius: 50%; cursor: pointer; }
+#ui-datepicker-div .ui-datepicker-calendar td a { color: #444; text-decoration: none; display: block; margin: 0 auto; width: 3.5rem; height: 3.5rem; line-height: 3.5rem; font-size: 1.8rem; border-radius: 50%; cursor: pointer; }
 #ui-datepicker-div .ui-datepicker-calendar td a.ui-state-highlight { background-color: #0096FF; font-weight: 700; color: #fff; }
 #ui-datepicker-div .ui-widget-content { margin-top: 1rem; text-align: center; }
 #ui-datepicker-div .ui-widget-content button { display: inline-block; vertical-align: middle; width: 8.2rem; height: 3rem; border: .1rem solid #ccc; border-radius: .4rem; background-color: #fff; font-size: 1.4rem; color: #000; }
@@ -219,7 +229,7 @@ html{ font-size:62.5%; overflow:hidden; }
 .xdsoft_datetimepicker.xdsoft_rtl .xdsoft_timepicker .xdsoft_prev,.xdsoft_datetimepicker.xdsoft_rtl .xdsoft_timepicker .xdsoft_next { float: none; margin-left: 0; margin-right: 1.4rem }
 .xdsoft_datetimepicker .xdsoft_timepicker .xdsoft_prev { background-position: -4rem 0; }
 .xdsoft_datetimepicker .xdsoft_timepicker .xdsoft_time_box { height: 20rem; border-bottom: .1rem solid #ddd; overflow: hidden; }
-.xdsoft_datetimepicker .xdsoft_timepicker .xdsoft_time_box>div>div { height: 3.8rem; line-height: 3.8rem; border-top: .1rem solid #ddd; border-bottom-width: 0; border-collapse: collapse; background: #f5f5f5; text-align: center; font-size: 1.6rem; color: #666; cursor: pointer; }
+.xdsoft_datetimepicker .xdsoft_timepicker .xdsoft_time_box>div>div { height: 3.8rem; line-height: 3.8rem; border-top: .1rem solid #ddd; border-bottom-width: 0; border-collapse: collapse; background: #f5f5f5; text-align: center; font-size: 2rem; color: #666; cursor: pointer; }
 .xdsoft_datetimepicker .xdsoft_timepicker .xdsoft_time_box>div>div:first-child { border-top-width: 0; }
 .xdsoft_datetimepicker .xdsoft_today_button:hover,.xdsoft_datetimepicker .xdsoft_next:hover,.xdsoft_datetimepicker .xdsoft_prev:hover { opacity: 1; -ms-filter: "alpha(opacity=100)"; }
 .xdsoft_datetimepicker .xdsoft_label { position: relative; z-index: 9999; display: inline; float: left; width: 18.2rem; margin: 0; padding: .5rem .3rem; text-align: center; background-color: #fff; cursor: pointer; font-size: 1.4rem; font-weight: 700; line-height: 2rem; }
