@@ -1,27 +1,4 @@
 const _Fn = {
-    setPaste : (obj) => {
-        try{
-            let inp = obj.querySelectorAll('input'),
-                val = '';
-
-            inp.forEach((el) => {
-                let type = el.getAttribute('type');
-                
-                switch (type) {
-                    default : 
-                        if (el.checked === true) val = el.value;
-                        break;
-                    case 'text' : 
-                        if (el.value.length > 0) val = el.value;
-                        break;
-                }
-            });
-
-            return val;
-        }catch{
-            console.log('※ _Fn.getValue Error');
-        }
-    },
     setClass : (scope, name, type) => {
         try{
             let target = (typeof scope == 'string') ? document.querySelectorAll(scope)[0] : scope;
@@ -36,8 +13,21 @@ const _Fn = {
                     if(target.classList.contains(name) === true) target.classList.remove(name);
                     break;
             }
-        }catch{
-            console.log('※ _Fn.setClass Error');
+        }catch(error){
+            console.log('※ _Fn.setClass Error \n', error);
+        }
+    },
+    setPaste : (wrap, target) => {
+        try{
+            let val = target.value,
+                span = target.closest('li').querySelector('.sel-data');
+
+            span.children[0].innerText = val;
+            if ( target.closest('.mixInp') != null ) {
+                _Fn.valReset(wrap, target);
+            }
+        }catch(error){
+            console.log('※ _Fn.setPaste Error \n', error);
         }
     },
     valReset : (wrap, el) => {
@@ -53,22 +43,34 @@ const _Fn = {
                     if ( obj.checked === true ) obj.checked = false;
                 });
             }
-        }catch{
-            console.log('※ _Fn.valReset Error');
+        }catch(error){
+            console.log('※ _Fn.valReset Error \n', error);
         }
     },
-    dataResult : () => {
+    valReturn : (obj) => {
         try{
-            let dataSpan = document.querySelectorAll('.sel-data'),
-                dataArr = [];
+            let inp = obj.querySelectorAll('input'),
+                val = '';
 
-            dataSpan.forEach((span) => {
-                dataArr.push(span.children[0].innerText);
-            })
-            
-            return dataArr;
-        }catch{
-            console.log('※ _Fn.dataResult Error');
+            inp.forEach((el) => {
+                let type = el.getAttribute('type');
+                
+                switch (type) {
+                    default : 
+                        if (el.checked === true) val += el.value;
+                        break;
+                    case 'checkbox' : 
+                        if (el.checked === true) val += el.value;
+                        break;
+                    case 'text' : 
+                        if (el.value.length > 0) val += el.value;
+                        break;
+                }
+            });
+
+            return val;
+        }catch(error){
+            console.log('※ _Fn.valReturn Error \n', error);
         }
     }
 };
@@ -80,22 +82,21 @@ document.addEventListener('DOMContentLoaded', function(){
 
     if(toggleCont){
         const tBtn = toggleCont.querySelectorAll('.toggle-btn'),
-              tCont = toggleCont.querySelectorAll('.toggle-cont');
+              tCont = toggleCont.querySelectorAll('.toggle-cont'),
+              mixInp = toggleCont.querySelector('.mixInp');
 
         tBtn.forEach((bEl, idx) => {
+            let dataEl = bEl.querySelector('.sel-data');
+
+            if(_Fn.valReturn(tCont[idx]).length > 0) dataEl.children[0].innerText = _Fn.valReturn(tCont[idx]);
+
             bEl.addEventListener('click', () => {
-                let dataEl = bEl.querySelector('.sel-data');
 
                 _Fn.setClass(bEl, 'active');
                 _Fn.setClass(tCont[idx], 'on');
 
-                // 데이터 받아서 넣기
-                if (dataEl != null && _Fn.setPaste(tCont[idx]).length > 0) {
-                    dataEl.style.display = 'flex';
-                    dataEl.children[0].innerText = _Fn.setPaste(tCont[idx]);
-                }else{
-                    dataEl.style.display = 'none';
-                }
+                (dataEl != null && _Fn.valReturn(tCont[idx]).length > 0) ? dataEl.style.display = 'flex' : dataEl.style.display = 'none';
+
                 if ( bEl.classList.contains('scrollNone') != true ){
                     window.scrollTo({ 
                         top : bEl.offsetTop, 
@@ -105,38 +106,23 @@ document.addEventListener('DOMContentLoaded', function(){
             });
         });
 
-        const mixInp = toggleCont.querySelector('.mixInp'),
-              mixText = mixInp.querySelector('input[type="text"]'),
-              mixRadio = mixInp.querySelector('input[type="text"]');
-        
         document.querySelectorAll('input').forEach((inp) => {
-            if (inp.getAttribute('type')  === 'radio' || inp.getAttribute('type')  === 'checkbox' ){
-                // 데이터 받아서 넣기
+            if(inp.getAttribute('type')  === 'radio' || inp.getAttribute('type')  === 'checkbox' ){
                 inp.addEventListener('click', (event) => {
-                    let val = event.target.value,
-                        span = event.target.closest('li').querySelector('.sel-data');
-    
-                    span.children[0].innerText = val;
-                    _Fn.valReset(mixInp, event.target);
+                    _Fn.setPaste(mixInp, event.target);
                 });
             }else if(inp.getAttribute('type')  === 'text'){
-                // 데이터 받아서 넣기
                 inp.addEventListener('input', (event) => {
-                    let val = event.target.value,
-                        span = event.target.closest('li').querySelector('.sel-data');
-    
-                    span.children[0].innerText = val;
-                    _Fn.valReset(mixInp, event.target);
+                    _Fn.setPaste(mixInp, event.target);
+                });
+                inp.addEventListener('focus', (event) => {
+                    _Fn.setPaste(mixInp, event.target);
+                    if(event.target.closest('.last') != null) _Fn.setClass(event.target.closest('.last'), 'focus', 'add');
+                });
+                inp.addEventListener('blur', (event) => {
+                    if(event.target.value.length < 1 && event.target.closest('.last') != null) _Fn.setClass(event.target.closest('.last'), 'focus', 'remove');
                 });
             }
-        });
-
-        mixText.addEventListener('focus', (event) => {
-            _Fn.valReset(mixInp, event.target);
-            _Fn.setClass(event.target.closest('.last'), 'focus', 'add');
-        })
-        mixText.addEventListener('blur', (event) => {
-            if ( event.target.value.length < 1 ) _Fn.setClass(event.target.closest('.last'), 'focus', 'remove');
         });
     }
 
