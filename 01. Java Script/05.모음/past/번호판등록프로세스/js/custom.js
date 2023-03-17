@@ -79,9 +79,6 @@ const _Fn = {
                     default : 
                         if(el.checked === true) val += el.value;
                         break;
-                    case 'checkbox' : 
-                        if(el.checked === true) val += el.value;
-                        break;
                     case 'text' : 
                         if(el.value.length > 0) val += el.value;
                         break;
@@ -160,22 +157,20 @@ document.addEventListener('DOMContentLoaded', function(){
         document.querySelectorAll('input').forEach((inp) => {
             if(inp.getAttribute('type')  === 'radio' || inp.getAttribute('type')  === 'checkbox'){
                 inp.addEventListener('click', (e) => {
-                    console.log('click');
-                    _Fn.setPaste(mixInp, e.target);
-                    _Fn.autoMove(e.target);
+                    if (!e.target.closest('.noneEvent')){
+                        _Fn.setPaste(mixInp, e.target);
+                        _Fn.autoMove(e.target);
+                    }
                 });
             }else if(inp.getAttribute('type')  === 'text'){
                 inp.addEventListener('input', (e) => {
-                    console.log('inpur');
                     _Fn.setPaste(mixInp, e.target);
                 });
                 inp.addEventListener('focus', (e) => {
-                    console.log('focus');
                     _Fn.setPaste(mixInp, e.target);
                     if(e.target.closest('.last') != null) _Fn.setClass(e.target.closest('.last'), 'focus', 'add');
                 });
                 inp.addEventListener('blur', (e) => {
-                    console.log('blur');
                     if(e.target.value.length < 1 && e.target.closest('.last') != null) _Fn.setClass(e.target.closest('.last'), 'focus', 'remove');
                 });
             }
