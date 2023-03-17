@@ -70,22 +70,22 @@ const _Fn = {
     valReturn : (obj) => {
         try{
             let inp = obj.querySelectorAll('input')
-            ,   val = '';
+            ,   val;
 
             inp.forEach((el) => {
                 let type = el.getAttribute('type');
                 
                 switch (type) {
                     default : 
-                        if(el.checked === true) val += el.value;
+                        if(el.checked === true) val = el.value;
                         break;
                     case 'text' : 
-                        if(el.value.length > 0) val += el.value;
+                        if(el.value.length > 0) val = el.value;
                         break;
                 }
             });
 
-            return val;
+            if(val != undefined) return val;
         }catch(error){
             console.log('※ _Fn.valReturn Error \n\n', error);
         }
@@ -134,10 +134,10 @@ document.addEventListener('DOMContentLoaded', function(){
         tBtn.forEach((bEl, idx) => {
             let dataEl = bEl.querySelector('.sel-data');
 
-            if(_Fn.valReturn(tCont[idx]).length > 0) dataEl.children[0].innerText = _Fn.valReturn(tCont[idx]);
+            if(_Fn.valReturn(tCont[idx]) != undefined) dataEl.children[0].innerText = _Fn.valReturn(tCont[idx]);
 
             bEl.addEventListener('click', () => {
-                if(_Fn.valReturn(tCont[idx]).length > 0){
+                if(_Fn.valReturn(tCont[idx]) != undefined){
 
                     _Fn.setClass(bEl, 'active');
                     _Fn.setClass(tCont[idx], 'on');
