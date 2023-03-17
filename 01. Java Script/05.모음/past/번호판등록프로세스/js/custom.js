@@ -14,7 +14,7 @@ const _Fn = {
                     break;
             }
         }catch(error){
-            console.log('※ _Fn.setClass Error \n', error);
+            console.log('※ _Fn.setClass Error \n\n', error);
         }
     },
     setPaste : (wrap, target) => {
@@ -24,6 +24,7 @@ const _Fn = {
                 
             span.children[0].innerText = val;
             if(target.closest('.mixInp') != null) _Fn.valReset(wrap, target);
+            (span != null && span.children[0].innerText.length > 0) ? span.style.display = 'flex' : span.style.display = 'none';
 
             if(target.closest('[class*="opt-group"]') != null){
                 let num = parseInt(target.closest('[class*="opt-group"]').getAttribute('class').replace(/[^0-9]/g, ''))
@@ -35,7 +36,7 @@ const _Fn = {
                     if(val.length > 0){
                         scopeCar.innerText = val;
                     }else{
-                        scopeCar.innerHTML = '<span class="empty">번호를 입력해주세요.</span>';
+                        scopeCar.innerHTML = '<span class="empty">차량번호를 입력해주세요.</span>';
                     }
                 }else{
                     if(opt === null){
@@ -46,7 +47,7 @@ const _Fn = {
                 }
             }
         }catch(error){
-            console.log('※ _Fn.setPaste Error \n', error);
+            console.log('※ _Fn.setPaste Error \n\n', error);
         }
     },
     valReset : (wrap, el) => {
@@ -63,7 +64,7 @@ const _Fn = {
                 });
             }
         }catch(error){
-            console.log('※ _Fn.valReset Error \n', error);
+            console.log('※ _Fn.valReset Error \n\n', error);
         }
     },
     valReturn : (obj) => {
@@ -89,7 +90,36 @@ const _Fn = {
 
             return val;
         }catch(error){
-            console.log('※ _Fn.valReturn Error \n', error);
+            console.log('※ _Fn.valReturn Error \n\n', error);
+        }
+    },
+    autoMove : (obj) => {
+        try{
+            let ul = document.querySelector('.toggle-wrap')
+            ,   li = ul.querySelectorAll('li');
+
+            li.forEach((el, idx) => {
+                let btn = el.querySelector('.toggle-btn')
+                ,   cont = el.querySelector('.toggle-cont');
+
+                if (el === obj.closest('li')){
+                    _Fn.setClass(btn, 'active', 'remove');
+                    _Fn.setClass(cont, 'on', 'remove');
+                    
+                    if(el.nextElementSibling != null){
+                        
+                        _Fn.setClass(el.nextElementSibling.querySelector('.toggle-btn'), 'active', 'add');
+                        _Fn.setClass(el.nextElementSibling.querySelector('.toggle-cont'), 'on', 'add');
+                        
+                        window.scrollTo({ 
+                            top : el.nextElementSibling.offsetTop, 
+                            behavior : 'smooth' 
+                        });
+                    }
+                }
+            });
+        }catch(error){
+            console.log('※ _Fn.autoMove Error \n\n', error);
         }
     }
 };
@@ -110,36 +140,43 @@ document.addEventListener('DOMContentLoaded', function(){
             if(_Fn.valReturn(tCont[idx]).length > 0) dataEl.children[0].innerText = _Fn.valReturn(tCont[idx]);
 
             bEl.addEventListener('click', () => {
+                if(_Fn.valReturn(tCont[idx]).length > 0){
 
-                _Fn.setClass(bEl, 'active');
-                _Fn.setClass(tCont[idx], 'on');
+                    _Fn.setClass(bEl, 'active');
+                    _Fn.setClass(tCont[idx], 'on');
 
-                (dataEl != null && _Fn.valReturn(tCont[idx]).length > 0) ? dataEl.style.display = 'flex' : dataEl.style.display = 'none';
+                    (dataEl != null) ? dataEl.style.display = 'flex' : dataEl.style.display = 'none';
 
-                if(bEl.classList.contains('scrollNone') != true){
-                    window.scrollTo({ 
-                        top : bEl.offsetTop, 
-                        behavior : 'smooth' 
-                    });
+                    if(bEl.classList.contains('scrollNone') != true){
+                        window.scrollTo({ 
+                            top : bEl.offsetTop, 
+                            behavior : 'smooth' 
+                        });
+                    }
                 }
             });
         });
 
         document.querySelectorAll('input').forEach((inp) => {
             if(inp.getAttribute('type')  === 'radio' || inp.getAttribute('type')  === 'checkbox'){
-                inp.addEventListener('click', (event) => {
-                    _Fn.setPaste(mixInp, event.target);
+                inp.addEventListener('click', (e) => {
+                    console.log('click');
+                    _Fn.setPaste(mixInp, e.target);
+                    _Fn.autoMove(e.target);
                 });
             }else if(inp.getAttribute('type')  === 'text'){
-                inp.addEventListener('input', (event) => {
-                    _Fn.setPaste(mixInp, event.target);
+                inp.addEventListener('input', (e) => {
+                    console.log('inpur');
+                    _Fn.setPaste(mixInp, e.target);
                 });
-                inp.addEventListener('focus', (event) => {
-                    _Fn.setPaste(mixInp, event.target);
-                    if(event.target.closest('.last') != null) _Fn.setClass(event.target.closest('.last'), 'focus', 'add');
+                inp.addEventListener('focus', (e) => {
+                    console.log('focus');
+                    _Fn.setPaste(mixInp, e.target);
+                    if(e.target.closest('.last') != null) _Fn.setClass(e.target.closest('.last'), 'focus', 'add');
                 });
-                inp.addEventListener('blur', (event) => {
-                    if(event.target.value.length < 1 && event.target.closest('.last') != null) _Fn.setClass(event.target.closest('.last'), 'focus', 'remove');
+                inp.addEventListener('blur', (e) => {
+                    console.log('blur');
+                    if(e.target.value.length < 1 && e.target.closest('.last') != null) _Fn.setClass(e.target.closest('.last'), 'focus', 'remove');
                 });
             }
         });
