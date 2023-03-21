@@ -29,9 +29,10 @@ body,html{
 }
 
 #container {
-    padding: px(200) px(400);
+    padding: px(100) px(20);
     .luckyEl {
-        width: px(300);
+        width: 100%;
+        max-width: px(300);
         margin: 0 auto;
         text-align: center;
         h3 {
@@ -220,10 +221,17 @@ body,html{
                 max-width: px(340);
                 max-height: calc(100% - 4rem);
                 border-radius: px(10);
-                padding: px(20) px(20) px(40);
+                padding: px(20);
                 box-shadow: 0 px(4) px(6) rgba(0, 0, 0, .3);
                 background-color: #fff;
                 transform: translate(-50%, -50%);
+                .result_pop_close {
+                    width: auto;
+                    padding: px(10) px(20);
+                    margin: px(20) auto 0;
+                    background-color: #000;
+                    color: #fff;
+                }
             }
             &:before {
                 content: '';
