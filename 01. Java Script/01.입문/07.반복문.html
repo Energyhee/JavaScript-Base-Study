@@ -28,7 +28,7 @@
         let firstNames = ['kim', 'lee', 'han']
         
         for (var i = 0; i < firstNames.length; i++){
-            log(firstNames[i]); // kim, lee, han 각 배열의 원소를 하나하나 출력
+            log(firstNames[i]); // kim, lee, han 각 배열의 원소 출력
         }
         
         // ● while 특정 조건이 참이라면 계속해서 반복하는 반복문
@@ -37,7 +37,7 @@
         // 조건이 무한대일때 무한으로 반복되지 않게 break, false가 되도록 신경써야한다.
         while (idx <= 10){
             log('while : ' + idx); // 1 ~ 10까지 숫자 하나 씩 출력
-            idx++; // idx 증감
+            idx++; // 한번 돌때마다 idx 증감
         }
         
         // ● for...of 배열을 위한 반복문
@@ -59,7 +59,7 @@
         log(Object.values(doggy)); // doggy 배열 [value, value...] 형태로 value 전체 반환
         
         for (let keys in doggy){
-            // array(doggy)에 key 항목을 keys에 담고 array(doggy)에 key 값을 찾아 value 출력
+            // doggy 배열의 key항목을 keys에 담고, keys개수만큼 반복문을 돌리며, doggy[키값]으로 해당 키값의 value를 찾는다.
             log(keys + ' : ' + doggy[keys]);
         }
         
