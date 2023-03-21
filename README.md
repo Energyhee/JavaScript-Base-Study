@@ -19,18 +19,18 @@
     * [X] 연산자
     * [X] 조건문
     * [X] 함수
-    * [ ] 객체 
+    * [X] 객체 
         
         > *Getter, *Setter 추가 공부    
         > 참고 문헌 :  [프로퍼티 getter와 setter](https://ko.javascript.info/property-descriptors)
 
     * [X] 배열
     * [X] 반복문
-    * [ ] 배열 내장함수 - 
+    * [X] 배열 내장함수 - 
         
         > *Reduce 추가 공부    
 
-    * [ ] 프로토타입과 클래스
+    * [X] 프로토타입과 클래스
 
 <br>
 
