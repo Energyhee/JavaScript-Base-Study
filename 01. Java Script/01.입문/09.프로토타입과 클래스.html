@@ -10,35 +10,74 @@
     <script>
         const log = console.log;
       
-		// [객체 생성자] : 프로토타입과 클래스에 대해서 알아보기 전 객체 생성자를 먼저 알아보자
-		// 객체 생성자는 함수를 통해서 새로운 객체를 만들고 그 안에 넣고 싶은 값 혹은 함수들을 구현 할 수 있게 해준다.
-		// 객체 생성자는 함수의 이름을 대문자로 시작하고 새로운 객체를 만들때에는 new를 붙여줘야 한다.
-		function MakeAnimal(type, name, color){
+		// [객체 생성자] 함수를 통해서 새로운 객체를 만들고 그 안에 넣고 싶은 값 혹은 함수들을 구현 할 수 있게 해준다.
+		// 객체 생성자의 함수 이름은 대문자로 시작한다
+		function MakeAnimal(type, name, color, sound){
 			this.type = type;
 			this.name = name;
 			this.color = color;
-			
+			if(sound != undefined) {
+				this.sound = sound;
+			}
 			this.total = () => {
-				return `종류는 ${this.type}이며, 이름은 ${this.name}이고, 색상은 ${this.color}이다.`;
+				return `종류 : ${this.type} & 이름 : ${this.name} & 색상 : ${this.color}${(sound != undefined) ? ' & 소리 : ' + this.sound : ''}`;
 			}
 		}
 
-		// prototype은 객체 생성자 아래 .prototype.[원하는키] = 로 설정이 가능하다.
-		MakeAnimal.prototype.getName = () => {
+		// ● prototype은 객체 생성자 아래 .prototype.[원하는키] = 로 설정이 가능하다.
+		MakeAnimal.prototype.getName = function() {
 			return `${this.name}`;
 		}
 		MakeAnimal.prototype.shareValue = 1;
 
+		// 새로운 객체를 생성할 때 new를 붙여줘야 한다.
 		var animal01 = new MakeAnimal('개', '흰둥이', '흰색');
 		var animal02 = new MakeAnimal('고양이', '나비', '갈색');
 
-		log(animal01.total()); // 종류는 개이며, 이름은 흰둥이이고, 색상은 흰색이다.
-		log(animal02.total()); // 종류는 고양이이며, 이름은 나비이고, 색상은 갈색이다.
+		log('animal01 객체 생성하고 total 함수 실행 :: ', animal01.total()); // 종류 : 개 & 이름 : 흰둥이 & 색상 : 흰색
+		log('animal02 객체 생성하고 total 함수 실행 :: ', animal02.total()); // 종류 : 고양이 & 이름 : 나비 & 색상 : 갈색
 
-		log(animal01.getName()); // 흰둥이
-		log(animal01.shareValue); // 1
+		log(animal01.getName(), animal01.shareValue); // 흰둥이, 1
+		log(animal02.getName(), animal02.shareValue); // 나비, 1
 
-		log(animal02.getName()); // 나비
-		log(animal02.shareValue); // 1
+		// ● 객체 생성자 상속 받기
+		function Dog(name, color, sound){ // 멍멍이, 화이트, 왈왈
+			// prototype call 값 설정
+			MakeAnimal.call(this, '강아지', name, color, sound); // 강아지, 멍멍이, 화이트, 왈왈
+		}
+		Dog.prototype = MakeAnimal.prototype; // prototype을 공유하기 위해 상속받은 객체 생성자 함수(Dog)를 만들고 prototype 값을 MakeAnimal.prototype 설정
+
+		const dog = new Dog('멍멍이', '화이트', '왈왈');
+		log(dog.total()); // 종류 : 강아지 & 이름 : 멍멍이 & 색상 : 화이트 & 소리 : 왈왈
+		log(dog.getName()); // 멍멍이 (prototype 설정했기때문에  getName함수 공유)
+
+		function Cat(name, color, sound){ // 나비, 아이보리, 냐옹
+			// prototype call 값 설정
+			MakeAnimal.call(this, '고양이', name, color, sound); // 고양이, 나비, 아이보리, 냐옹
+		}
+		Cat.prototype = MakeAnimal.prototype; // prototype을 공유하기 위해 상속받은 객체 생성자 함수(Cat)를 만들고 prototype 값을 MakeAnimal.prototype 설정
+
+		const cat = new Cat('나비', '아비보리', '냐옹');
+		log(cat.total()); // 종류 : 고양이 & 이름 : 나비 & 색상 : 아이보리 & 소리 : 냐옹
+		log(cat.getName()); // 나비 (prototype 설정했기때문에  getName함수 공유)
+
+		// ● 클래스 ES6에서 추가된 문법
+		// 객체 생성자 코드를 조금 더 명확하고, 깔끔하게 구현 가능하며, 상속도 휠씬 쉽게 가능하다.
+		class Human{
+			constructor (name, weight, height){
+				this.name = name;
+				this.weight = weight;
+				this.height = height;
+			}
+			info() { // 클래스 내부 함수를 '메서드'라고 부르며 메서드를 만들면 자동으로 prototype으로 등록 된다.
+				return `이름 : ${this.name}`;
+			}
+		}
+
+		const h1 = new Human('한창희', '177cm', '67kg');
+		const h2 = new Human('신민철', '180cm', '72kg');
+		
+		log(h1.info());
+		log(h2.info());
     </script>
 </html>
