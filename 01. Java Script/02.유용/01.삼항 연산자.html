@@ -9,6 +9,40 @@
     </body>
     <script>
         const log = console.log;
-      
+
+		// [삼항 연산자] 삼항 연산자는 세 개(boolean, false외 falsy표현식 null, NaN, 0 등)의 피연산자를 받는 유일한 연산자이다. 삼항 연산자 문법은 ES6문법은 아니다.
+		// 삼항 연산자 문법 조건 ? true : false;
+
+		// if문을 이용한 기본 문법
+		const a = 1;
+		let aText = '';
+		if(a === 1){
+			aText = 'a는 1입니다.'
+		}else{
+			aText = 'a는 1아닙니다.'
+		}
+		log(aText); // a는 1입니다.
+
+		// 삼항연산자를 이용한 문법
+		const arr = [];
+		let arrText = arr.length > 0 ? '배열이 비어있지 않습니다.' : '배열이 비어있습니다.';
+		log(arrText); // 배열이 비어있습니다.
+
+		// 라인이 너무 길어질 경우 아래와 같이 작성 가능
+		const b = 1;
+		let bText = b === 1
+			? 'b는 1입니다.'
+			: 'b는 1이 아닙니다.';
+		log(bText); // b는 1입니다.
+
+		// 중첩하여 사용도 가능하다
+		const c = false;
+		const d = false;
+		const cd = c
+			? 'c는 true'
+			: d
+				? 'd는 true'
+				: 'd는 false';
+		log(cd); // d는 false
     </script>
 </html>
