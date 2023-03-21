@@ -71,7 +71,7 @@
 		log(1 === 1); 						// true
 		log('1' === 1);						// false (string === number) 타입까지 검사
 		log('1' == 1);						// true (string == number) 타입까지 검사하지 않음
-		log(0 == false)						// true 0은 false와 같은 값으로 간주됌
+		log(0 == false)						// true 0은 false와 같은 값으로 간주됌, 등호가 세개를 쓸 경우 false -> 타입은 다르므로 false 노출(number === boolean)
 		log(null == undefined)				// true 
         
 
