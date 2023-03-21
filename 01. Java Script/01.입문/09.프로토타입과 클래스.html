@@ -64,20 +64,70 @@
 		// ● 클래스 ES6에서 추가된 문법
 		// 객체 생성자 코드를 조금 더 명확하고, 깔끔하게 구현 가능하며, 상속도 휠씬 쉽게 가능하다.
 		class Human{
-			constructor (name, weight, height){
+			constructor (name, height, weight){
 				this.name = name;
-				this.weight = weight;
 				this.height = height;
+				this.weight = weight;
 			}
 			info() { // 클래스 내부 함수를 '메서드'라고 부르며 메서드를 만들면 자동으로 prototype으로 등록 된다.
-				return `이름 : ${this.name}`;
+				return `이름 : ${this.name} & 키 : ${this.height} & 몸무게 : ${this.weight}`;
 			}
 		}
 
-		const h1 = new Human('한창희', '177cm', '67kg');
-		const h2 = new Human('신민철', '180cm', '72kg');
+		const h1 = new Human('한', '177cm', '67kg');
+		const h2 = new Human('신', '180cm', '72kg');
 		
-		log(h1.info());
-		log(h2.info());
+		log(h1.info()); // 이름 : 한 & 키 : 177cm & 몸무게 : 67kg
+		log(h2.info()); // 이름 : 신 & 키 : 180cm & 몸무게 : 72kg
+
+		class HCH extends Human{ // extends(prototype chain)를 이용하여 Human 클래스를 상속받고 constructor에서 사용하는 super()함수가 Human 클래스를 호출
+			constructor(height, weight){
+				super('한창희', height, weight,);
+			}
+		}
+		
+		class SMC extends Human{
+			constructor(height, weight){
+				super('신민철', height, weight,);
+			}
+		
+		}
+		
+		const hch = new HCH('180cm', '74kg');
+		log(hch.info()); // 이름 : 한창희 & 키 : 180cm & 몸무게 : 74kg
+		const smc = new SMC('184cm', '78kg');
+		log(smc.info()); // 이름 : 신민철 & 키 : 184cm & 몸무게 : 78kg
+
+		// 프로토타입과 클래스 예제 01)
+		class FoofballTeam{
+			constructor(team){
+				this.team = team;
+				this.name = [];
+			}
+			addName (name){
+				this.name.push(name);
+			}
+			print (){
+				log(`${this.team}의 소속 선수는 ${(this.name.length > 0) ? this.name.join(', ') + ' 선수가 있습니다.' : '알 수 없습니다.'}`);
+			}
+		}
+
+		const tottenham = new FoofballTeam('토트넘');
+		tottenham.addName('손흥민');
+		tottenham.addName('해리케인');
+		tottenham.addName('쿨루셉스키');
+
+		tottenham.print(); // 토트넘의 소속 선수는 손흥민, 해리케인, 쿨루셉스키 선수가 있습니다.
+
+		const arsenal = new FoofballTeam('아스널');
+		arsenal.addName('사카');
+		arsenal.addName('진첸코');
+		arsenal.addName('외데고르');
+
+		arsenal.print(); // 아스널의 소속 선수는 부카요 사카, 진첸코, 외데고르 선수가 있습니다.
+
+		const liverpool = new FoofballTeam('리버풀');
+
+		liverpool.print(); // 리버풀의 소속 선수는 알 수 없습니다.
     </script>
 </html>
