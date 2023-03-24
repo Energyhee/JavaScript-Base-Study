@@ -202,4 +202,11 @@ document.addEventListener('DOMContentLoaded', function(){
             lang: 'kr',
         });
     }
+
+    // test
+    if(document.location.href.indexOf('index.html') > 0){
+        $(document).on('click', '.address, .img', function(e){
+            if (e.currentTarget === e.target) console.log(123123);
+        })
+    }
 });
