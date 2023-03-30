@@ -16,12 +16,12 @@ button{cursor:pointer;box-sizing:border-box;}
 form button,input,optgroup,select,textarea{appearance:none;-moz-appearance:none;margin:0;padding:0;background-color:transparent;border-radius:0;border:0;font-family:inherit;font-size:inherit;letter-spacing:inherit;line-height:inherit;}
 input::-ms-clear{display:none;}
 select::-ms-expand {display:none;}
-html { font-size: 10px; }
 body,html{
     font-family: 'Noto Sans KR',Dotum,Gulim,Sans-serif;
     font-weight: 400;
-    line-height: 1.4;
+    line-height: 1.2;
     letter-spacing: -.5px;
     color: #333;
+    font-size: 16px;
     -webkit-overflow-scrolling: touch
 }
