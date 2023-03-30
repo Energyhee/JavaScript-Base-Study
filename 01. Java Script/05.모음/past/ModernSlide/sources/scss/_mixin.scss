@@ -4,7 +4,7 @@ $point : #bb0000;
 $point2 : #00afa7;
 
 @function px($pixels) {
-    @return ($pixels) / 10 + rem;
+    @return calc(($pixels) / 10) + rem;
 } 
 
 @mixin font($f: null, $s: null, $w: null, $l: null, $c: null, $t : null, $a: null) {
