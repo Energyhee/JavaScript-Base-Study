@@ -1,11 +1,16 @@
-$path : "../images/";
-
-$point : #bb0000;
-$point2 : #00afa7;
+$path: '../images/';
 
 @function px($pixels) {
-    @return calc(($pixels) / 10) + rem;
-} 
+    @return calc(($pixels) / 16) + rem;
+}
+
+@mixin font-hide(){
+	font-size: 0; 
+	line-height: 0;
+	letter-spacing: px(-999);
+	text-indent: px(-999);
+	color: var(--color-transparent);
+}
 
 @mixin font($f: null, $s: null, $w: null, $l: null, $c: null, $t : null, $a: null) {
 	font-family: $f;
@@ -61,4 +66,12 @@ $point2 : #00afa7;
     top: $t;
     bottom: $b;
     z-index: $z;
+}
+
+@mixin bgImg($n: null, $r: null, $p: null, $s: null , $c: null){
+	background-image: url($path + $n);
+	background-repeat: $r;
+	background-position: $p;
+	background-size: $s;
+	background-color: $c;
 }

@@ -20,14 +20,13 @@
 
         <!-- container -->
         <div id="container">
-            <div class="modern-wrapper">
+            <div id="slide01" class="modern-wrapper">
                 <div class="modern-container">
                     <ul class="modern-list">
                         <li class="modern-item">1</li>
                         <li class="modern-item">2</li>
                         <li class="modern-item">3</li>
                         <li class="modern-item">4</li>
-                        <li class="modern-item">5</li>
                     </ul>
                 </div>
                 <div class="modern-pagination"><span class="active">●</span><span>●</span><span>●</span></div>
@@ -46,10 +45,11 @@
     <script src="./js/custom.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function(){
-            const modern01 = new Test('선택자', {
+            const modern01 = new ModernItem('#slide01', {
                 state : true,
                 duration : .4
             });
+            console.log(modern01);
         });
     </script>
 </body>

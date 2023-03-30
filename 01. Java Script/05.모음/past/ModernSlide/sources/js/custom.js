@@ -1,7 +1,17 @@
-class Test {
+let log = console.log;
+class Modern {
     constructor(selecter, optionList){
         this._sel = selecter;
         this._opt = optionList;
-        console.log(this._sel, this._opt);
+        log(this._sel, this._opt);
+        this.total = () => {
+            log('toatl function call');    
+        }
+        this.total();
+    }
+}
+class ModernItem extends Modern {
+    constructor(opt1, opt2){
+        super(opt1, opt2);
     }
 }
