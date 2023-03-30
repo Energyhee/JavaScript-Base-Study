@@ -8,6 +8,7 @@
     <meta http-equiv="Content-Language" content="ko-KR">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <link rel="stylesheet" href="./css/font.cdn.css">
+    <link rel="stylesheet" href="./css/var.css"/>
     <link rel="stylesheet" href="./css/style.css"/>
     <title>Modern Slide</title>
 </head>
@@ -19,7 +20,20 @@
 
         <!-- container -->
         <div id="container">
-          
+            <div class="modern-wrapper">
+                <div class="modern-container">
+                    <ul class="modern-list">
+                        <li class="modern-item">1</li>
+                        <li class="modern-item">2</li>
+                        <li class="modern-item">3</li>
+                        <li class="modern-item">4</li>
+                        <li class="modern-item">5</li>
+                    </ul>
+                </div>
+                <div class="modern-pagination"><span class="active">●</span><span>●</span><span>●</span></div>
+                <div class="modern-arrow prev"></div>
+                <div class="modern-arrow next"></div>
+            </div>
         </div>
         <!--// -->
 
@@ -28,7 +42,15 @@
         <!--// -->
     </div>
     
-    <script src="./js/jquery-3.3.1.min.js"></script>
+    <!-- <script src="./js/jquery-3.3.1.min.js"></script> -->
     <script src="./js/custom.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            const modern01 = new Test('선택자', {
+                state : true,
+                duration : .4
+            });
+        });
+    </script>
 </body>
 </html>
