@@ -1,0 +1,538 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Content-Language" content="ko-KR">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="stylesheet" href="./css/font.cdn.css">
+    <link rel="stylesheet" href="./css/reset.css"/>
+    <link rel="stylesheet" href="./css/style.css"/>
+    <title>Step Follow</title>
+</head>
+<body>
+    <style>
+        .area-wrapper { padding: 10px; }
+        .area-wrapper .area-btn { display: grid; grid-template-columns: repeat(4,calc(25% - 3px)); grid-gap: 4px; }
+        .area-wrapper .area-btn li { position: relative; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; height: 44px; padding: 0 4px; border: 1px solid #ddd; background-color: #fff; cursor: pointer; }
+        .area-wrapper .area-btn li.active { border-color: #0096ff; background-color: #0096ff; color: #fff; }
+        .area-wrapper .area-btn li.active:before { content: ''; position: absolute; right: 4px; top: 4px; width: 4px; height: 4px; border-radius: 100%; border: 2px solid #fff; }
+        .area-wrapper .area-btn li p { width: 100%; text-align: center; font-size: 14px; line-height: 1.2; }
+        .area-wrapper .area-list { margin-top: 10px; border-top: 1px solid #000; border-bottom: 1px solid #ddd; }
+        .area-wrapper .area-list li { display: none; padding: 20px 10px; }
+        .area-wrapper .area-list li.show { display: block; }
+        .area-wrapper .area-list li ~ li { border-top: 1px solid #ddd; }
+        .area-wrapper .area-list li .title { display: block; font-size: 14px; font-weight: 700; }
+        .area-wrapper .area-list li .box { margin-top: 15px; }
+        .area-wrapper .area-list li .box .row { display: flex; flex-wrap: wrap; }
+        .area-wrapper .area-list li .box .row ~ .row { margin-top: 10px; }
+        .area-wrapper .area-list li .box .col { flex: 1; font-size: 12px; line-height: 1.2; }
+        .area-wrapper .area-list li .box .col + .col { margin-left: 15px; }
+        .area-wrapper .area-list li .box .empty { display: none; }
+        .area-wrapper .area-list li .box .tit { flex: 0 100px; }
+        .area-wrapper .area-list li .box .cont {  }
+        .area-wrapper .area-list li .pos > div { color: #000; }
+        .area-wrapper .area-list li .impos > div { color: #666; }
+    </style>
+    <div id="wrap">
+        <!-- header -->
+        <header id="header"></header>
+        <!--// -->
+
+        <!-- container -->
+        <div id="container">
+            <div class="area-wrapper">
+                <!-- # 지역 -->
+                <ul class="area-btn">
+                    <!--
+                    <li class="all active"><p>전체보기</p></li>
+                    <li><p>서울특별시</p></li>
+                    <li><p>인천광역시</p></li>
+                    <li><p>부산광역시</p></li>
+                    <li><p>대구광역시</p></li>
+                    <li><p>대전광역시</p></li>
+                    <li><p>광주광역시</p></li>
+                    <li><p>울산광역시</p></li>
+                    <li><p>경기도</p></li>
+                    <li><p>경상남도</p></li>
+                    <li><p>경상북도</p></li>
+                    <li><p>충청남도</p></li>
+                    <li><p>충청북도</p></li>
+                    <li><p>전라남도</p></li>
+                    <li><p>전라북도</p></li>
+                    <li><p>강원도</p></li>
+                    <li><p>제주특별자치도</p></li>
+                    -->
+                </ul>
+                <!-- # 목록 -->
+                <ul class="area-list">
+                    <!--
+                    <li>
+                        <strong class="tit">서울특별시</strong>
+                        <div class="box">
+                            <div class="row">
+                                <div class="col">방문가능</div>
+                                <div class="col">강남구, 강동구, 강북구, 강서구, 관악구, 광진구, 구로구, 금천구, 노원구, 도봉구, 동대문구, 동작구, 마포구, 서대문구, 서초구, 성동구, 성북구, 송파구, 양천구, 영등포구, 용산구, 은평구, 종로구, 중구, 중랑구</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">방문불가</div>
+                                <div class="col"></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <strong class="tit">인천광역시</strong>
+                        <div class="box">
+                            <div class="row">
+                                <div class="col">방문가능</div>
+                                <div class="col">계양구, 남동구, 동구, 미추홀구, 부평구, 서구, 연수구, 중구</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">방문불가</div>
+                                <div class="col">강화군, 옹진군</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <strong class="tit">부산광역시</strong>
+                        <div class="box">
+                            <div class="row">
+                                <div class="col">방문가능</div>
+                                <div class="col">강서구, 금정구, 기장군, 남구, 동구, 동래구, 부산진구, 북구, 사상구, 사하구, 서구, 수영구, 연제구, 영도구, 중구, 해운대구</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">방문불가</div>
+                                <div class="col"></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <strong class="tit">대구광역시</strong>
+                        <div class="box">
+                            <div class="row">
+                                <div class="col">방문가능</div>
+                                <div class="col">남구, 달서구, 달성군, 동구, 북구, 서구, 수성구, 중구</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">방문불가</div>
+                                <div class="col"></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <strong class="tit">대전광역시</strong>
+                        <div class="box">
+                            <div class="row">
+                                <div class="col">방문가능</div>
+                                <div class="col">대덕구, 동구, 서구, 유성구, 중구</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">방문불가</div>
+                                <div class="col"></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <strong class="tit">광주광역시</strong>
+                        <div class="box">
+                            <div class="row">
+                                <div class="col">방문가능</div>
+                                <div class="col">광산구, 남구, 동구, 북구, 서구</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">방문불가</div>
+                                <div class="col"></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <strong class="tit">울산광역시</strong>
+                        <div class="box">
+                            <div class="row">
+                                <div class="col">방문가능</div>
+                                <div class="col">남구, 동구, 북구, 울주군, 중구</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">방문불가</div>
+                                <div class="col"></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <strong class="tit">경기도</strong>
+                        <div class="box">
+                            <div class="row">
+                                <div class="col">방문가능</div>
+                                <div class="col">고양시, 과천시, 광명시, 광주시, 구리시, 군포시, 김포시, 남양주시, 부천시, 성남시,수원시, 시흥시, 안산시, 안성시, 안양시, 양주시, 오산시, 용인시, 의왕시, 의정부시,파주시, 평택시, 하남시, 화성시</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">방문불가</div>
+                                <div class="col">가평군, 대부도, 동두천시, 양평군, 여주시, 연천군, 이천시, 포천시</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <strong class="tit">경상남도</strong>
+                        <div class="box">
+                            <div class="row">
+                                <div class="col">방문가능</div>
+                                <div class="col">거제시, 거창군, 고성군, 김해시, 남해군, 밀양시, 사천시, 산청군, 양산시, 의령군, 진주시, 창녕군, 창원시, 통영시, 하동군, 함안군, 함양군, 합천군</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">방문불가</div>
+                                <div class="col"></div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <strong class="tit">경상북도</strong>
+                        <div class="box">
+                            <div class="row">
+                                <div class="col">방문가능</div>
+                                <div class="col">경산시, 구미시, 영천시, 칠곡군, 포항시</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">방문불가</div>
+                                <div class="col">경주시, 고령군, 군위군, 김천시, 문경시, 봉화군, 상주시, 성주군, 안동시, 영덕군, 영양군, 영주시, 예천군, 울릉군, 울진군, 의성군, 청도군,청송군</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <strong class="tit">충청남도</strong>
+                        <div class="box">
+                            <div class="row">
+                                <div class="col">방문가능</div>
+                                <div class="col">공주시, 당진시, 서산시, 아산시, 예산군, 천안시, 홍성군</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">방문불가</div>
+                                <div class="col">계룡시, 금산군, 논산시, 보령시, 부여군, 서천군, 청양군, 태안군</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <strong class="tit">충청북도</strong>
+                        <div class="box">
+                            <div class="row">
+                                <div class="col">방문가능</div>
+                                <div class="col">괴산군, 보은군, 음성군, 증평군, 진천군, 청주시, 충주시</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">방문불가</div>
+                                <div class="col">단양군, 영동군, 옥천군, 제천시</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <strong class="tit">전라남도</strong>
+                        <div class="box">
+                            <div class="row">
+                                <div class="col">방문가능</div>
+                                <div class="col">곡성군, 광양시, 나주시, 담양군, 목포시, 무안군, 보성군, 순천시, 여수시, 영광군, 영암군, 장성군, 함평군, 화순군</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">방문불가</div>
+                                <div class="col">강진군, 고흥군, 구례군, 신안군, 완도군,장흥군, 진도군, 해남군</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <strong class="tit">전라북도</strong>
+                        <div class="box">
+                            <div class="row">
+                                <div class="col">방문가능</div>
+                                <div class="col">고창군, 군산시, 김제시, 남원시, 부안군, 순창군, 익산시, 임실군, 전주시, 정읍시</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">방문불가</div>
+                                <div class="col">무주군, 완주군, 장수군, 진안군</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <strong class="tit">강원도</strong>
+                        <div class="box">
+                            <div class="row">
+                                <div class="col">방문가능</div>
+                                <div class="col"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col">방문불가</div>
+                                <div class="col">강릉시, 고성군, 동해시, 삼척시, 속초시, 양구군, 양양군, 영월군, 원주시, 인제군, 정선군, 철원군, 춘천시, 태백시, 평창군, 홍천군, 화천군,횡성군</div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <strong class="tit">제주특별자치도</strong>
+                        <div class="box">
+                            <div class="row">
+                                <div class="col">방문가능</div>
+                                <div class="col">서귀포시, 제주시</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">방문불가</div>
+                                <div class="col">우도, 마라도</div>
+                            </div>
+                        </div>
+                    </li>
+                    -->
+                </ul>
+                <button type="button" id="seviceReset">초기화</button>
+            </div>
+            <div class="thumb" style="height:600px;"></div>
+        </div>
+        <!--// -->
+
+        <!-- footer -->
+        <footer id="footer"></footer>
+        <!--// -->
+    </div>
+    
+    <!-- <script src="./js/jquery-3.3.1.min.js"></script> -->
+    <!-- <script src="./js/custom.js"></script> -->
+
+    <script>
+        const _fn = {
+            list : [
+                {
+                    name : '서울특별시',
+                    possible : ['강남구', '강동구', '강북구', '강서구', '관악구', '광진구', '구로구', '금천구', '노원구', '도봉구', '동대문구', '동작구', '마포구', '서대문구', '서초구', '성동구', '성북구', '송파구', '양천구', '영등포구', '용산구', '은평구', '종로구', '중구', '중랑구'],
+                    impossible : []
+                },
+                {
+                    name : '인천광역시',
+                    possible : ['계양구', '남동구', '동구', '미추홀구', '부평구', '서구', '연수구', '중구'],
+                    impossible : ['강화군', '옹진군']
+                },
+                {
+                    name : '부산광역시',
+                    possible : ['강서구', '금정구', '기장군', '남구', '동구', '동래구', '부산진구', '북구', '사상구', '사하구', '서구', '수영구', '연제구', '영도구', '중구', '해운대구'],
+                    impossible : []
+                },
+                {
+                    name : '대구광역시',
+                    possible : ['남구', '달서구', '달성군', '동구', '북구', '서구', '수성구', '중구'],
+                    impossible : []
+                },
+                {
+                    name : '대전광역시',
+                    possible : ['대덕구', '동구', '서구', '유성구', '중구'],
+                    impossible : []
+                },
+                {
+                    name : '광주광역시',
+                    possible : ['광산구', '남구', '동구', '북구', '서구'],
+                    impossible : []
+                },
+                {
+                    name : '울산광역시',
+                    possible : ['남구', '동구', '북구', '울주군', '중구'],
+                    impossible : []
+                },
+                {
+                    name : '경기도',
+                    possible : ['고양시', '과천시', '광명시', '광주시', '구리시', '군포시', '김포시', '남양주시', '부천시', '성남시', '수원시', '시흥시', '안산시', '안성시', '안양시', '양주시', '오산시', '용인시', '의왕시', '의정부시', '파주시', '평택시', '하남시', '화성시'],
+                    impossible : ['가평군', '대부도', '동두천시', '양평군', '여주시', '연천군', '이천시', '포천시']
+                },
+                {
+                    name : '경상남도',
+                    possible : ['거제시', '거창군', '고성군', '김해시', '남해군', '밀양시', '사천시', '산청군', '양산시', '의령군', '진주시', '창녕군', '창원시', '통영시', '하동군', '함안군', '함양군', '합천군'],
+                    impossible : []
+                },
+                {
+                    name : '경상북도',
+                    possible : ['경산시', '구미시', '영천시', '칠곡군', '포항시'],
+                    impossible : ['경주시', '고령군', '군위군', '김천시', '문경시', '봉화군', '상주시', '성주군', '안동시', '영덕군', '영양군', '영주시', '예천군', '울릉군', '울진군', '의성군', '청도군', '청송군']
+                },
+                {
+                    name : '충청남도',
+                    possible : ['공주시', '당진시', '서산시', '아산시', '예산군', '천안시', '홍성군'],
+                    impossible : ['계룡시', '금산군', '논산시', '보령시', '부여군', '서천군', '청양군', '태안군']
+                },
+                {
+                    name : '충청북도',
+                    possible : ['괴산군', '보은군', '음성군', '증평군', '진천군', '청주시', '충주시'],
+                    impossible : ['단양군', '영동군', '옥천군', '제천시'],
+                },
+                {
+                    name : '전라남도',
+                    possible : ['곡성군', '광양시', '나주시', '담양군', '목포시', '무안군', '보성군', '순천시', '여수시', '영광군', '영암군', '장성군', '함평군', '화순군'],
+                    impossible : ['강진군', '고흥군', '구례군', '신안군', '완도군', '장흥군', '진도군', '해남군']
+                },
+                {
+                    name : '전라북도',
+                    possible : ['고창군', '군산시', '김제시', '남원시', '부안군', '순창군', '익산시', '임실군', '전주시', '정읍시'],
+                    impossible : ['무주군', '완주군', '장수군', '진안군']
+                },
+                {
+                    name : '강원도',
+                    possible : [],
+                    impossible : ['강릉시', '고성군', '동해시', '삼척시', '속초시', '양구군', '양양군', '영월군', '원주시', '인제군', '정선군', '철원군', '춘천시', '태백시', '평창군', '홍천군', '화천군', '횡성군']
+                },
+                {
+                    name : '제주특별자치도',
+                    possible : ['서귀포시', '제주시'],
+                    impossible : ['우도', '마라도']
+                }
+            ],
+            setClass : (scope, name, type) => {
+                try{
+                    let target = (typeof scope == 'string') ? document.querySelectorAll(scope)[0] : scope;
+                    switch (type) {
+                        default : 
+                            (target.classList.contains(name) != true) ? target.classList.add(name) : target.classList.remove(name);
+                            break;
+                        case 'add' : 
+                            if(target.classList.contains(name) != true) target.classList.add(name);
+                            break;
+                        case 'remove' : 
+                            if(target.classList.contains(name) === true) target.classList.remove(name);
+                            break;
+                    }
+                }catch(error){
+                    console.log('※ _Fn.setClass Error \n\n', error);
+                }
+            },
+            autoMove : (obj) => {
+                try{
+                    let ul = document.querySelector('.toggle-wrap')
+                    ,   li = ul.querySelectorAll('li');
+
+                    li.forEach((el, idx) => {
+                        let btn = el.querySelector('.toggle-btn')
+                        ,   cont = el.querySelector('.toggle-cont');
+
+                        if (el === obj.closest('li')){
+                            _Fn.setClass(btn, 'active', 'remove');
+                            _Fn.setClass(cont, 'on', 'remove');
+                            
+                            if(el.nextElementSibling != null){
+                                
+                                _Fn.setClass(el.nextElementSibling.querySelector('.toggle-btn'), 'active', 'add');
+                                _Fn.setClass(el.nextElementSibling.querySelector('.toggle-cont'), 'on', 'add');
+                                
+                                window.scrollTo({ 
+                                    top : el.nextElementSibling.offsetTop, 
+                                    behavior : 'smooth' 
+                                });
+                            }
+                        }
+                    });
+                }catch(error){
+                    console.log('※ _Fn.autoMove Error \n\n', error);
+                }
+            }
+        }
+
+        function makeHtml (obj, type){
+            let html = '';
+            obj.forEach((item, idx) => {
+                html += `${type === 'name' 
+                            ? idx === 0
+                                ? `<li class="btn all"><p>전체보기</p></li>\n<li class="btn"><p>${item.name}</p></li>\n`
+                                : `<li class="btn"><p>${item.name}</p></li>\n`
+                            : `<li>
+                                <strong class="title">${item.name}</strong>
+                                <div class="box">
+                                    <div class="row ${!item.possible.length > 0 ? 'empty' : 'pos'}">
+                                        <div class="col tit">방문가능</div>
+                                        <div class="col cont">${item.possible}</div>
+                                    </div>
+                                    <div class="row ${!item.impossible.length > 0 ? 'empty' : 'impos'}">
+                                        <div class="col tit">방문불가</div>
+                                        <div class="col cont">${item.impossible}</div>
+                                    </div>
+                                </div>
+                            </li>`
+                        }`;
+                });
+            return html;
+        }
+
+        function areaService(){
+            const wrap = document.querySelector('.area-wrapper');
+            const reBtn = wrap.querySelector('.area-btn');
+            const tab = wrap.querySelector('.area-btn');
+            const cont = wrap.querySelector('.area-list');
+
+            tab.innerHTML = makeHtml(_fn.list, 'name');
+            cont.innerHTML = makeHtml(_fn.list);;
+        }
+
+        /*
+        function makeServiceArea (list){
+            if (list.length > 0 && typeof list === 'object'){
+                let reset = document.querySelector('#seviceReset')
+                ,   wrap = document.querySelector('.area-wrapper')
+                ,   btn = wrap.querySelector('.area-btn')
+                ,   btnEl = ''
+                ,   ul = wrap.querySelector('.area-list')
+                ,   liEl = '';
+                
+                list.forEach((obj, idx) => {
+                    btnEl += (idx === 0) ? `<li class="btn all"><p>전체보기</p></li><li class="btn"><p>${obj.name}</p></li>` : `<li class="btn"><p>${obj.name}</p></li>`;
+                    liEl += `<li>
+                                <strong class="title">${obj.name}</strong>
+                                <div class="box">
+                                    <div class="row ${!obj.possible.length > 0 ? 'empty' : 'pos'}">
+                                        <div class="col tit">방문가능</div>
+                                        <div class="col cont">${obj.possible}</div>
+                                    </div>
+                                    <div class="row ${!obj.impossible.length > 0 ? 'empty' : 'impos'}">
+                                        <div class="col tit">방문불가</div>
+                                        <div class="col cont">${obj.impossible}</div>
+                                    </div>
+                                </div>
+                            </li>`;
+                });
+
+                btn.innerHTML = btnEl;
+                ul.innerHTML = liEl;
+
+                btn.querySelectorAll('.btn').forEach((el, idx, all) => {
+                    el.addEventListener('click', (e) => {
+                        if((e.currentTarget.classList.contains('all'))){
+                            if (e.currentTarget.classList.contains('active')){
+                                all.forEach((ad, num) => {
+                                    ad.classList.remove('active');
+                                    if(ul.querySelectorAll('li')[num] != undefined) ul.querySelectorAll('li')[num].classList.remove('show');
+                                });
+                            }else{
+                                all.forEach((ad, num) => {
+                                    ad.classList.add('active');
+                                    if(ul.querySelectorAll('li')[num] != undefined) ul.querySelectorAll('li')[num].classList.add('show');
+                                });
+                            }
+                        }else{
+                            e.currentTarget.classList.toggle('active')
+                            ul.querySelectorAll('li')[idx - 1].classList.toggle('show');
+                            if (e.currentTarget.classList.contains('active')){
+                                window.scrollTo({ 
+                                    top : ul.querySelectorAll('li')[idx - 1].offsetTop, 
+                                    behavior : 'smooth' 
+                                });
+                            }
+                            (btn.querySelectorAll('li.active:not(.all)').length >= all.length - 1) ? btn.querySelector('.all').classList.add('active') : btn.querySelector('.all').classList.remove('active');
+                        }
+                    });
+                });
+
+                reset.addEventListener('click', (e) => {
+                    btn.querySelectorAll('.btn').forEach((el, idx, all) => {
+                        el.classList.remove('active');
+                        if(ul.querySelectorAll('li')[idx] != undefined) ul.querySelectorAll('li')[idx].classList.remove('show');
+                    });
+                });
+            }
+        }
+        */
+    
+        document.addEventListener('DOMContentLoaded', function(){
+            // makeServiceArea(areaList);
+            areaService();
+        });
+    </script>
+</body>
+</html>
