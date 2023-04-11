@@ -19,7 +19,7 @@
         .area-wrapper .area-btn li { position: relative; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; height: 44px; padding: 0 4px; border: 1px solid #ddd; background-color: #fff; cursor: pointer; }
         .area-wrapper .area-btn li.active { border-color: #0096ff; background-color: #0096ff; color: #fff; }
         .area-wrapper .area-btn li.active:before { content: ''; position: absolute; right: 4px; top: 4px; width: 4px; height: 4px; border-radius: 100%; border: 2px solid #fff; }
-        .area-wrapper .area-btn li p { width: 100%; text-align: center; font-size: 14px; line-height: 1.2; }
+        .area-wrapper .area-btn li p { width: 100%; text-align: center; font-size: 14px; line-height: 1.2; pointer-events: none; }
         .area-wrapper .area-list { margin-top: 10px; border-top: 1px solid #000; border-bottom: 1px solid #ddd; }
         .area-wrapper .area-list li { display: none; padding: 20px 10px; }
         .area-wrapper .area-list li.show { display: block; }
@@ -372,166 +372,130 @@
                     impossible : ['강릉시', '고성군', '동해시', '삼척시', '속초시', '양구군', '양양군', '영월군', '원주시', '인제군', '정선군', '철원군', '춘천시', '태백시', '평창군', '홍천군', '화천군', '횡성군']
                 },
                 {
-                    name : '제주특별자치도',
+                    name : '제주특별<br>자치도',
                     possible : ['서귀포시', '제주시'],
                     impossible : ['우도', '마라도']
                 }
             ],
-            setClass : (scope, name, type) => {
+            makeHtml : (obj, type) => {
                 try{
-                    let target = (typeof scope == 'string') ? document.querySelectorAll(scope)[0] : scope;
-                    switch (type) {
-                        default : 
-                            (target.classList.contains(name) != true) ? target.classList.add(name) : target.classList.remove(name);
-                            break;
-                        case 'add' : 
-                            if(target.classList.contains(name) != true) target.classList.add(name);
-                            break;
-                        case 'remove' : 
-                            if(target.classList.contains(name) === true) target.classList.remove(name);
-                            break;
-                    }
+                    let mHtml = '';
+                    obj.forEach((item, idx) => {
+                        mHtml += `${type === 'name' 
+                                    ? idx === 0
+                                        ? `<li class="btn all"><p>전체보기</p></li>\n<li class="btn"><p>${item.name}</p></li>\n`
+                                        : `<li class="btn"><p>${item.name}</p></li>\n`
+                                    : `<li>
+                                        <strong class="area-tit">${item.name}</strong>
+                                        <div class="box">
+                                            <div class="row ${!item.possible.length > 0 ? 'empty' : 'pos'}">
+                                                <div class="col tit">방문가능</div>
+                                                <div class="col cont">${item.possible}</div>
+                                            </div>
+                                            <div class="row ${!item.impossible.length > 0 ? 'empty' : 'impos'}">
+                                                <div class="col tit">방문불가</div>
+                                                <div class="col cont">${item.impossible}</div>
+                                            </div>
+                                        </div>
+                                    </li>`
+                                }`;
+                    });
+                    return mHtml;	
                 }catch(error){
-                    console.log('※ _Fn.setClass Error \n\n', error);
+                    console.log('※ _fn.makeHtml Error \n\n', error);
                 }
             },
-            autoMove : (obj) => {
+            getIndex : (obj, el) => {
                 try{
-                    let ul = document.querySelector('.toggle-wrap')
-                    ,   li = ul.querySelectorAll('li');
+                    let target = (typeof obj == 'string') ? document.querySelectorAll(obj)[0] : obj
+                    ,	parent = target.parentNode
+                    ,	child = parent.querySelectorAll(`${obj.tagName}`)
+                    ,	index;
 
-                    li.forEach((el, idx) => {
-                        let btn = el.querySelector('.toggle-btn')
-                        ,   cont = el.querySelector('.toggle-cont');
+                    child.forEach((elm, idx) => {
+                        if(target === elm){
+                            index = idx;
+                        }
+                    })                    
 
-                        if (el === obj.closest('li')){
-                            _Fn.setClass(btn, 'active', 'remove');
-                            _Fn.setClass(cont, 'on', 'remove');
-                            
-                            if(el.nextElementSibling != null){
-                                
-                                _Fn.setClass(el.nextElementSibling.querySelector('.toggle-btn'), 'active', 'add');
-                                _Fn.setClass(el.nextElementSibling.querySelector('.toggle-cont'), 'on', 'add');
-                                
-                                window.scrollTo({ 
-                                    top : el.nextElementSibling.offsetTop, 
-                                    behavior : 'smooth' 
-                                });
+                    return index;
+                }catch(error){
+                    console.log('※ _fn.getIndex Error \n\n', error);	
+                }
+            },
+            serviceArea : () => {
+                try{
+                    let wrapper = document.querySelector('.area-wrapper')
+                    ,	reset = wrapper.querySelector('#seviceReset')
+                    ,	btnWrap = wrapper.querySelector('.area-btn')
+                    ,	listWrap = wrapper.querySelector('.area-list')
+                    // , 	fixHead = document.querySelector('.common-fixed-search')
+                    ,	num = 0;
+                    
+                    btnWrap.innerHTML = _fn.makeHtml(_fn.list, 'name');
+                    listWrap.innerHTML = _fn.makeHtml(_fn.list);
+                    
+                    btnWrap.addEventListener('click', (e) => {
+                        if(e.target.classList.contains('btn')){
+                            var btn = e.target;
+                            if(btn.classList.contains('all')){
+                                if(btn.classList.contains('active')){
+                                    btnWrap.querySelectorAll('li').forEach((elm, idx) => {
+                                        elm.classList.remove('active');
+                                        if(listWrap.querySelectorAll('li')[idx] != undefined) listWrap.querySelectorAll('li')[idx].classList.remove('show');
+                                    });	
+                                }else{
+                                    btnWrap.querySelectorAll('li').forEach((elm, idx) => {
+                                        elm.classList.add('active');
+                                        if(listWrap.querySelectorAll('li')[idx] != undefined) listWrap.querySelectorAll('li')[idx].classList.add('show');
+                                    });	
+                                }
+                            }else{
+                                if (btn.classList.contains('active')){
+                                    btn.classList.remove('active');
+                                    listWrap.querySelectorAll('li')[_fn.getIndex(btn) - 1].classList.remove('show');
+                                }else{
+                                    let cont = listWrap.querySelectorAll('li')[_fn.getIndex(btn) - 1];
+                                    btn.classList.add('active');
+                                    cont.classList.add('show');
+                                    window.scrollTo({ 
+                                        top : cont.offsetTop, // - fixHead.offsetHeight,
+                                        behavior : 'smooth' 
+                                    });
+                                }
+                                if(listWrap.querySelectorAll('.show').length < 16){
+                                    btnWrap.querySelector('.all').classList.remove('active');
+                                }else{
+                                    btnWrap.querySelector('.all').classList.add('active');
+                                }
+                            }
+                            num = listWrap.querySelectorAll('.show').length;
+                            if(num >= 1){
+                                reset.style.display = 'block'
+                            }else{
+                                reset.style.display = 'none'
                             }
                         }
+                    });
+                    reset.addEventListener('click', (e) => {
+                        reset.style.display = 'none';
+                        btnWrap.querySelectorAll('li').forEach((elm, idx) => {
+                            elm.classList.remove('active');
+                            if(listWrap.querySelectorAll('li')[idx - 1] != undefined) listWrap.querySelectorAll('li')[idx - 1].classList.remove('show');
+                        });
+                        window.scrollTo({ 
+                            top : wrapper.offsetTop, // - fixHead.offsetHeight - 40,
+                            behavior : 'smooth' 
+                        });
                     });
                 }catch(error){
-                    console.log('※ _Fn.autoMove Error \n\n', error);
-                }
+                    console.log('※ _fn.serviceArea Error \n\n', error);
+                };
             }
-        }
-
-        function makeHtml (obj, type){
-            let html = '';
-            obj.forEach((item, idx) => {
-                html += `${type === 'name' 
-                            ? idx === 0
-                                ? `<li class="btn all"><p>전체보기</p></li>\n<li class="btn"><p>${item.name}</p></li>\n`
-                                : `<li class="btn"><p>${item.name}</p></li>\n`
-                            : `<li>
-                                <strong class="title">${item.name}</strong>
-                                <div class="box">
-                                    <div class="row ${!item.possible.length > 0 ? 'empty' : 'pos'}">
-                                        <div class="col tit">방문가능</div>
-                                        <div class="col cont">${item.possible}</div>
-                                    </div>
-                                    <div class="row ${!item.impossible.length > 0 ? 'empty' : 'impos'}">
-                                        <div class="col tit">방문불가</div>
-                                        <div class="col cont">${item.impossible}</div>
-                                    </div>
-                                </div>
-                            </li>`
-                        }`;
-                });
-            return html;
-        }
-
-        function areaService(){
-            const wrap = document.querySelector('.area-wrapper');
-            const reBtn = wrap.querySelector('.area-btn');
-            const tab = wrap.querySelector('.area-btn');
-            const cont = wrap.querySelector('.area-list');
-
-            tab.innerHTML = makeHtml(_fn.list, 'name');
-            cont.innerHTML = makeHtml(_fn.list);;
-        }
-
-        /*
-        function makeServiceArea (list){
-            if (list.length > 0 && typeof list === 'object'){
-                let reset = document.querySelector('#seviceReset')
-                ,   wrap = document.querySelector('.area-wrapper')
-                ,   btn = wrap.querySelector('.area-btn')
-                ,   btnEl = ''
-                ,   ul = wrap.querySelector('.area-list')
-                ,   liEl = '';
-                
-                list.forEach((obj, idx) => {
-                    btnEl += (idx === 0) ? `<li class="btn all"><p>전체보기</p></li><li class="btn"><p>${obj.name}</p></li>` : `<li class="btn"><p>${obj.name}</p></li>`;
-                    liEl += `<li>
-                                <strong class="title">${obj.name}</strong>
-                                <div class="box">
-                                    <div class="row ${!obj.possible.length > 0 ? 'empty' : 'pos'}">
-                                        <div class="col tit">방문가능</div>
-                                        <div class="col cont">${obj.possible}</div>
-                                    </div>
-                                    <div class="row ${!obj.impossible.length > 0 ? 'empty' : 'impos'}">
-                                        <div class="col tit">방문불가</div>
-                                        <div class="col cont">${obj.impossible}</div>
-                                    </div>
-                                </div>
-                            </li>`;
-                });
-
-                btn.innerHTML = btnEl;
-                ul.innerHTML = liEl;
-
-                btn.querySelectorAll('.btn').forEach((el, idx, all) => {
-                    el.addEventListener('click', (e) => {
-                        if((e.currentTarget.classList.contains('all'))){
-                            if (e.currentTarget.classList.contains('active')){
-                                all.forEach((ad, num) => {
-                                    ad.classList.remove('active');
-                                    if(ul.querySelectorAll('li')[num] != undefined) ul.querySelectorAll('li')[num].classList.remove('show');
-                                });
-                            }else{
-                                all.forEach((ad, num) => {
-                                    ad.classList.add('active');
-                                    if(ul.querySelectorAll('li')[num] != undefined) ul.querySelectorAll('li')[num].classList.add('show');
-                                });
-                            }
-                        }else{
-                            e.currentTarget.classList.toggle('active')
-                            ul.querySelectorAll('li')[idx - 1].classList.toggle('show');
-                            if (e.currentTarget.classList.contains('active')){
-                                window.scrollTo({ 
-                                    top : ul.querySelectorAll('li')[idx - 1].offsetTop, 
-                                    behavior : 'smooth' 
-                                });
-                            }
-                            (btn.querySelectorAll('li.active:not(.all)').length >= all.length - 1) ? btn.querySelector('.all').classList.add('active') : btn.querySelector('.all').classList.remove('active');
-                        }
-                    });
-                });
-
-                reset.addEventListener('click', (e) => {
-                    btn.querySelectorAll('.btn').forEach((el, idx, all) => {
-                        el.classList.remove('active');
-                        if(ul.querySelectorAll('li')[idx] != undefined) ul.querySelectorAll('li')[idx].classList.remove('show');
-                    });
-                });
-            }
-        }
-        */
+        };
     
         document.addEventListener('DOMContentLoaded', function(){
-            // makeServiceArea(areaList);
-            areaService();
+            _fn.serviceArea();
         });
     </script>
 </body>
