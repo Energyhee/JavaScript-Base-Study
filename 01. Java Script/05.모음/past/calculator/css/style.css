@@ -1,1 +1,304 @@
-*,*:after,*:before{box-sizing:border-box;text-size-adjust:none;-webkit-tap-highlight-color:rgba(255,255,255,0);-webkit-font-smoothing:antialiased}html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;word-break:keep-all;word-wrap:break-word;white-space:normal;line-height:1}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}ol,ul{list-style:none}table{border-collapse:collapse;border-spacing:0;table-layout:fixed}audio,embed,iframe,img,object,video{max-width:100%}img{height:auto;vertical-align:top}address,i{font-style:normal}em{font-style:inherit}a,s{text-decoration:none;color:inherit}b,h1,h2,h3,h4,h5,strong,th{font-weight:400}:focus{outline:0}button,select{text-transform:none}button{cursor:pointer;box-sizing:border-box}form button,input,optgroup,select,textarea{appearance:none;-moz-appearance:none;margin:0;padding:0;background-color:rgba(0,0,0,0);border-radius:0;border:0;font-family:inherit;font-size:inherit;letter-spacing:inherit;line-height:inherit}input::-ms-clear{display:none}select::-ms-expand{display:none}body,html{font-family:"Noto Sans KR",Dotum,Gulim,Sans-serif;font-weight:400;line-height:1.4;letter-spacing:-0.5px;color:#333;-webkit-overflow-scrolling:touch}html{font-size:62.5%}select{overflow:hidden;white-space:nowrap;text-align:left}.pc_hide{display:none !important}.mo_hide{display:initial !important}[data-motion=slide-up]{transform:translateY(4rem);-webkit-transform:translateY(4rem);opacity:0}[data-motion=slide-down]{transform:translateY(-4rem);-webkit-transform:translateY(-4rem);opacity:0}[data-motion=slide-left]{transform:translateX(-4rem);-webkit-transform:translateX(-4rem);opacity:0}[data-motion=slide-right]{transform:translateX(4rem);-webkit-transform:translateX(4rem);opacity:0}[data-motion=scale-up]{text-align:center;transform:scale(0.8);-webkit-transform:scale(0.8);opacity:.9}[data-motion=scale-down]{text-align:center;transform:scale(1.2);-webkit-transform:scale(1.2);opacity:.9}[data-motion=text-up] .txt{display:inline-block;transform:translateY(2rem) scale(0.85);-webkit-transform:translateY(2rem) scale(0.85);opacity:0}[data-motion=text-down] .txt{display:inline-block;transform:translateY(-2rem) scale(0.85);-webkit-transform:translateY(-2rem) scale(0.85);opacity:0}#container{padding:2rem}#container .word{max-width:32rem;margin:0 auto}#container .word table{width:100%;border:0.1rem solid #ccc}#container .word table tbody.write tr:not(.addCon):not(.plus) td span{position:relative;padding-right:2rem}#container .word table tbody.write tr:not(.addCon):not(.plus) td span button{right:0}#container .word table tbody~tbody{border-top:0.1rem solid #ccc;background-color:#eee}#container .word table tbody~tbody tr td{text-align:right}#container .word table tbody~tbody tr td span{border-color:#fff}#container .word table tbody tr~tr{border-top:0.1rem solid #ddd}#container .word table tbody tr th,#container .word table tbody tr td{padding:1.5rem}#container .word table tbody tr th{position:relative;border-right:0.1rem solid #ddd}#container .word table tbody tr td span{display:block;height:2.4rem;border-bottom:2px solid #eee}#container .word table tbody tr td input{width:100%;height:100%;text-align:right}#container .word table tbody tr td input:focus{outline:1px solid red}#container .word table tbody tr button{position:relative;width:1.6rem;height:1.6rem;padding:0;margin:0;border-radius:1.6rem;border:0.1rem solid #000;font-size:0}#container .word table tbody tr button:before,#container .word table tbody tr button:after{content:"";position:absolute;left:50%;top:50%;z-index:1;width:1rem;height:0.2rem;transform:translate(-50%, -50%);background-color:#000}#container .word table tbody tr button:after{transform:translate(-50%, -50%) rotate(-90deg)}#container .word table tbody tr button.del,#container .word table tbody tr button.delInp{position:absolute;right:1rem;top:50%;z-index:1;transform:translateY(-50%)}#container .word table tbody tr button.del:before,#container .word table tbody tr button.delInp:before{transform:translate(-50%, -50%) rotate(45deg)}#container .word table tbody tr button.del:after,#container .word table tbody tr button.delInp:after{transform:translate(-50%, -50%) rotate(-45deg)}#container .word table tbody tr button:focus{outline:1px solid red}#container .word table tbody tr .flex{display:flex;align-items:center;width:100%}#container .word table tbody tr .flex .f-col{flex:1}#container .word table tbody tr .flex .f-col~.f-col{flex:none;margin-left:2rem}#container .word table tbody tr.addCon td input{display:inline-block;vertical-align:middle;height:2.4rem;border-bottom:2px solid #eee}#container .word table tbody tr.addCon td button{display:inline-block;vertical-align:middle}#container .word table tbody tr.plus{background-color:#eee}#container .word table tbody tr.plus td span{border-color:#fff}#container .word table tbody tr.etc{background-color:#000}#container .word table tbody tr.etc span{border:0;line-height:2.4rem;color:#fff}#container .word .writeBtn,#container .word .resultBtn{display:block;width:100%;max-width:20rem;margin:3rem auto 0}
+*, *:after, *:before {
+  box-sizing: border-box;
+  text-size-adjust: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-font-smoothing: antialiased;
+}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  word-break: keep-all;
+  word-wrap: break-word;
+  white-space: normal;
+  line-height: 1;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed;
+}
+
+audio, embed, iframe, img, object, video {
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+  vertical-align: top;
+}
+
+address, i {
+  font-style: normal;
+}
+
+em {
+  font-style: inherit;
+}
+
+a, s {
+  text-decoration: none;
+  color: inherit;
+}
+
+b, h1, h2, h3, h4, h5, strong, th {
+  font-weight: 400;
+}
+
+:focus {
+  outline: 0;
+}
+
+button, select {
+  text-transform: none;
+}
+
+button {
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+form button, input, optgroup, select, textarea {
+  appearance: none;
+  -moz-appearance: none;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  border-radius: 0;
+  border: 0;
+  font-family: inherit;
+  font-size: inherit;
+  letter-spacing: inherit;
+  line-height: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+body, html {
+  font-family: "Noto Sans KR", Dotum, Gulim, Sans-serif;
+  font-weight: 400;
+  line-height: 1.4;
+  letter-spacing: -0.5px;
+  color: #333;
+  -webkit-overflow-scrolling: touch;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+select {
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.pc_hide {
+  display: none !important;
+}
+
+.mo_hide {
+  display: initial !important;
+}
+
+/* animation set */
+[data-motion=slide-up] {
+  transform: translateY(4rem);
+  -webkit-transform: translateY(4rem);
+  opacity: 0;
+}
+
+[data-motion=slide-down] {
+  transform: translateY(-4rem);
+  -webkit-transform: translateY(-4rem);
+  opacity: 0;
+}
+
+[data-motion=slide-left] {
+  transform: translateX(-4rem);
+  -webkit-transform: translateX(-4rem);
+  opacity: 0;
+}
+
+[data-motion=slide-right] {
+  transform: translateX(4rem);
+  -webkit-transform: translateX(4rem);
+  opacity: 0;
+}
+
+[data-motion=scale-up] {
+  text-align: center;
+  transform: scale(0.8);
+  -webkit-transform: scale(0.8);
+  opacity: 0.9;
+}
+
+[data-motion=scale-down] {
+  text-align: center;
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  opacity: 0.9;
+}
+
+[data-motion=text-up] .txt {
+  display: inline-block;
+  transform: translateY(2rem) scale(0.85);
+  -webkit-transform: translateY(2rem) scale(0.85);
+  opacity: 0;
+}
+
+[data-motion=text-down] .txt {
+  display: inline-block;
+  transform: translateY(-2rem) scale(0.85);
+  -webkit-transform: translateY(-2rem) scale(0.85);
+  opacity: 0;
+}
+
+#container {
+  padding: 2rem;
+}
+#container .word {
+  max-width: 32rem;
+  margin: 0 auto;
+}
+#container .word table {
+  width: 100%;
+  border: 0.1rem solid #ccc;
+}
+#container .word table tbody.write tr:not(.addCon):not(.plus) td span {
+  position: relative;
+  padding-right: 2rem;
+}
+#container .word table tbody.write tr:not(.addCon):not(.plus) td span button {
+  right: 0;
+}
+#container .word table tbody ~ tbody {
+  border-top: 0.1rem solid #ccc;
+  background-color: #eee;
+}
+#container .word table tbody ~ tbody tr td {
+  text-align: right;
+}
+#container .word table tbody ~ tbody tr td span {
+  border-color: #fff;
+}
+#container .word table tbody tr ~ tr {
+  border-top: 0.1rem solid #ddd;
+}
+#container .word table tbody tr th, #container .word table tbody tr td {
+  padding: 1.5rem;
+}
+#container .word table tbody tr th {
+  position: relative;
+  border-right: 0.1rem solid #ddd;
+}
+#container .word table tbody tr td span {
+  display: block;
+  height: 2.4rem;
+  border-bottom: 2px solid #eee;
+}
+#container .word table tbody tr td input {
+  width: 100%;
+  height: 100%;
+  text-align: right;
+}
+#container .word table tbody tr td input:focus {
+  outline: 1px solid red;
+}
+#container .word table tbody tr button {
+  position: relative;
+  width: 1.6rem;
+  height: 1.6rem;
+  padding: 0;
+  margin: 0;
+  border-radius: 1.6rem;
+  border: 0.1rem solid #000;
+  font-size: 0;
+}
+#container .word table tbody tr button:before, #container .word table tbody tr button:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 1rem;
+  height: 0.2rem;
+  transform: translate(-50%, -50%);
+  background-color: #000;
+}
+#container .word table tbody tr button:after {
+  transform: translate(-50%, -50%) rotate(-90deg);
+}
+#container .word table tbody tr button.del, #container .word table tbody tr button.delInp {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  z-index: 1;
+  transform: translateY(-50%);
+}
+#container .word table tbody tr button.del:before, #container .word table tbody tr button.delInp:before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+#container .word table tbody tr button.del:after, #container .word table tbody tr button.delInp:after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+#container .word table tbody tr button:focus {
+  outline: 1px solid red;
+}
+#container .word table tbody tr .flex {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+#container .word table tbody tr .flex .f-col {
+  flex: 1;
+}
+#container .word table tbody tr .flex .f-col ~ .f-col {
+  flex: none;
+  margin-left: 2rem;
+}
+#container .word table tbody tr.addCon td input {
+  display: inline-block;
+  vertical-align: middle;
+  height: 2.4rem;
+  border-bottom: 2px solid #eee;
+}
+#container .word table tbody tr.addCon td button {
+  display: inline-block;
+  vertical-align: middle;
+}
+#container .word table tbody tr.plus {
+  background-color: #eee;
+}
+#container .word table tbody tr.plus td span {
+  border-color: #fff;
+}
+#container .word table tbody tr.etc {
+  background-color: #000;
+}
+#container .word table tbody tr.etc span {
+  border: 0;
+  line-height: 2.4rem;
+  color: #fff;
+}
+#container .word .writeBtn, #container .word .resultBtn {
+  display: block;
+  width: 100%;
+  max-width: 20rem;
+  margin: 3rem auto 0;
+}

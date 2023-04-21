@@ -883,29 +883,29 @@
         console.log(kim.grade); // 월드클래스
         
         // ● 객체 생성자 상속받기
-        /*[ SETP 3 ]*/ function Human02(teamBe, teamAf, name){ // Human02.call로 전달받은 파라미터
+        /*[ STEP 3 ]*/ function Human02(teamBe, teamAf, name){ // Human02.call로 전달받은 파라미터
             this.teamBefore = teamBe,
             this.teamAfter = teamAf,
             this.name = name;
             // Human02.call 로 넘겨받은 파라미터 값 history로 호출
         };
         
-        /*[ SETP 4 ]*/ Human02.prototype.history = function(){
+        /*[ STEP 4 ]*/ Human02.prototype.history = function(){
             console.log(`${this.name} : ${this.teamBefore} -> ${this.teamAfter} 이적`); // 최종 출력
         }
         
-        /*[ SETP 1 ]*/ function Son02(before, after, name){ // Son02(새로운함수)의 인자 값 -> 파라미터
+        /*[ STEP 1 ]*/ function Son02(before, after, name){ // Son02(새로운함수)의 인자 값 -> 파라미터
             Human02.call(this, before, after, name); // 받아온 인자 값 -> Human02(객체 생성자) 파라미터 전달
         }
-        /*[ SETP 1 ]*/ function Kim02(before, after, name){
+        /*[ STEP 1 ]*/ function Kim02(before, after, name){
             Human02.call(this, before, after, name);
         }
         
-        /*[ SETP 2 ]*/ Son02.prototype = Human02.prototype; // prototype을 공유해야 하기 때문에 상속받은 객체 생성자 함수를 만돌고 prototype 값 설정
-        /*[ SETP 2 ]*/ Kim02.prototype = Human02.prototype;
+        /*[ STEP 2 ]*/ Son02.prototype = Human02.prototype; // prototype을 공유해야 하기 때문에 상속받은 객체 생성자 함수를 만돌고 prototype 값 설정
+        /*[ STEP 2 ]*/ Kim02.prototype = Human02.prototype;
         
-        /*[ SETP 0 ]*/ const sonInfo = new Son02('레버쿠젠', '토트넘', '손흥민'); // Son02(새로운함수) 생성 및 인자 값 전달
-        /*[ SETP 0 ]*/ const kimInfo = new Kim02('페네르바체', '나폴리', '김민재');
+        /*[ STEP 0 ]*/ const sonInfo = new Son02('레버쿠젠', '토트넘', '손흥민'); // Son02(새로운함수) 생성 및 인자 값 전달
+        /*[ STEP 0 ]*/ const kimInfo = new Kim02('페네르바체', '나폴리', '김민재');
         
         sonInfo.history(); // 손흥민 : 레버쿠젠 -> 토트넘 이적
         kimInfo.history(); // 김민재 : 페네르바체 -> 나폴리 이적

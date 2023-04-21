@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0,user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Content-Language" content="ko-KR">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link rel="stylesheet" href="./css/font.cdn.css">
+    <link rel="stylesheet" href="./css/reset.css"/>
+    <link rel="stylesheet" href="./css/swiper.css"/>
+    <link rel="stylesheet" href="./css/style.css"/>
+    <title>Step Follow</title>
+</head>
+<body>
+    <div id="wrap">
+        <!-- header -->
+        <header id="header"></header>
+        <!--// -->
+
+        <!-- container -->
+        <div id="container">
+            <div class="apEasySell step">
+                <p class="pageTitle">빠르고 간편하게!<strong>완벽한 비대면 바로팔기</strong></p>
+                <!-- 본인 인증 -->
+                <section class="section">
+                    <div class="tit">휴대폰으로 본인 인증을 해주세요.</div>
+                    <div class="verifi">
+                        <a href="#">
+                            <img src="./images/easySell/icon_mobileChk.png">
+                            <p>휴대폰 인증</p>
+                        </a>
+                        <ul>
+                            <li>휴대폰 1대당 1명만 본인인증을 할 수 있습니다.</li>
+                            <li>입력하신 개인정보는 본인인증에만 사용됩니다.</li>
+                            <li class="red">고객님의 안전한 거래를 위해, 제3자의 요청에 의해 인증을 대신하는 것을 금지합니다. </li>
+                            <li class="red">제3자가 대신하여 인증을 시도하거나 대리로 인증을 요청하는 경우, 민·형사상의 불이익이 있을 수 있으니 유의하시기 바랍니다.</li>
+                        </ul>
+                    </div>
+                    <div class="btnWrap">
+                        <a href="#" class="btn base disabled">확인</a>
+                    </div>
+                </section>
+                <!-- // -->
+                <!-- # 차량번호, 소유주 -->
+                <section class="section">
+                    <ul class="writeList">
+                        <li>
+                            <div class="tit">차량 번호를 입력해주세요.</div>
+                            <div class="styleInp">
+                                <input type="text" id="carNumber" name="carNumber" class="inp" maxlength="20" placeholder="123가4567">
+                            </div>
+                        </li>
+                        <li>
+                            <div class="tit">차량 소유주명을 입력해주세요.</div>
+                            <div class="styleInp">
+                                <input type="text" id="ownerName" name="ownerName" class="inp" maxlength="20" placeholder="김리본">
+                            </div>
+                            <div class="addInfo"><a href="#" class="question">공동명의의 경우</a></div>
+                        </li>
+                    </ul>
+                    <div class="boxTxt">
+                        <strong>유의사항</strong>
+                        <p>차주 또는 차주의 승인을 득한 대리인이 아닌 제 3자가 부정한 목적으로 신청시 민·형사상 불이익이 있을 수 있으니 유의하시기 바랍니다.</p>
+                    </div>
+                    <hr class="space">
+                    <div class="sellForm">
+                        <ul>
+                            <li class="all">
+                                <span class="checkbox">
+                                    <input type="checkbox" id="in-all" class="chk-agree-all"/>
+                                    <label for="in-all" class="lab"><span></span>전체선택</label>
+                                </span>
+                            </li>
+                            <li>
+                                <span class="checkbox">
+                                    <input type="checkbox" class="chk-agree" name="privateAgree" id="privateAgree"/>
+                                    <label for="privateAgree" class="lab"><span></span>(필수) 개인정보 수집 및 활용에 동의</label>
+                                </span>
+                                <a href="javascript:;" class="all-view" data-no="31" data-text="(필수) 개인정보 수집 및 활용에 동의">보기</a>
+                            </li>
+                            <li>
+                                <span class="checkbox">
+                                    <input type="checkbox" class="chk-agree" name="marketAgree" id="marketAgree"/>
+                                    <label for="marketAgree" class="lab"><span></span>(선택) 마케팅 활용에 동의</label>
+                                </span>
+                                <a href="javascript:;" class="all-view" data-no="13" data-text="(선택) 마케팅 활용에 동의">보기</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="btnWrap">
+                        <a href="#" class="btn base disabled">확인</a>
+                    </div>
+                </section>
+                <!-- // -->
+                <!-- 차량정보 확인 -->
+                <section class="section">
+                    <ul class="writeCheck">
+                        <li>
+                            <div class="tit">차량 정보를 확인해주세요.</div>
+                            <div class="styleInp">
+                                <input type="text" id="carNumber" name="carNumber" class="inp" maxlength="20" value="123가4567" readonly>
+                                <p class="carNum">123가4567</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="opt">모델명</div>
+                            <div class="txt"><p class="show">G80</p></div>
+                        </li>
+                        <li>
+                            <div class="opt">상세모델</div>
+                            <div class="txt"><p>3.3 GDi AWD 프리미엄 럭셔리</p></div>
+                        </li>
+                        <li>
+                            <div class="opt">최초등록일</div>
+                            <div class="txt"><p>2010년 12월 21일</p></div>
+                        </li>
+                        <li>
+                            <div class="opt">연료</div>
+                            <div class="txt"><p>가솔린</p></div>
+                        </li>
+                    </ul>
+                    <div class="addInfo left"><a href="#" class="question">조회하신 차량정보가 실제와 다른가요?</a></div>
+                    <div class="btnWrap">
+                        <a href="#" class="btn prev arr">이전</a>
+                        <a href="#" class="btn base disabled">확인</a>
+                    </div>
+                </section>
+                <!-- // -->
+                <!-- 차량 정보 -->
+                <div class="progressBar" tabindex="-1">
+                    <div class="bar"><span class="now"></span></div>
+                    <span class="percent">0%</span>
+                </div>
+                <section class="section">
+                    <div class="tit">색상 및 주행거리를 입력해주세요.</div>
+
+                    <div class="btnWrap">
+                        <a href="#" class="btn base disabled">확인</a>
+                    </div>
+                </section>
+                <!-- // -->
+            </div>
+        </div>
+        <!-- // -->
+
+        <!-- footer -->
+        <footer id="footer"></footer>
+        <!--// -->
+    </div>
+    
+    <script src="./js/jquery-3.3.1.min.js"></script>
+    <script src="./js/swiper.min.js"></script>
+    <script>
+        // 로딩 숨김
+        function hideLoading(){
+            $('.loadingWrap').remove();
+        }
+
+        // 로딩 노출
+        function showLoading(target, type, durTime, endTime){
+            var dur = (typeof durTime === 'number' && durTime > 0) ? durTime : 1
+            ,   end = (typeof endTime === 'number' && endTime > 0) ? endTime : 3;
+
+            if(!$('.loadingWrap').length){
+                var mHtml = `<div class="loadingWrap">
+                                <div class="loadingCircle">
+                                    <svg id="circle" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;">
+                                        <linearGradient id="gradient">
+                                            <stop offset="20%" stop-color="#eee" />
+                                            <stop offset="20%" stop-color="#ddd" />
+                                            <stop offset="60%" stop-color="#bbb" />
+                                        </linearGradient>
+                                        <path fill="url(#gradient)" d="M43.935,25.145c0-10.318-8.364-18.683-18.683-18.683c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615c8.072,0,14.615,6.543,14.615,14.615H43.935z">
+                                            <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="${dur}s" repeatCount="indefinite"/>
+                                        </path>
+                                    </svg>
+                                </div>
+                                <p>차량 소유주 정보를 확인중입니다.<br>잠시만 기다려주세요.</p>
+                            </div>`; 
+
+                $(target).after().append(mHtml);
+            }
+            setTimeout(() => hideLoading(), end * 1000);
+        }
+        (function(){
+            showLoading('.writeCheck', 'next', .6, 3);
+        })();
+    </script>
+</body>
+</html>
