@@ -34,29 +34,7 @@ function inpValue(e, type){
     return val;
 }
 
-// 로딩바 숨김
-function hideLoading(){
-    $('.loading-wrap').hide();
-}
 
-// 로딩바
-function makeLoading(sec, end){
-    var _sec = (typeof sec === 'number') ? sec : 1
-    ,   _end = (typeof end === 'number') ? end : 3;
-
-    if(!$('.loading-wrap').length){
-        var mHtml = `<div class="loading-wrap">
-                    <div class="inner">
-                        <div class="bar" style="animation-duration: ${_sec}s"></div>
-                    </div>
-                </div>`; 
-
-        $('body').prepend(mHtml);
-    }else{
-        $('.loading-wrap').attr('animation-duration', `${_sec}s`).show();
-    }
-    setTimeout(() => hideLoading(), _end * 1000);
-}
 
 // 추가 금액
 function numCnt(){

@@ -43,9 +43,9 @@
                     </div>
                 </section>
                 <!-- // -->
-                <!-- # 차량번호, 소유주 -->
+                <!-- # 차량 정보 입력 -->
                 <section class="section">
-                    <ul class="writeList">
+                    <ul class="carWrite">
                         <li>
                             <div class="tit">차량 번호를 입력해주세요.</div>
                             <div class="styleInp">
@@ -65,7 +65,7 @@
                         <p>차주 또는 차주의 승인을 득한 대리인이 아닌 제 3자가 부정한 목적으로 신청시 민·형사상 불이익이 있을 수 있으니 유의하시기 바랍니다.</p>
                     </div>
                     <hr class="space">
-                    <div class="sellForm">
+                    <div class="agreeWrap">
                         <ul>
                             <li class="all">
                                 <span class="checkbox">
@@ -96,7 +96,7 @@
                 <!-- // -->
                 <!-- 차량정보 확인 -->
                 <section class="section">
-                    <ul class="writeCheck">
+                    <ul class="carInfo">
                         <li>
                             <div class="tit">차량 정보를 확인해주세요.</div>
                             <div class="styleInp">
@@ -128,16 +128,180 @@
                     </div>
                 </section>
                 <!-- // -->
-                <!-- 차량 정보 -->
+                <!-- 차량 추가 정보 -->
                 <div class="progressBar" tabindex="-1">
                     <div class="bar"><span class="now"></span></div>
                     <span class="percent">0%</span>
                 </div>
                 <section class="section">
-                    <div class="tit">색상 및 주행거리를 입력해주세요.</div>
-
-                    <div class="btnWrap">
-                        <a href="#" class="btn base disabled">확인</a>
+                    <div class="formWrite">
+                        <!-- # 색상, 주행거리 -->
+                        <div class="fCont">
+                            <div class="tit">색상 및 주행거리를 입력해주세요.</div>
+                            <div class="row">
+                                <div class="col title">색상</div>
+                                <div class="col">
+                                    <input type="text" id="color" class="inp" maxlength="20" placeholder="색상을 입력하세요.">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col title">주행거리</div>
+                                <div class="col"><input type="text" id="km" class="inp exRight" maxlength="10" placeholder="숫자만 입력하세요."><span class="exTxt" tabindex="-1">km</span></div> 
+                            </div>
+                        </div>
+                        <!-- # 판매가능시점 -->
+                        <div class="fCont">
+                            <div class="tit">판매 가능한 시점을 선택해주세요.</div>
+                            <div class="group grid2">
+                                <label class="radio">
+                                    <input class="radioOri" type="radio" name="userOpt1" value="바로 판매 가능">
+                                    <span class="radioBtn">바로 판매 가능</span>
+                                </label>
+                                <label class="radio">
+                                    <input class="radioOri" type="radio" name="userOpt1" value="1주일 이내 가능">
+                                    <span class="radioBtn">1주일 이내 가능</span>
+                                </label>
+                                <label class="radio">
+                                    <input class="radioOri" type="radio" name="userOpt1" value="30일 이내 가능">
+                                    <span class="radioBtn">30일 이내 가능</span>
+                                </label>
+                                <label class="radio">
+                                    <input class="radioOri" type="radio" name="userOpt1" value="30일 이후 가능">
+                                    <span class="radioBtn">30일 이후 가능</span>
+                                </label>
+                            </div>
+                        </div>
+                        <!-- # 보험이력 -->
+                        <div class="fCont">
+                            <div class="tit">보험 처리하지 않은 사고가 있었나요?</div>
+                            <div class="group grid3 parent">
+                                <label class="radio">
+                                    <input class="radioOri" type="radio" name="userOpt2" value="네, 있었어요.">
+                                    <span class="radioBtn">네,<br>있었어요.</span>
+                                </label>
+                                <label class="radio">
+                                    <input class="radioOri" type="radio" name="userOpt2" value="아니오, 없었어요.">
+                                    <span class="radioBtn">아니오,<br>없었어요.</span>
+                                </label>
+                                <label class="radio">
+                                    <input class="radioOri" type="radio" name="userOpt2" value="잘 모르겠어요.">
+                                    <span class="radioBtn">잘<br>모르겠어요.</span>
+                                </label>
+                            </div>
+                            <div class="group grid3 child">
+                                <div class="depth2">
+                                    <label class="radio">
+                                        <input class="radioOri" type="radio" name="userOpt2-1" value="도색/판금">
+                                        <span class="radioBtn">도색/판금</span>
+                                    </label>
+                                    <label class="radio">
+                                        <input class="radioOri" type="radio" name="userOpt2-1" value="교체 수리">
+                                        <span class="radioBtn">교체 수리</span>
+                                    </label>
+                                    <label class="radio">
+                                        <input class="radioOri" type="radio" name="userOpt2-1" value="잘 모르겠어요.">
+                                        <span class="radioBtn">잘<br>모르겠어요.</span>
+                                    </label>
+                                </div>
+                                <div class="depth2">
+                                    <label class="radio">
+                                        <input class="radioOri" type="radio" name="userOpt2-1" value="child test">
+                                        <span class="radioBtn">child test</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- # 내차장점 -->
+                        <div class="fCont">
+                            <div class="tit">내 차를 자랑해주세요.</div>
+                            <div class="group grid3 score">
+                                <label class="check">
+                                    <input class="checkOri" type="checkbox" value="10">
+                                    <span class="checkBtn">외부<br>스크래치<br>없음</span>
+                                </label>
+                                <label class="check">
+                                    <input class="checkOri" type="checkbox" value="10">
+                                    <span class="checkBtn">6개월 내<br>타이어<br>교체</span>
+                                </label>
+                                <label class="check">
+                                    <input class="checkOri" type="checkbox" value="10">
+                                    <span class="checkBtn">스마트키<br>2개 이상<br>보유</span>
+                                </label>
+                                <label class="check">
+                                    <input class="checkOri" type="checkbox" value="10">
+                                    <span class="checkBtn">비흡연<br>차량</span>
+                                </label>
+                                <label class="check">
+                                    <input class="checkOri" type="checkbox" value="10">
+                                    <span class="checkBtn">좌석 시트<br>훼손/오염<br>없음</span>
+                                </label>
+                                <label class="check">
+                                    <input class="checkOri" type="checkbox" value="10">
+                                    <span class="checkBtn">해당사항<br>없음</span>
+                                </label>
+                            </div>
+                            <div class="addAmount">
+                                <p class="empty">내 차를 자랑하면, 견적 금액이 올라가요.</p>
+                            </div>
+                            <div class="addWrite">
+                                <textarea class="txtArea" placeholder="그 외 내 차의 특이사항을 입력해주세요.&#13;&#10;&#13;&#10;[예시]&#13;&#10;파노라마 썬루프가 장착되어 있어요. (옵션 정보)&#13;&#10;1년에 1회 이상 차량 정기점검 했어요. (관리 이력)&#13;&#10;주기적인 실내 세차로 실내가 쾌적해요.(차량 상태)"></textarea>
+                            </div>
+                        </div>
+                        <div class="btnWrap flexNone">
+                            <a href="#" class="btn base disabled">확인</a>
+                            <a href="#" class="btn">전체 저장 후 다음 단계로</a>
+                        </div>
+                        <!-- # 내차사진 -->
+                        <div class="fCont">
+                            <div class="tit mgbSmall">차량 사진을 등록해주세요.</div>
+                            <p class="subTit">옵션, 시트, 타이어/휠 등 <strong>다양한 사진을 등록할 수록 <br>더 높은 가격에 판매</strong>할 수 있어요.<br><br>아래 <strong>6장의 사진을 포함하여<br>최소 10장 이상의 차량 사진을 등록</strong>해주세요.</p>
+                            <ul class="picExam">
+                                <li><div class="img"><img src="./images/easySell/img_exPic01.png"></div><p>정면</p></li>
+                                <li><div class="img"><img src="./images/easySell/img_exPic02.png"></div><p>좌측면</p></li>
+                                <li><div class="img"><img src="./images/easySell/img_exPic03.png"></div><p>우측면</p></li>
+                                <li><div class="img"><img src="./images/easySell/img_exPic04.png"></div><p>뒷면</p></li>
+                                <li><div class="img"><img src="./images/easySell/img_exPic05.png"></div><p>계기판(주행거리)</p></li>
+                                <li><div class="img"><img src="./images/easySell/img_exPic06.png"></div><p>실내전면</p></li>
+                            </ul>
+                            <div class="attatchPic">
+                                <p class="picTitle">사진 등록(<em class="photo-upload-count"><strong>0</strong></em>/20)</p>
+                                <div class="picGuide"><strong>최소 10장</strong> ~ 최대 20장까지 등록하실 수 있습니다.</div>
+	                    		<ul class="picCont">
+                                    <li><label style="background-image: url('./images/easySell/img_exPic01.png')"><button class="picDel" title="삭제"></button></label></li>
+									<li class="addImg">
+										<label>사진 추가</label>
+									</li>
+								</ul>
+	                    	</div>
+                        </div>
+                        <!-- # 차량등록증 -->
+                        <div class="fCont">
+                            <div class="tit mgbNone">자동차 등록증을 첨부하시겠어요?</div>
+                            <p class="subTit blue">첨부하시면 더욱 신속한 처리가 가능해요!</p>
+                            <div class="group grid2 parent">
+                                <label class="radio">
+                                    <input type="radio" class="radioOri" name="userOpt3" value="예">
+                                    <span class="radioBtn">예</span>
+                                </label>
+                                <label class="radio">
+                                    <input type="radio" class="radioOri" name="userOpt3" value="아니오">
+                                    <span class="radioBtn">아니오</span>
+                                </label>
+                            </div>
+                            <div class="group child">
+                                <div class="depth2">
+                                    <div class="fileAddSmall">
+                                        <input type="file" name="registFile" id="registFile" style="display: none;">
+                                        <input readonly="readonly" class="file-input" placeholder="jpg, png, pdf 파일만 등록 가능">
+                                        <button type="button" class="btn-file-open">파일찾기</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btnWrap">
+                            <a href="#" class="btn prev arr">이전</a>
+                            <a href="#" class="btn base disabled">확인</a>
+                        </div>
                     </div>
                 </section>
                 <!-- // -->
@@ -153,13 +317,118 @@
     <script src="./js/jquery-3.3.1.min.js"></script>
     <script src="./js/swiper.min.js"></script>
     <script>
+        // 입력란
+        function inpCheck(e){
+            var scope = e.originalEvent
+            ,   eCode = scope.keyCode;
+
+            switch (eCode){
+                case 13 : // action enter
+                    scope.target.blur();
+                    break;
+                case 32 : // action space
+                    scope.returnValue = false;
+                    break;
+            }
+        }
+
+        // 입력값 여부
+        function inpValue(e, type){
+            var scope = e.originalEvent
+            ,   val = scope.target.value
+            ,   reg = /[\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/gi;
+
+            switch (type){
+                case 'number' :
+                    val = val.replace(/[^0-9]/g,"");
+                    break;
+                case 'keySign' :
+                    val = val.replace(reg,"");
+                    break;
+                default : 
+                    val = val;
+                    break;
+            }
+
+            return val;
+        }
+
+        // 추가 금액
+        function numCnt(){
+            var plus = 0;
+
+            $('.score label.check input').on('change', function(e){
+                var inp = $(e.target)
+                ,   prev;
+
+                (inp.prop('checked')) ? plus += parseInt(inp.val()) : plus = plus - parseInt(inp.val());
+                if(plus > 0){
+                    prev = (prev =! NaN) ? parseInt($('.amount').attr('data-total')) : 0;
+                    $('.addAmount p').removeClass('empty').html(`<span class="amount" data-total="${plus}">${prev}</span>만원`);
+                    $('.amount').prop('Counter', prev).stop().animate({
+                        Counter: plus
+                    }, {
+                        duration: 500,
+                        step : (now) => {
+                            $('.amount').text(Math.ceil(now));
+                        }
+                    });
+                    prev = prev
+                    plus = plus;
+                }else{
+                    $('.addAmount p').addClass('empty').html('내 차를 자랑하면, 견적 금액이 올라가요.');
+                }
+            });
+        }
+
+        // 옵션 선택
+        function optDetph(){
+            $('.parent').each(function(){
+                if($(this).siblings('.child').length){
+                    var par = $(this)
+                    ,   chi = $(this).siblings('.child');
+                    par.find('label').on('change', function(e){
+                        var idx = $(this).index()
+                        ,   elm = chi.find('.depth2');
+                
+                        if($(elm[idx]).length){
+                            $(elm).hide();
+                            $(elm[idx]).fadeIn(400);
+                        }else{
+                            $(elm).hide();
+                        }
+                    })   
+                }
+            });
+        };
+
+        // 다음 화면
+        function actNext(){
+            var next = $('.btn.base');
+            
+            next.on('click', function(){
+                var btn = $(this)
+                ,   wrap = btn.parents('.section');
+            
+                if(wrap.next('.section').length){
+                    btn.addClass('on');
+                    wrap.next('.section').addClass('active');
+                    $('html, body').stop().animate({
+                        scrollTop : wrap.next('.section')[0].offsetTop
+                    }, 800, 'swing', function() { 
+                        console.log('end');
+                    });
+                }
+            });
+        }
+
         // 로딩 숨김
         function hideLoading(){
             $('.loadingWrap').remove();
         }
 
         // 로딩 노출
-        function showLoading(target, type, durTime, endTime){
+        function showLoading(target, durTime, endTime){
             var dur = (typeof durTime === 'number' && durTime > 0) ? durTime : 1
             ,   end = (typeof endTime === 'number' && endTime > 0) ? endTime : 3;
 
@@ -180,12 +449,32 @@
                                 <p>차량 소유주 정보를 확인중입니다.<br>잠시만 기다려주세요.</p>
                             </div>`; 
 
-                $(target).after().append(mHtml);
+                $(target).append(mHtml);
             }
             setTimeout(() => hideLoading(), end * 1000);
         }
+
         (function(){
-            showLoading('.writeCheck', 'next', .6, 3);
+            showLoading('.carInfo', .6, 3); // 로딩바
+            actNext();                      // 다음화면
+            optDetph();                     // 자식옵션
+            numCnt();                       // 추가금액
+
+            // 입력이벤트
+            $('.inp').on({
+                keydown : (e) => {
+                    inpCheck(e);
+                },
+                keyup : (e) => {
+                    inpCheck(e);
+                },
+                input : (e) => {
+                    console.log(`element :`, e.target, ` // value :  ${inpValue(e)} // lenght : ${inpValue(e).length}`);
+                },
+                change : (e) => {
+                    
+                }
+            }); 
         })();
     </script>
 </body>

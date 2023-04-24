@@ -83,19 +83,31 @@
   /* 인트로 */
   /* 판매 전 확인 */
 }
-.apEasySell .space {
+.apEasySell hr {
   position: relative;
   left: 50%;
   width: 100vw;
-  height: 0.5rem;
-  margin: 3.125rem 0;
   border: 0;
-  background-color: #F5F6F8;
+  margin: 3.125rem 0;
   transform: translateX(-50%);
+}
+.apEasySell hr.space {
+  height: 0.5rem;
+  background-color: #F5F6F8;
+}
+.apEasySell hr.line {
+  height: 0.0625rem;
+  background-color: #e6e6e6;
 }
 .apEasySell .btnWrap {
   padding: 0 1.5625rem;
   display: flex;
+}
+.apEasySell .btnWrap.flexNone {
+  display: block;
+}
+.apEasySell .btnWrap.flexNone .btn ~ .btn {
+  margin-top: 0.9375rem;
 }
 .apEasySell .btnWrap .btn {
   flex: 1;
@@ -193,13 +205,16 @@
 .apEasySell .review .reviewWrap .pagination span {
   width: 0.625rem;
   height: 0.625rem;
-  margin: 0 0.125rem;
+  margin: 0;
   border-radius: 100%;
   background-color: #efefef;
   opacity: 1;
 }
 .apEasySell .review .reviewWrap .pagination span[class*=active] {
   background-color: #0096ff;
+}
+.apEasySell .review .reviewWrap .pagination span ~ span {
+  margin-left: 0.3125rem;
 }
 .apEasySell .review .reviewWrap .thumbnail {
   border-radius: 0.5rem;
@@ -653,6 +668,21 @@
   letter-spacing: -0.01875rem;
   color: #000;
 }
+.apEasySell.step .section .subTit {
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  letter-spacing: -0.0125rem;
+  color: #000;
+}
+.apEasySell.step .section .subTit strong {
+  font-weight: 700;
+}
+.apEasySell.step .section .subTit.blue {
+  font-weight: 500;
+  color: #2580EC;
+}
 .apEasySell.step .section .addInfo {
   margin-top: 0.625rem;
   padding: 0 3rem;
@@ -693,120 +723,6 @@
   font-weight: 400;
   line-height: 1.125rem;
   color: #fff;
-}
-.apEasySell.step .section .writeList li ~ li, .apEasySell.step .section .writeCheck li ~ li {
-  margin-top: 2.8125rem;
-}
-.apEasySell.step .section .writeList .styleInp, .apEasySell.step .section .writeCheck .styleInp {
-  position: relative;
-  width: 15.625rem;
-  height: 3.875rem;
-  margin: 1rem auto 0;
-  border: 0.125rem solid #0096ff;
-  border-radius: 0.3125rem;
-  box-shadow: 0 0.1875rem 0.375rem rgba(0, 0, 0, 0.16);
-  background-color: #fff;
-}
-.apEasySell.step .section .writeList .styleInp::before, .apEasySell.step .section .writeList .styleInp::after, .apEasySell.step .section .writeCheck .styleInp::before, .apEasySell.step .section .writeCheck .styleInp::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0.5rem;
-  width: 0.5rem;
-  height: 0.5rem;
-  margin-top: -0.25rem;
-  border-radius: 100%;
-  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.16);
-  background-color: #fff;
-}
-.apEasySell.step .section .writeList .styleInp::after, .apEasySell.step .section .writeCheck .styleInp::after {
-  left: auto;
-  right: 0.5rem;
-}
-.apEasySell.step .section .writeList .styleInp .inp, .apEasySell.step .section .writeCheck .styleInp .inp {
-  width: 100%;
-  height: 100%;
-  padding: 0 1.5rem;
-  text-align: center;
-  font-size: 1.75rem;
-  font-weight: 700;
-  line-height: 1.2;
-  letter-spacing: -0.01875rem;
-  color: #0096ff;
-}
-.apEasySell.step .section .writeList .styleInp .inp::-moz-placeholder, .apEasySell.step .section .writeCheck .styleInp .inp::-moz-placeholder {
-  color: #d9d9d9;
-}
-.apEasySell.step .section .writeList .styleInp .inp:-ms-input-placeholder, .apEasySell.step .section .writeCheck .styleInp .inp:-ms-input-placeholder {
-  color: #d9d9d9;
-}
-.apEasySell.step .section .writeList .styleInp .inp::placeholder, .apEasySell.step .section .writeCheck .styleInp .inp::placeholder {
-  color: #d9d9d9;
-}
-.apEasySell.step .section .writeCheck .styleInp {
-  border-color: #000;
-  overflow: hidden;
-}
-.apEasySell.step .section .writeCheck .styleInp .inp {
-  color: #fff;
-}
-.apEasySell.step .section .writeCheck .styleInp .carNum {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  text-align: left;
-  font-size: 1.75rem;
-  font-weight: 700;
-  line-height: 3.75rem;
-  letter-spacing: -0.01875rem;
-  color: #000;
-  opacity: 0;
-  text-indent: 3.4375rem;
-  animation: fade-in 0s linear 1s forwards, wd-typing 1s steps(40, end) 1s forwards, bk-caret 0.75s step-end infinite;
-}
-.apEasySell.step .section .writeCheck li ~ li:not(:nth-child(2)) {
-  margin-top: 1.25rem;
-}
-.apEasySell.step .section .writeCheck li ~ li {
-  display: flex;
-  align-items: center;
-  text-align: left;
-}
-.apEasySell.step .section .writeCheck li ~ li > div {
-  font-size: 1.125rem;
-  font-weight: 400;
-  line-height: 1.5rem;
-  letter-spacing: -0.01875rem;
-  color: #666;
-}
-.apEasySell.step .section .writeCheck li ~ li .opt {
-  flex: none;
-  width: 6.875rem;
-}
-.apEasySell.step .section .writeCheck li ~ li .txt {
-  flex: 1;
-}
-.apEasySell.step .section .writeCheck li ~ li .txt p {
-  position: relative;
-  display: inline-block;
-  font-weight: 600;
-  color: #000;
-}
-.apEasySell.step .section .writeCheck li ~ li .txt p::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #EBEBEB;
-  opacity: 1;
-  transition-duration: 0.4s;
-}
-.apEasySell.step .section .writeCheck li ~ li .txt p.show::before {
-  opacity: 0;
 }
 .apEasySell.step .section .boxTxt {
   margin-top: 3.75rem;
@@ -883,39 +799,607 @@
 .apEasySell.complete .section {
   overflow: hidden;
 }
-.apEasySell.complete .section .tit {
+.apEasySell.complete .section > .tit {
   text-align: left;
+  font-size: 1.25rem;
   font-weight: 500;
   line-height: 1.875rem;
 }
-.apEasySell.complete .section .tit strong {
+.apEasySell.complete .section > .tit strong {
   font-weight: 700;
 }
-
-.sellForm ul li ~ li {
-  margin-top: 0.9375rem;
+.apEasySell.complete .section .completeTxt {
+  margin: 1.25rem auto 0;
+  padding: 1.875rem 0.625rem;
+  border: 0.0625rem solid #0096ff;
+  border-radius: 0.3125rem;
+  background-color: #F4FBFF;
 }
-.sellForm ul li.all {
-  padding-bottom: 0.625rem;
-  border-bottom: 0.125rem solid #666;
+.apEasySell.complete .section .completeTxt p {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.375rem;
+  letter-spacing: -0.01875rem;
+  color: #0096ff;
 }
-.sellForm .checkbox {
+.apEasySell.complete .section .completeTxt p::before {
+  content: "";
+  display: block;
+  width: 1.625rem;
+  height: 1.625rem;
+  margin: 0 auto 0.625rem;
+  background: url("../images/easySell/emo_smile.png") no-repeat center/100% auto;
+}
+.apEasySell.complete .section > .review {
+  margin-top: 4.375rem;
+}
+.apEasySell.complete .section > .review .tit {
+  text-align: left;
+  font-size: 1.375rem;
+  font-weight: 500;
+  line-height: 1.75rem;
+}
+.apEasySell.complete .section > .review .subTit {
+  margin-top: 0.625rem;
+  text-align: left;
+  line-height: 1.375rem;
+}
+.apEasySell.complete .section > .review .allView {
+  margin-top: 1.25rem;
+}
+.apEasySell.complete .section > .review .reviewWrap {
+  padding-top: 1.875rem;
+}
+.apEasySell .carWrite li ~ li {
+  margin-top: 2.8125rem;
+}
+.apEasySell .carInfo .styleInp {
+  border-color: #000;
+  overflow: hidden;
+}
+.apEasySell .carInfo .styleInp .inp {
+  color: #fff;
+}
+.apEasySell .carInfo .styleInp .carNum {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 3.75rem;
+  letter-spacing: -0.01875rem;
+  color: #000;
+  opacity: 0;
+  text-indent: 3.4375rem;
+  animation: fade-in 0s linear 1s forwards, wd-typing 1s steps(40, end) 1s forwards, bk-caret 0.75s step-end infinite;
+}
+.apEasySell .carInfo li ~ li {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  margin-top: 1.25rem;
+}
+.apEasySell .carInfo li ~ li:nth-child(2) {
+  margin-top: 2.8125rem;
+}
+.apEasySell .carInfo li ~ li > div {
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  letter-spacing: -0.01875rem;
+  color: #666;
+}
+.apEasySell .carInfo li ~ li .opt {
+  flex: none;
+  width: 6.875rem;
+}
+.apEasySell .carInfo li ~ li .txt {
+  flex: 1;
+}
+.apEasySell .carInfo li ~ li .txt p {
+  position: relative;
+  display: inline-block;
+  font-weight: 600;
+  color: #000;
+}
+.apEasySell .carInfo li ~ li .txt p::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #EBEBEB;
+  opacity: 1;
+  transition-duration: 0.4s;
+}
+.apEasySell .carInfo li ~ li .txt p.show::before {
+  opacity: 0;
+}
+.apEasySell .styleInp {
+  position: relative;
+  width: 15.625rem;
+  height: 3.875rem;
+  margin: 1rem auto 0;
+  border: 0.125rem solid #0096ff;
+  border-radius: 0.3125rem;
+  box-shadow: 0 0.1875rem 0.375rem rgba(0, 0, 0, 0.16);
+  background-color: #fff;
+}
+.apEasySell .styleInp::before, .apEasySell .styleInp::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0.5rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-top: -0.25rem;
+  border-radius: 100%;
+  box-shadow: 0 0.125rem 0.3125rem rgba(0, 0, 0, 0.16);
+  background-color: #fff;
+}
+.apEasySell .styleInp::after {
+  left: auto;
+  right: 0.5rem;
+}
+.apEasySell .styleInp .inp {
+  width: 100%;
+  height: 100%;
+  padding: 0 1.5rem;
+  border: 0;
+  border-radius: 0;
+  text-align: center;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01875rem;
+  color: #0096ff;
+}
+.apEasySell .styleInp .inp::-moz-placeholder {
+  color: #d9d9d9;
+}
+.apEasySell .styleInp .inp:-ms-input-placeholder {
+  color: #d9d9d9;
+}
+.apEasySell .styleInp .inp::placeholder {
+  color: #d9d9d9;
+}
+.apEasySell .picExam {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1.875rem;
+}
+.apEasySell .picExam li {
+  width: calc((100% - 0.875rem) / 3);
+  margin-right: 0.4375rem;
+}
+.apEasySell .picExam li:nth-child(3n) {
+  margin-right: 0;
+}
+.apEasySell .picExam li:nth-child(n+4) {
+  margin-top: 1.125rem;
+}
+.apEasySell .picExam li .img {
+  border-radius: 0.1875rem;
+  overflow: hidden;
+}
+.apEasySell .picExam li p {
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  letter-spacing: -0.0125rem;
+  color: #000;
+}
+.apEasySell .attatchPic {
+  margin-top: 3.125rem;
+}
+.apEasySell .attatchPic .picTitle {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  letter-spacing: -0.01875rem;
+  color: #000;
+}
+.apEasySell .attatchPic .picTitle strong {
+  font-weight: 700;
+}
+.apEasySell .attatchPic .picGuide {
+  margin-top: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  letter-spacing: -0.0125rem;
+  color: #000;
+}
+.apEasySell .attatchPic .picGuide strong {
+  font-weight: 700;
+}
+.apEasySell .attatchPic .picCont {
+  margin-top: 1.25rem;
+  font-size: 0;
+}
+.apEasySell .attatchPic .picCont li {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  width: calc((100% - 0.875rem) / 3);
+  margin-right: 0.4375rem;
+  padding-top: 22%;
+  border-radius: 0.1875rem;
+  overflow: hidden;
+  background-color: #F7F7F7;
+}
+.apEasySell .attatchPic .picCont li label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.apEasySell .attatchPic .picCont li label .picDel {
+  position: absolute;
+  right: 0.25rem;
+  top: 0.25rem;
+  z-index: 1;
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 100%;
+  background-color: rgba(0, 0, 0, 0.55);
+}
+.apEasySell .attatchPic .picCont li label .picDel::before, .apEasySell .attatchPic .picCont li label .picDel::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 10px;
+  height: 1px;
+  background: #fff;
+}
+.apEasySell .attatchPic .picCont li label .picDel::before {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+.apEasySell .attatchPic .picCont li label .picDel::after {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.apEasySell .attatchPic .picCont li.addImg {
+  display: block;
+  margin: 0 auto;
+}
+.apEasySell .attatchPic .picCont li.addImg label {
+  left: 50%;
+  top: 50%;
+  width: auto;
+  height: auto;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  letter-spacing: -0.0125rem;
+  color: #999;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+.apEasySell .attatchPic .picCont li.addImg label::before {
+  content: "+";
+  display: block;
+  width: 1.625rem;
+  height: 1.625rem;
+  margin: 0 auto 0.3125rem;
+  border-radius: 100%;
+  background-color: #DBDBDB;
+  text-align: center;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.625rem;
+  letter-spacing: -0.0125rem;
+  color: #fff;
+}
+.apEasySell .attatchPic .picCont li:nth-child(3n) {
+  margin-right: 0;
+}
+.apEasySell .attatchPic .picCont li:nth-child(n+4) {
+  margin-top: 7px;
+}
+.apEasySell .attatchPic .picCont li + .addImg {
+  display: inline-block;
+  vertical-align: top;
+}
+.apEasySell .formWrite .fCont {
+  position: relative;
+}
+.apEasySell .formWrite .fCont .tit {
+  margin-bottom: 2.5rem;
+}
+.apEasySell .formWrite .fCont .tit.mgbSmall {
+  margin-bottom: 1.25rem;
+}
+.apEasySell .formWrite .fCont .tit.mgbNone {
+  margin-bottom: 0.25rem;
+}
+.apEasySell .formWrite .fCont ~ .fCont {
+  padding-top: 3.125rem;
+  margin-top: 3.125rem;
+}
+.apEasySell .formWrite .fCont ~ .fCont::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 100vw;
+  border-top: 1px solid #e6e6e6;
+  transform: translateX(-50%);
+}
+.apEasySell .formWrite .fCont .row {
+  display: flex;
+  align-items: center;
+}
+.apEasySell .formWrite .fCont .row ~ .row {
+  margin-top: 1.25rem;
+}
+.apEasySell .formWrite .fCont .row .col {
+  position: relative;
+  flex: 1;
+}
+.apEasySell .formWrite .fCont .row .col.title {
+  flex: 0 5.9375rem;
+}
+.apEasySell .formWrite .fCont .group {
+  position: relative;
+  z-index: 1;
+  font-size: 0;
+}
+.apEasySell .formWrite .fCont .group label {
+  vertical-align: top;
+  margin-right: 0.625rem;
+}
+.apEasySell .formWrite .fCont .group.child [class*=depth] {
+  display: none;
+  position: relative;
+  margin: 1.25rem 0 0;
+  padding: 1.125rem 0.875rem;
+  border-radius: 0.3125rem;
+  background-color: #fff;
+  box-shadow: 0 0.1875rem 1.5625rem rgba(80, 104, 172, 0.14);
+}
+.apEasySell .formWrite .fCont .group.child [class*=depth]:after {
+  content: "";
+  position: absolute;
+  left: 1.875rem;
+  top: -1.875rem;
+  border: 1.25rem solid transparent;
+  border-bottom-color: #fff;
+}
+.apEasySell .formWrite .fCont .group.child [class*=depth]:nth-child(2)::after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+.apEasySell .formWrite .fCont .group.child [class*=depth]:nth-child(3)::after {
+  left: auto;
+  right: 1.875rem;
+  transform: translateX(-50%);
+}
+.apEasySell .formWrite .fCont .group.child [class*=depth] .radioBtn {
+  height: 4.0625rem;
+}
+.apEasySell .formWrite .fCont .group.grid2 label {
+  width: calc((100% - 0.625rem) / 2);
+}
+.apEasySell .formWrite .fCont .group.grid2 label:nth-child(2n) {
+  margin-right: 0;
+}
+.apEasySell .formWrite .fCont .group.grid2 label:nth-child(n+3) {
+  margin-top: 0.625rem;
+}
+.apEasySell .formWrite .fCont .group.grid3 label {
+  width: calc((100% - 24px) / 3);
+}
+.apEasySell .formWrite .fCont .group.grid3 label [class*=Btn] {
+  height: 5rem;
+}
+.apEasySell .formWrite .fCont .group.grid3 label:nth-child(3n) {
+  margin-right: 0;
+}
+.apEasySell .formWrite .fCont .group.grid3 label:nth-child(n+4) {
+  margin-top: 0.625rem;
+}
+.apEasySell .formWrite .fCont .title {
+  text-align: left;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  color: #000;
+}
+.apEasySell .formWrite .fCont .exTxt {
+  position: absolute;
+  top: 0.875rem;
+  right: 0.625rem;
+  z-index: 1;
+  text-align: right;
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+  color: #000;
+  pointer-events: none;
+}
+.apEasySell .formWrite .fCont .addAmount {
+  margin-top: 1.25rem;
+  width: 100%;
+  height: 3.75rem;
+  border: 0.0625rem solid #0096ff;
+  border-radius: 0.3125rem;
+  background-color: #e6f5ff;
+  text-align: center;
+}
+.apEasySell .formWrite .fCont .addAmount p {
+  display: inline-block;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 3.75rem;
+  color: #0096ff;
+  letter-spacing: -0.01875rem;
+}
+.apEasySell .formWrite .fCont .addAmount p.empty {
+  font-weight: 500;
+}
+.apEasySell .formWrite .fCont .addAmount p.empty::after {
+  content: "";
+  display: inline-block;
+  vertical-align: -0.4375rem;
+  width: 1.625rem;
+  height: 1.625rem;
+  margin-left: 0.25rem;
+  background: url("../images/easySell/emo_smile.png") no-repeat center/100% auto;
+}
+.apEasySell .formWrite .fCont .addAmount p.total {
+  display: none;
+}
+.apEasySell .formWrite .fCont .addAmount p .amount {
+  position: relative;
+  display: inline-block;
+  min-width: 1.375rem;
+  text-align: right;
+}
+.apEasySell .formWrite .fCont .addAmount p .amount:before {
+  content: "+";
+  position: absolute;
+  left: -0.9375rem;
+  z-index: 1;
+  font-size: 1rem;
+  font-weight: 700;
+  text-align: center;
+  color: #0096ff;
+}
+.apEasySell .formWrite .fCont .addWrite {
+  margin-top: 1.5625rem;
+}
+.apEasySell .formWrite .inp {
+  width: 100%;
+  height: 3.125rem;
+  padding: 0.875rem;
+  border: 0.0625rem solid #ccc;
+  border-radius: 0.3125rem;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  color: #000;
+  letter-spacing: -0.01875rem;
+}
+.apEasySell .formWrite .inp.exRight {
+  padding-right: 3.125rem;
+}
+.apEasySell .formWrite .inp::-moz-placeholder {
+  font-weight: 400;
+  color: #c9c9c9;
+}
+.apEasySell .formWrite .inp:-ms-input-placeholder {
+  font-weight: 400;
+  color: #c9c9c9;
+}
+.apEasySell .formWrite .inp::placeholder {
+  font-weight: 400;
+  color: #c9c9c9;
+}
+.apEasySell .formWrite .inp:focus {
+  border-color: #0096ff;
+}
+.apEasySell .formWrite .radio, .apEasySell .formWrite .check {
   position: relative;
   display: inline-block;
   text-align: center;
 }
-.sellForm .checkbox input {
+.apEasySell .formWrite .radioBtn, .apEasySell .formWrite .checkBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 3.4375rem;
+  padding: 0 0.3125rem;
+  border-radius: 0.3125rem;
+  border: 0.0625rem solid #F7F7F7;
+  background-color: #F7F7F7;
+  text-align: center;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  color: #999;
+  white-space: nowrap;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.apEasySell .formWrite .radioOri, .apEasySell .formWrite .checkOri {
   opacity: 0;
   outline: 0;
   position: absolute;
   z-index: -1;
 }
-.sellForm .checkbox input:checked + .lab span {
+.apEasySell .formWrite .radioOri:checked + [class*=Btn], .apEasySell .formWrite .checkOri:checked + [class*=Btn] {
+  border-color: #0096ff;
+  box-shadow: 0 0.25rem 0.625rem rgba(80, 104, 172, 0.15);
+  background-color: #fff;
+  color: #0096ff;
+  font-weight: 600;
+}
+.apEasySell .formWrite .txtArea {
+  width: 100%;
+  height: 11.25rem;
+  border: 0.0625rem solid #C5C2C2;
+  border-radius: 0.3125rem;
+  padding: 1.25rem 0.9375rem;
+  text-align: left;
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  color: #333;
+  letter-spacing: -0.01875rem;
+}
+.apEasySell .formWrite .txtArea::-moz-placeholder {
+  color: #999;
+}
+.apEasySell .formWrite .txtArea:-ms-input-placeholder {
+  color: #999;
+}
+.apEasySell .formWrite .txtArea::placeholder {
+  color: #999;
+}
+.apEasySell .formWrite .txtArea:focus {
+  border-color: #0096ff;
+}
+.apEasySell .agreeWrap ul li ~ li {
+  margin-top: 0.9375rem;
+}
+.apEasySell .agreeWrap ul li.all {
+  padding-bottom: 0.625rem;
+  border-bottom: 0.125rem solid #666;
+}
+.apEasySell .agreeWrap .checkbox {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+.apEasySell .agreeWrap .checkbox input {
+  opacity: 0;
+  outline: 0;
+  position: absolute;
+  z-index: -1;
+}
+.apEasySell .agreeWrap .checkbox input:checked + .lab span {
   border-color: #0096ff;
   background-image: url("../images/easySell/icon_chkbox_chk.png");
   background-color: #0096ff;
 }
-.sellForm .checkbox .lab {
+.apEasySell .agreeWrap .checkbox .lab {
   position: relative;
   display: inline-block;
   font-size: 1rem;
@@ -925,7 +1409,7 @@
   color: #333;
   cursor: pointer;
 }
-.sellForm .checkbox .lab span {
+.apEasySell .agreeWrap .checkbox .lab span {
   display: inline-block;
   vertical-align: top;
   width: 1.5rem;
@@ -936,7 +1420,7 @@
   background: url("../images/easySell/icon_chkbox.png") no-repeat center/0.9375rem auto;
   transition-duration: 0.2s;
 }
-.sellForm .all-view {
+.apEasySell .agreeWrap .all-view {
   text-decoration: underline;
   font-size: 1rem;
   font-weight: 500;
@@ -972,17 +1456,17 @@
   transition-duration: 1s;
   transition-timing-function: ease-in-out;
 }
+.progressBar .bar .now.act::before {
+  left: calc(100% - 2rem);
+}
 .progressBar .bar .now::before {
   content: "";
   position: absolute;
-  right: 0;
+  left: 0;
   bottom: calc(100% + 0.25rem);
   width: 2rem;
   height: 0.75rem;
-  background-image: url("../images/easySell/icon_progressCar.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100% auto;
+  background: url("../images/easySell/icon_progressCar.png") no-repeat center/100% auto;
 }
 .progressBar .percent {
   position: absolute;
