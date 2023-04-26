@@ -48,8 +48,13 @@ html{ font-size:62.5%; }
 .opt-btn { position: relative; display: inline-block; width: auto; }
 .opt-btn input { position: absolute; left: -9999px; top: 0; }
 .opt-btn p { display: block; position: relative; padding-left: 2.8rem; font-size: 1.6rem; font-weight: 400; line-height: 2.4rem; color: #333; }
+.opt-btn p .img { display: block; width: 12.6rem; margin-top: .6rem; border-radius: .3rem; box-shadow: 0 .3rem .5rem rgba(0, 0, 0, .15); }
+.opt-btn p .img.small { width: 10rem; }
+.opt-btn p .img.medium { width: 11.6rem; }
 .opt-btn p:before { content: ''; position: absolute; left: 0; top: 50%; width: 2rem; height: 2rem; margin-top: -1rem; border-radius: 100%; border: .1rem solid #999; border: 0; background: url('../images/icon_total_group.png') no-repeat -16rem center/auto 2rem #fff;  overflow: hidden; }
 .opt-btn input:checked + p:before { background-position: -18rem center; }
+
+.opt-btn.img p:before { top: .3rem; margin-top: 0; }
 
 .opt-btn.btn { width: 100%; }
 .opt-btn.btn p { height: 5rem; padding: 0 1.5rem; border-radius: .5rem; background-color: #F6F6F6; font-size: 1.8rem; color: #000; line-height: 5rem; }
