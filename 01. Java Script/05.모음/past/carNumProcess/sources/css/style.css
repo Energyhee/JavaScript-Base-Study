@@ -107,6 +107,7 @@ html{ font-size:62.5%; }
 .toggle-wrap .toggle-cont { height: 0; overflow: hidden; }
 .toggle-wrap .toggle-cont.on { height: auto; }
 .toggle-wrap .toggle-cont .toggle-inner { padding: 0 2rem 2.2rem; }
+.toggle-wrap .toggle-cont .toggle-inner.pdBot { padding-bottom: 2.6rem; }
 .toggle-wrap .toggle-cont .sub-tit { margin-top: 3rem; font-size: 1.8rem; font-weight: 700; line-height: 2.4rem; color: #000; }
 .toggle-wrap .toggle-cont .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem .5rem; }
 .toggle-wrap .toggle-cont .grid.gap5 { gap: .5rem; }
