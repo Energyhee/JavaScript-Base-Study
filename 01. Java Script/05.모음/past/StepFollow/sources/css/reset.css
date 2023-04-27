@@ -12,7 +12,7 @@ a,s{text-decoration:none;color:inherit;}
 b,h1,h2,h3,h4,h5,strong,th{font-weight:400;}
 :focus{outline:0;}
 button,select{text-transform:none;}
-button{cursor:pointer;box-sizing:border-box;margin: 0;padding: 0;background: none; border: none;font-family: 'Noto Sans KR',Dotum,Gulim,Sans-serif;}
+button{cursor:pointer;box-sizing:border-box;margin: 0;padding: 0;background: none; border: none;font-family: 'SUIT','Noto Sans KR',Dotum,Gulim,Sans-serif;}
 form button,input,optgroup,select,textarea{appearance:none;-moz-appearance:none;margin:0;padding:0;background-color:transparent;border-radius:0;border:0;font-family:inherit;font-size:inherit;letter-spacing:inherit;line-height:inherit;}
 input::-ms-clear{display:none;}
 select::-ms-expand {display:none;}
