@@ -322,9 +322,6 @@
   letter-spacing: -0.0125rem;
   color: #999;
 }
-.apEasySell.intro {
-  padding-bottom: 3.125rem;
-}
 .apEasySell.intro > .section {
   position: relative;
   width: 100%;
@@ -489,6 +486,90 @@
 .apEasySell.intro .review {
   padding-top: 3.75rem;
   padding-bottom: 4.25rem;
+}
+.apEasySell.intro .introduce {
+  margin: 3.75rem 0 0;
+  padding: 3.125rem 0 0;
+  background-color: #F7F7F7;
+}
+.apEasySell.intro .introduce .tit {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.75rem;
+  letter-spacing: -0.01875rem;
+  color: #000;
+}
+.apEasySell.intro .introduce .tit span {
+  display: block;
+  margin: 0 auto 0.125rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  color: #0096FF;
+}
+.apEasySell.intro .introduce .introduceWrap {
+  margin-top: 1.5625rem;
+}
+.apEasySell.intro .introduce .introduceWrap .list .inner .txt {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.125rem;
+  letter-spacing: -0.01875rem;
+  color: #000;
+}
+.apEasySell.intro .introduce .introduceWrap .list .inner .txt span {
+  display: inline-block;
+  vertical-align: top;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin-right: 0.375rem;
+  border-radius: 1.125rem;
+  background-color: #0096FF;
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.125rem;
+  color: #fff;
+}
+.apEasySell.intro .introduce .introduceWrap .list .inner .img {
+  position: static;
+  max-width: 16.25rem;
+  margin: 0.625rem auto 0;
+}
+.apEasySell.intro .introduce .introduceWrap .swiper-slide {
+  opacity: 0 !important;
+}
+.apEasySell.intro .introduce .introduceWrap .swiper-slide.swiper-slide-active {
+  opacity: 1 !important;
+}
+.apEasySell.intro .introduce .introduceWrap [class*=swiper-button] {
+  position: absolute;
+  top: 50%;
+  left: 1.5625rem;
+  width: 0.75rem;
+  height: 1.375rem;
+  margin-top: 0;
+  background: url("../images/easySell/icon_swiperArr.png") no-repeat center/100% auto;
+  transition-duration: 0.4s;
+}
+.apEasySell.intro .introduce .introduceWrap [class*=swiper-button].swiper-button-next {
+  left: auto;
+  right: 1.5625rem;
+  transform: rotate(180deg);
+}
+.apEasySell.intro .introduce .introduceWrap [class*=swiper-button].swiper-button-disabled {
+  opacity: 0;
+}
+.apEasySell.intro .introduce > p {
+  padding: 1.25rem;
+  background-color: #292929;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.375rem;
+  letter-spacing: -0.01875rem;
+  color: #fff;
 }
 .apEasySell.noti {
   padding: 3.125rem 1.5625rem;

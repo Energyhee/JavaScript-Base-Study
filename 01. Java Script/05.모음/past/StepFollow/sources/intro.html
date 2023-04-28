@@ -143,6 +143,41 @@
                 <div class="btnWrap">
                     <a href="#" class="btn base arr">잘 가, 내 차!</a>
                 </div>
+                <!-- # 빠른 내차팔기 소개 -->
+                <section class="section introduce">
+                    <div class="tit"><span>4단계로 끝나는</span>쉽고 빠른 내차 팔기</div>
+                    <div class="introduceWrap">
+                        <ul class="list swiper-wrapper">
+                            <li class="swiper-slide">
+                                <div class="inner">
+                                    <p class="txt"><span>1</span>차량 번호 및 소유주 입력</p>
+                                    <div class="img"><img src="./images/easySell/img_info_step01.png"></div>
+                                </div>
+                            </li>
+                            <li class="swiper-slide">
+                                <div class="inner">
+                                    <p class="txt"><span>2</span>기본 정보 입력</p>
+                                    <div class="img"><img src="./images/easySell/img_info_step02.png"></div>
+                                </div>
+                            </li>
+                            <li class="swiper-slide">
+                                <div class="inner">
+                                    <p class="txt"><span>3</span>내 차 자랑하기</p>
+                                    <div class="img"><img src="./images/easySell/img_info_step03.png"></div>
+                                </div>
+                            </li>
+                            <li class="swiper-slide">
+                                <div class="inner">
+                                    <p class="txt"><span>4</span>사진 등록</p>
+                                    <div class="img"><img src="./images/easySell/img_info_step04.png"></div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                    <p>최대 6시간 안에<br>내 차 견적 확인하고, 판매 결정하면,<br>세상 편한 내차 팔기 끝!</p>
+                </section>
             </div>
             <!-- // -->
         </div>
@@ -157,55 +192,51 @@
     <script src="./js/swiper.min.js"></script>
     <script>
         function animationAction(opt){
-            try{
-                if(opt.state && $('[data-' + opt.obj + ']').length){
-                    $('[data-' + opt.obj + ']').each(function(){
-                        var obj = $(this)
-                        ,   type = obj.data('motion')
-                        ,   duration = obj.data('duration')
-                        ,   delay = obj.data('delay')
-                        ,   objTop = obj.offset().top
-                        ,   objSet;
-                
-                        if(type === 'slide-up' || type === 'slide-down'){
-                            objSet = 'translateY(0px)';
-                        }else if(type === 'slide-left' || type === 'slide-right'){
-                            objSet = 'translateX(0px)';
-                        }else if(type === 'scale-up' || type === 'scale-down'){
-                            objSet = 'scale(1)';
-                        }else if(type === 'fade-in' || type === 'all'){
-                            objSet = '';
-                        }
-                        
-                        $(window).on('scroll', function(){
-                            var winScroll = $(document).scrollTop() || window.pageYOffset;
+            if(opt.state && $('[data-' + opt.obj + ']').length){
+                $('[data-' + opt.obj + ']').each(function(){
+                    var obj = $(this)
+                    ,   type = obj.data('motion')
+                    ,   duration = obj.data('duration')
+                    ,   delay = obj.data('delay')
+                    ,   objTop = obj.offset().top
+                    ,   objSet;
+            
+                    if(type === 'slide-up' || type === 'slide-down'){
+                        objSet = 'translateY(0px)';
+                    }else if(type === 'slide-left' || type === 'slide-right'){
+                        objSet = 'translateX(0px)';
+                    }else if(type === 'scale-up' || type === 'scale-down'){
+                        objSet = 'scale(1)';
+                    }else if(type === 'fade-in' || type === 'all'){
+                        objSet = '';
+                    }
+                    
+                    $(window).on('scroll', function(){
+                        var winScroll = $(document).scrollTop() || window.pageYOffset;
 
-                            if(winScroll > objTop - ($(window).height() * .5)){
-                                if(obj.hasClass('action')) return false;
-                                if(type === 'counter'){
-                                    obj.prop('Counter', 0).stop().animate({
-                                        Counter: parseInt(obj.data('num'))
-                                    }, {
-                                        duration: duration * 1000,
-                                        step : (now) => {
-                                            obj.text(Math.ceil(now));
-                                        }
-                                    });
-                                }else{
-                                    obj.css({
-                                        'transition-duration' : duration + 's',
-                                        'transition-delay' : delay + 's',
-                                        'transform' : objSet,
-                                        'opacity' : '1'
-                                    });
-                                }
-                                obj.addClass('action');
+                        if(winScroll > objTop - ($(window).height() * .5)){
+                            if(obj.hasClass('action')) return false;
+                            if(type === 'counter'){
+                                obj.prop('Counter', 0).stop().animate({
+                                    Counter: parseInt(obj.data('num'))
+                                }, {
+                                    duration: duration * 1000,
+                                    step : (now) => {
+                                        obj.text(Math.ceil(now));
+                                    }
+                                });
+                            }else{
+                                obj.css({
+                                    'transition-duration' : duration + 's',
+                                    'transition-delay' : delay + 's',
+                                    'transform' : objSet,
+                                    'opacity' : '1'
+                                });
                             }
-                        }).trigger('scroll');
-                    });
-                }
-            }catch(e){
-                console.log('%c[ERROR]%c' + e, 'bold; color: red;', 'color: beige');
+                            obj.addClass('action');
+                        }
+                    }).trigger('scroll');
+                });
             }
         }
 
@@ -223,6 +254,15 @@
                 pagination: {
                     el: '.reviewWrap .pagination',
                     clickable : true,
+                },
+            });
+
+            var	_mainInfo = new Swiper('.introduceWrap', {
+                effect: "fade",
+                slidesPerView: 1,
+                navigation: {
+                    prevEl: $('.introduceWrap .swiper-button-prev'),
+                    nextEl: $('.introduceWrap .swiper-button-next'),
                 },
             });	
         })();

@@ -332,7 +332,6 @@
     }
     /* 인트로 */
     &.intro {
-        padding-bottom: px(50);
         > .section {
             position: relative;
             width: 100%;
@@ -499,6 +498,94 @@
         .review {
             padding-top: px(60);
             padding-bottom: px(68);
+        }
+        .introduce {
+            margin: px(60) 0 0;
+            padding: px(50) 0 0;
+            background-color: #F7F7F7;
+            .tit {
+                text-align: center;
+                font-size: px(24);
+                font-weight: 600;
+                line-height: px(28);
+                letter-spacing: px(-.3);
+                color: #000;
+                span {
+                    display: block;
+                    margin: 0 auto px(2);
+                    font-size: px(16);
+                    font-weight: 400;
+                    line-height: px(20);
+                    color: #0096FF;
+                }
+            }
+            .introduceWrap {
+                margin-top: px(25);
+                .list {
+                    .inner {
+                        .txt { 
+                            text-align: center;
+                            font-size: px(16);
+                            font-weight: 400;
+                            line-height: px(18);
+                            letter-spacing: px(-.3);
+                            color: #000;
+                            span {
+                                display: inline-block;
+                                vertical-align: top;
+                                width: px(18);
+                                height: px(18);
+                                margin-right: px(6);
+                                border-radius: px(18);
+                                background-color: #0096FF;
+                                font-size: px(12);
+                                font-weight: 500;
+                                line-height: px(18);
+                                color: #fff;
+                            }
+                        }
+                        .img {
+                            position: static;
+                            max-width: px(260);
+                            margin: px(10) auto 0;
+                        }
+                    }
+                }
+                .swiper-slide {
+                    opacity: 0 !important;
+                    &.swiper-slide-active {
+                        opacity: 1 !important;
+                    }
+                }
+                [class*='swiper-button'] {
+                    position: absolute;
+                    top: 50%;
+                    left: px(25);
+                    width: px(12);
+                    height: px(22);
+                    margin-top: 0;
+                    background: url('../images/easySell/icon_swiperArr.png') no-repeat center/100% auto;
+                    transition-duration: .4s;
+                    &.swiper-button-next {
+                        left: auto;
+                        right: px(25);
+                        transform: rotate(180deg);
+                    }
+                    &.swiper-button-disabled {
+                        opacity: 0;
+                    }
+                }
+            }
+            > p {
+                padding: px(20);
+                background-color: #292929;
+                text-align: center;
+                font-size: px(16);
+                font-weight: 500;
+                line-height: px(22);
+                letter-spacing: px(-.3);
+                color: #fff;
+            }
         }
     }
     /* 판매 전 확인 */
