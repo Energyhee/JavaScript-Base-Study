@@ -1,4 +1,8 @@
 @charset "UTF-8";
+.test {
+  max-width: 68.75rem;
+}
+
 /* media */
 @media screen and (max-width: 320px) {
   html {
@@ -694,20 +698,21 @@
   border: 0.0625rem solid #ededed;
   background-color: #F6F6F6;
   text-align: center;
+}
+.apEasySell.noti .bottomTxt strong {
+  display: block;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1rem;
+  color: #666;
+}
+.apEasySell.noti .bottomTxt p {
+  margin-top: 0.3125rem;
   font-size: 0.8125rem;
   font-weight: 400;
   line-height: 1.125rem;
   letter-spacing: -0.01875rem;
   color: #666;
-}
-.apEasySell.noti .bottomTxt strong {
-  display: block;
-  font-weight: 600;
-  line-height: 16px;
-}
-.apEasySell.noti .bottomTxt p {
-  margin-top: 0.3125rem;
-  line-height: 1.125rem;
 }
 .apEasySell.noti .btnWrap {
   margin: 2.5rem 0 0;
@@ -751,8 +756,8 @@
   overflow: hidden;
 }
 .apEasySell.step .section.write {
-  min-height: calc(100vh - 11.6875rem);
-  max-height: calc(100vh - 11.6875rem);
+  min-height: calc(100vh - 12.1875rem);
+  max-height: calc(100vh - 12.1875rem);
   margin-top: 5.9375rem;
   overflow-y: auto;
 }

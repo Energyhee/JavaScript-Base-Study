@@ -128,16 +128,12 @@
                     <div class="btnWrap">
                         <a href="javascript:;" class="btn arr view prev">이전</a>
                         <!-- # 비활성화 disabled 클래스 추가 -->
-                        <a href="javascript:;" class="btn base view next">확인</a>
+                        <a href="javascript:;" class="btn base view next" onclick="getData(this);">확인</a>
                     </div>
                 </section>
                 <!-- // -->
                 <!-- # 차량 추가 정보1 -->
                 <section class="section write">
-                    <div class="progressBar" tabindex="-1">
-                        <div class="bar"><span class="now"></span></div>
-                        <span class="percent">0%</span>
-                    </div>
                     <div class="formWrite">
                         <div class="fContWrap">
                             <!-- # 색상, 주행거리 -->
@@ -244,7 +240,7 @@
                                         <span class="checkBtn">좌석 시트<br>훼손/오염<br>없음</span>
                                     </label>
                                     <label class="check">
-                                        <input class="checkOri" type="checkbox" name="userOpt5" value="10">
+                                        <input class="checkOri reset" type="checkbox" name="userOpt5" value="0">
                                         <span class="checkBtn">해당사항<br>없음</span>
                                     </label>
                                 </div>
@@ -267,10 +263,6 @@
                 <!-- // -->
                 <!-- # 차량 추가 정보2 -->
                 <section class="section write">
-                    <div class="progressBar" tabindex="-1">
-                        <div class="bar"><span class="now"></span></div>
-                        <span class="percent">0%</span>
-                    </div>
                     <div class="formWrite">
                         <div class="fContWrap">
                             <!-- # 내차사진 -->
@@ -417,22 +409,30 @@
                 var inp = $(e.target)
                 ,   prev;
 
-                (inp.prop('checked')) ? plus += parseInt(inp.val()) : plus = plus - parseInt(inp.val());
-                if(plus > 0){
-                    prev = (prev =! NaN) ? parseInt($('.amount').attr('data-total')) : 0;
-                    $('.addAmount p').removeClass('empty').html(`<span class="amount" data-total="${plus}">${prev}</span>만원`);
-                    $('.amount').prop('Counter', prev).stop().animate({
-                        Counter: plus
-                    }, {
-                        duration: 500,
-                        step : (now) => {
-                            $('.amount').text(Math.ceil(now));
-                        }
-                    });
-                    prev = prev
-                    plus = plus;
-                }else{
+                if(parseInt(inp.val()) === 0){
+                    prev = 0;
+                    plus = 0;
+                    $('.score label.check input:not(.reset)').prop('checked', false);
                     $('.addAmount p').addClass('empty').html('내 차를 자랑하면, 견적 금액이 올라가요.');
+                }else{
+                    (inp.prop('checked')) ? plus += parseInt(inp.val()) : plus = plus - parseInt(inp.val());
+                    $('.score label.check input.reset').prop('checked', false);
+                    if(plus > 0){
+                        prev = (prev =! NaN) ? parseInt($('.amount').attr('data-total')) : 0;
+                        $('.addAmount p').removeClass('empty').html(`<span class="amount" data-total="${plus}">${prev}</span>만원`);
+                        $('.amount').prop('Counter', prev).stop().animate({
+                            Counter: plus
+                        }, {
+                            duration: 500,
+                            step : (now) => {
+                                $('.amount').text(Math.ceil(now));
+                            }
+                        });
+                        prev = prev
+                        plus = plus;
+                    }else{            	
+                        $('.addAmount p').addClass('empty').html('내 차를 자랑하면, 견적 금액이 올라가요.');
+                    }	
                 }
             });
         }
@@ -609,7 +609,8 @@
         // # 화면
         function actionStep(){
             if($('.apEasySell.step').length){
-                var section = $('.apEasySell.step').find('.section');
+                var section = $('.apEasySell.step').find('.section')
+                ,	progressEl = '<div class="progressBar" tabindex="-1"><div class="bar"><span class="now"></span></div><span class="percent">0%</span></div>';
                 
                 section.first().fadeIn(400);
                 section.find('.btnWrap .btn').on('click', function(){
@@ -632,6 +633,15 @@
                                         showLoading('.carInfo', .6, 1);
                                         actionInfo(wrap.next('.load').find('.txt p'), 1200);
                                     }
+                                    if(wrap.next().hasClass('write')){
+                                        if(!$('.apEasySell.step .pageTitle').find('.progressBar').length){
+                                            $('.apEasySell.step .pageTitle').append(progressEl);
+                                        }else{
+                                            $('.apEasySell.step .pageTitle').find('.progressBar').show();
+                                        }
+                                    }else{
+                                        $('.apEasySell.step .pageTitle').find('.progressBar').hide();
+                                    }
                                 }
                                 break;
                         }
@@ -651,12 +661,12 @@
         }
 
         // # 진행상황
-        function stepCheck(obj){
+            function stepCheck(obj){
             var item = obj.attr('name')
             ,   optNum = item.split('userOpt')[1]
             ,   percent = (100 / 8) * optNum;
 
-            if(obj.val() != ''){
+            if(obj.val() != '' && !obj.parents('.child').length){
                 if(!$('.progressBar .now').hasClass('act')){
                     setTimeout(() => $('.progressBar .now').addClass('act'), 500);
                 }
@@ -668,6 +678,15 @@
                 $('.progressBar .now').css('width', percent + '%');
                 $('.progressBar .percent').text(parseInt(percent) + '%');
             }
+        }
+
+        // 데이터
+        var data = [];
+        function getData(obj){
+            console.log($(obj).parents('.section'));
+            $('.carInfo li').each(function(){
+            
+            });
         }
     
         (function(){

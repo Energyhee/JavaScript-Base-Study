@@ -1,6 +1,8 @@
 @charset "utf-8";
 @import 'mixin';
 
+.test { max-width: px(1100); }
+
 /* media */
 @media screen and (max-width: 320px) {
     html { font-size: 14px; }
@@ -713,19 +715,20 @@
             border: px(1) solid #ededed;
             background-color: #F6F6F6;
             text-align: center;
-            font-size: px(13);
-            font-weight: 400;
-            line-height: px(18);
-            letter-spacing: px(-.3);
-            color: #666;
             strong {
                 display: block;
+                font-size: px(13);
                 font-weight: 600;
-                line-height: 16px;
+                line-height: px(16);
+                color: #666;
             }
             p {
                 margin-top: px(5);
+                font-size: px(13);
+                font-weight: 400;
                 line-height: px(18);
+                letter-spacing: px(-.3);
+                color: #666;
             }
         }
         .btnWrap {
@@ -769,8 +772,8 @@
             background-color: #fff;
             overflow: hidden;
             &.write {
-                min-height: calc(100vh - px(187));
-                max-height: calc(100vh - px(187));
+                min-height: calc(100vh - px(195));
+                max-height: calc(100vh - px(195));
                 margin-top: px(95);
                 overflow-y: auto;
             }
