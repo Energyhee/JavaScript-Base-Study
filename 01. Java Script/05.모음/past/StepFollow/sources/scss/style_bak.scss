@@ -838,7 +838,7 @@
         }
     }
     &.step {
-        padding-top: px(40);
+        padding-top: px(130);
         background-color: #F7F9FB;
         overflow: hidden;
         &.botBtn {
@@ -857,26 +857,50 @@
                 width: 100%;
             }
         }
+        .pageTitle {
+            position: fixed;
+            left: 0;
+            top: 0;
+            z-index: 2;
+            width: 100%;
+            height: px(155);
+            padding: px(40);
+            background-color: #F7F9FB;
+            &::after {
+                content: '';
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: px(25);
+                border-radius: px(25) px(25) 0 0;
+                box-shadow: 0 px(-3) px(10) rgba(80, 104, 172, .05);
+                background-color: #fff;
+            }
+            &.write {
+                height: px(195);
+            }
+        }
         .btnWrap {
             margin-top: px(55);
             padding-bottom: px(50);
             background-color: #fff;
         }
         .section {
+            position: relative;
+            z-index: 1;
             display: none;
             height: auto;
-            min-height: calc(100vh - px(122));
-            margin-top: px(30);
-            padding: px(50) px(25);
+            padding: px(75) px(25) px(50);
             border-radius: px(25) px(25) 0 0;
             box-shadow: 0 px(-3) px(10) rgba(80, 104, 172, .05);
             background-color: #fff;
             overflow: hidden;
             &.write {
-                min-height: calc(100vh - px(195));
-                max-height: calc(100vh - px(195));
-                margin-top: px(95);
-                overflow-y: auto;
+                // min-height: calc(100vh - px(195));
+                // max-height: calc(100vh - px(195));
+                // margin-top: px(95);
+                // overflow-y: auto;
             }
             .btnWrap {
                 padding: 0;
@@ -1759,13 +1783,12 @@
 }
 
 .progressBar {
-    position: fixed;
-    top: px(145);
-    left: px(25);
-    z-index: 10;
+    position: relative;
+    z-index: 2;
     display: block;
-    width: calc(100% - px(50));
+    width: 100%;
     height: auto;
+    margin: px(45) auto 0;
     .bar {
         position: relative;
         width: 100%;
@@ -1836,7 +1859,7 @@
 /* 프로모션 */
 /* head */
 .promoHead {
-    padding: px(30) px(20) px(22);
+    padding: px(30) px(20);
     .logoBox {
         font-size: 0;
         text-align: center;
@@ -1870,7 +1893,6 @@
 /* footer */
 .promoFooter {
     padding: px(40) px(25) px(50);
-    background-color: #fff;
     .inner {
         display: flex;
         flex-wrap: wrap;
@@ -1939,8 +1961,7 @@
 }
 .mycar-promotion {
     .apEasySell {
-        &.intro {      
-            background-color: #fff; 
+        &.intro {       
             .section.introduce {
                 margin-top: 0;
             }
@@ -1952,30 +1973,16 @@
             }
         }
         &.noti {
-            padding-bottom: 0;
             .promoFooter {
-                margin: px(50) px(-25) 0;
+                margin: 0 px(-25);
+                padding-bottom: 0;
             }
         }
         &.step {
             .section {
                 .promoFooter {
-                    border-top: px(1) solid #E6E6E6;
-                    margin: px(50) px(-25) px(-50);
-                }
-                &.write {
-                    min-height: calc(100vh - px(272));
-                    max-height: calc(100vh - px(272));
-                    margin-top: px(40);
-                }
-            }
-            .pageTitle {
-                .progressBar {
-                    position: relative;
-                    left: 0;
-                    top: 0;
-                    width: 100%;
-                    margin: px(45) auto 0;
+                    margin: 0 px(-25);
+                    padding-bottom: 0;
                 }
             }
         }

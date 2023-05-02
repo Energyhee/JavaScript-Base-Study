@@ -31,7 +31,7 @@
                 </div>
             </section>
             <!-- # 바로 팔기 인트로 -->
-            <div class="apEasySell intro" style="display: none;">
+            <div class="apEasySell intro">
                 <!-- # 비주얼 -->
                 <section class="section visual">
                     <div class="tit" data-motion="fade-in" data-duration="1" data-delay=".2">빠르고 간편하게!<br><strong>완벽한 비대면 바로팔기</strong></div>
@@ -225,7 +225,7 @@
             </div>
             <!-- // 인트로 끝 -->
             <!-- # 바로 팔기 유의사항 안내 -->
-            <div class="apEasySell noti" style="display: none;">
+            <div class="apEasySell noti">
                 <p class="pageTitle">신청하시기 전, 꼭 확인하세요!</p>
                 <!-- # 가능여부 -->
                 <section class="section carChk">
@@ -339,20 +339,6 @@
                         <!-- # 비활성화 disabled 클래스 추가 -->
                         <a href="javascript:;" class="btn base view next">확인</a>
                     </div>
-                    <div class="promoFooter">
-                        <div class="inner">
-                            <div class="left">
-                                <strong>고객센터</strong>
-                                <a href="tel:1544-2277">1544-2277</a>
-                            </div>
-                            <div class="right">
-                                <p>평일 09:00~18:00 토, 일, 공휴일 휴무</p>
-                            </div>
-                            <div class="bot">
-                                <a href="javascript:;">개인정보처리방침</a>
-                            </div>
-                        </div>
-                    </div>
                 </section>
                 <!-- // -->
                 <!-- # 차량정보 확인 -->
@@ -387,20 +373,6 @@
                         <a href="javascript:;" class="btn arr view prev">이전</a>
                         <!-- # 비활성화 disabled 클래스 추가 -->
                         <a href="javascript:;" class="btn base view next">확인</a>
-                    </div>
-                    <div class="promoFooter">
-                        <div class="inner">
-                            <div class="left">
-                                <strong>고객센터</strong>
-                                <a href="tel:1544-2277">1544-2277</a>
-                            </div>
-                            <div class="right">
-                                <p>평일 09:00~18:00 토, 일, 공휴일 휴무</p>
-                            </div>
-                            <div class="bot">
-                                <a href="javascript:;">개인정보처리방침</a>
-                            </div>
-                        </div>
                     </div>
                 </section>
                 <!-- // -->
@@ -921,12 +893,8 @@
                                     wrap.removeClass('active').hide()
                                     wrap.next('.section').addClass('active').fadeIn(400);
                                     if(wrap.next().hasClass('load')){
-                                        $('html, body').stop().animate({
-                                            scrollTop : 0
-                                        }, 0, 'swing', function() { 
-                                            showLoading('.carInfo', .6, 1);
-                                            actionInfo(wrap.next('.load').find('.txt p'), 1200);
-                                        });
+                                        showLoading('.carInfo', .6, 1);
+                                        actionInfo(wrap.next('.load').find('.txt p'), 1200);
                                     }
                                     if(wrap.next().hasClass('write')){
                                         if(!$('.apEasySell.step .pageTitle').find('.progressBar').length){
@@ -945,7 +913,7 @@
                         if(wrap.next('.fContWrap').length){
                             wrap.next('.fContWrap').show();
                             $(this).parents('.section.write').stop().animate({
-                                scrollTop : wrap.next('.fContWrap')[0].offsetTop - ($('.apEasySell.step').outerHeight() - $(this).parents('.section.write.active').outerHeight()) - $('.promoHead').outerHeight()
+                                scrollTop : wrap.next('.fContWrap')[0].offsetTop - ($('.apEasySell.step').outerHeight() - $(this).parents('.section.write.active').outerHeight())
                             }, 800, 'swing', function() { 
                                 console.log('end');
                             });

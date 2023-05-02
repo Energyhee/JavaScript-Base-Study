@@ -1792,9 +1792,10 @@
   color: #000;
 }
 
-/* 마이카 */
+/* 프로모션 */
+/* head */
 .promoHead {
-  padding: 1.875rem 1.25rem;
+  padding: 1.875rem 1.25rem 1.375rem;
 }
 .promoHead .logoBox {
   font-size: 0;
@@ -1826,18 +1827,20 @@
   background: url("../images/easySell/icon_cross.png") no-repeat center/auto 100%;
 }
 
-.apEasySellFooter {
+/* footer */
+.promoFooter {
   padding: 2.5rem 1.5625rem 3.125rem;
+  background-color: #fff;
 }
-.apEasySellFooter .inner {
+.promoFooter .inner {
   display: flex;
   flex-wrap: wrap;
   align-items: end;
 }
-.apEasySellFooter .inner > div:not(.btnWrap) {
+.promoFooter .inner > div:not(.bot) {
   flex: 0 35%;
 }
-.apEasySellFooter .inner > div:not(.btnWrap) strong {
+.promoFooter .inner > div:not(.bot) strong {
   display: block;
   font-size: 0.875rem;
   font-weight: 700;
@@ -1845,7 +1848,7 @@
   letter-spacing: -0.03125rem;
   color: #000;
 }
-.apEasySellFooter .inner > div:not(.btnWrap) a {
+.promoFooter .inner > div:not(.bot) a {
   display: block;
   margin-top: 0.125rem;
   font-size: 1.25rem;
@@ -1853,20 +1856,20 @@
   line-height: 1.5rem;
   color: #000;
 }
-.apEasySellFooter .inner > div:not(.btnWrap) p {
+.promoFooter .inner > div:not(.bot) p {
   font-size: 0.8125rem;
   font-weight: 500;
   line-height: 1.375rem;
   color: #666;
 }
-.apEasySellFooter .inner > div:not(.btnWrap).right {
+.promoFooter .inner > div:not(.bot).right {
   flex: 0 calc(65% - 0.625rem);
   position: relative;
   margin-left: 0.625rem;
   padding-left: 0.5rem;
   box-sizing: border-box;
 }
-.apEasySellFooter .inner > div:not(.btnWrap).right::before {
+.promoFooter .inner > div:not(.bot).right::before {
   content: "";
   position: absolute;
   left: 0;
@@ -1876,11 +1879,12 @@
   margin-top: -0.375rem;
   background-color: #ededed;
 }
-.apEasySellFooter .inner .btnWrap {
+.promoFooter .inner .bot {
   flex: 0 100%;
   margin-top: 1.25rem;
+  padding: 0;
 }
-.apEasySellFooter .inner .btnWrap a {
+.promoFooter .inner .bot a {
   display: block;
   width: 100%;
   height: 3.125rem;
@@ -1892,4 +1896,39 @@
   line-height: 3rem;
   letter-spacing: -0.03125rem;
   color: #999;
+}
+
+.mycar-promotion .apEasySell.intro {
+  background-color: #fff;
+}
+.mycar-promotion .apEasySell.intro .section.introduce {
+  margin-top: 0;
+}
+.mycar-promotion .apEasySell.intro .promoFooter {
+  padding-bottom: 1.25rem;
+}
+.mycar-promotion .apEasySell.intro .btnWrap {
+  padding-bottom: 3.75rem;
+}
+.mycar-promotion .apEasySell.noti {
+  padding-bottom: 0;
+}
+.mycar-promotion .apEasySell.noti .promoFooter {
+  margin: 3.125rem -1.5625rem 0;
+}
+.mycar-promotion .apEasySell.step .section .promoFooter {
+  border-top: 0.0625rem solid #E6E6E6;
+  margin: 3.125rem -1.5625rem -3.125rem;
+}
+.mycar-promotion .apEasySell.step .section.write {
+  min-height: calc(100vh - 17rem);
+  max-height: calc(100vh - 17rem);
+  margin-top: 2.5rem;
+}
+.mycar-promotion .apEasySell.step .pageTitle .progressBar {
+  position: relative;
+  left: 0;
+  top: 0;
+  width: 100%;
+  margin: 2.8125rem auto 0;
 }
