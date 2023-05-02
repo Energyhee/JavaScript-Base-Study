@@ -496,6 +496,107 @@
                     }
                 }
             }
+            &.type2 {
+                padding-bottom: px(50);
+                background-color: #00A05D;
+                .tag {
+                    margin: 0 auto;
+                }
+                .couponList {
+                    margin-top: px(30);
+                    > li {
+                        ~ li {
+                            margin-top: px(65);
+                            .beneImg {
+                                width: calc(px(430) / 2);
+                                &::before {
+                                    display: none;
+                                }
+                            }
+                        }
+                        > strong {
+                            display: block;
+                            text-align: center;
+                            font-size: px(24);
+                            font-weight: 800;
+                            line-height: px(30);
+                            letter-spacing: px(-.3);
+                            span {
+                                color: #FFE8A3;
+                            }
+                        }
+                        > p {
+                            margin-top: px(10);
+                            text-align: center;
+                            font-size: px(18);
+                            font-weight: 500;
+                            line-height: px(24);
+                            letter-spacing: px(-.3);
+                            color: #fff;
+                            b {
+                                color: inherit;
+                                font-weight: 800;
+                            }
+                            span {
+                                position: relative;
+                                font-weight: 800;
+                                color: inherit;
+                                &::after {
+                                    content: '';
+                                    position: absolute;
+                                    left: 0;
+                                    bottom: 0;
+                                    width: 100%; 
+                                    border-bottom: px(1) solid #fff;
+                                }
+                            }
+                        }
+                        .beneImg {
+                            position: relative;
+                            z-index: 1;
+                            width: calc(px(254) / 2);
+                            margin: px(30) auto 0;
+                            &::before {
+                                content: '';
+                                position: absolute;
+                                top: px(10);
+                                left: 50%;
+                                z-index: -1;
+                                width: calc(px(422) / 2);
+                                padding-top: 78%;
+                                background: url('../images/easySell/img_beneEffect.png') no-repeat center/auto 100%;
+                                transform: translateX(-50%);
+                            }
+                        }
+                        .txtList {
+                            margin-top: px(25);
+                            padding-left: px(20);
+                            li {
+                                ~ li {
+                                    margin-top: px(2);    
+                                }
+                                position: relative;
+                                padding-left: px(4);
+                                text-align: left;
+                                font-size: px(14);
+                                font-weight: 400;
+                                line-height: px(18);
+                                letter-spacing: px(-.3);
+                                color: #fff;
+                                &::before {
+                                    content: '';
+                                    position: absolute;
+                                    left: 0;
+                                    top: px(8);
+                                    width: px(2);
+                                    height: px(2);
+                                    background-color: #fff;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
         .review {
             padding-top: px(60);
@@ -1729,5 +1830,106 @@
         line-height: px(24);
         letter-spacing: px(-2);
         color: #000;
+    }
+}
+
+/* 마이카 */
+.promoHead {
+    padding: px(30) px(20);
+    .logoBox {
+        font-size: 0;
+        text-align: center;
+        span {
+            display: inline-block;
+            vertical-align: top;
+            img {
+                height: calc(px(36) / 2);
+            }
+            ~ span {
+                position: relative;
+                padding-left: px(16);
+                margin-top: px(-4);
+                img {
+                    height: calc(px(55) / 2);
+                }
+                &::before {
+                    content: '';
+                    position: absolute;
+                    left: px(2);
+                    top: 50%;
+                    width: px(10);
+                    height: px(15);
+                    margin-top: px(-9);
+                    background: url('../images/easySell/icon_cross.png') no-repeat center/auto 100%;
+                }
+            }
+        }        
+    }
+}
+.apEasySellFooter {
+    padding: px(40) px(25) px(50);
+    .inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: end;
+        > div:not(.btnWrap) {
+            flex: 0 35%;
+            strong {
+                display: block;
+                font-size: px(14);
+                font-weight: 700;
+                line-height: px(22);
+                letter-spacing: px(-.5);
+                color: #000;
+            }
+            a {
+                display: block;
+                margin-top: px(2);
+                font-size: px(20);
+                font-weight: 800;
+                line-height: px(24);
+                color: #000;
+            }
+            p {
+                font-size: px(13);
+                font-weight: 500;
+                line-height: px(22);
+                color: #666;
+            }
+            &.right {
+                flex: 0 calc(65% - px(10));
+                position: relative;
+                margin-left: px(10);
+                padding-left: px(8);
+                box-sizing: border-box;
+                &::before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 50%;
+                    width: px(1);
+                    height: px(12);
+                    margin-top: px(-6);
+                    background-color: #ededed;
+                }
+            }
+        }
+        .btnWrap {
+            flex: 0 100%;
+            margin-top: px(20);
+            a {
+                display: block;
+                width: 100%;
+                height: px(50);
+                border: px(1) solid #ccc;
+                border-radius: px(5);
+                text-align: center;
+                font-size: px(15);
+                font-weight: 700;
+                line-height: px(48);
+                letter-spacing: px(-.5);
+                color: #999;
+            }
+        }
     }
 }
