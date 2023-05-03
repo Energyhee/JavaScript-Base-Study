@@ -661,7 +661,7 @@
         }
 
         // # 진행상황
-            function stepCheck(obj){
+        function stepCheck(obj){
             var item = obj.attr('name')
             ,   optNum = item.split('userOpt')[1]
             ,   percent = (100 / 8) * optNum;
@@ -679,15 +679,6 @@
                 $('.progressBar .percent').text(parseInt(percent) + '%');
             }
         }
-
-        // 데이터
-        var data = [];
-        function getData(obj){
-            console.log($(obj).parents('.section'));
-            $('.carInfo li').each(function(){
-            
-            });
-        }
     
         (function(){
             // # input
@@ -702,11 +693,6 @@
                     if($(e.target).attr('type') != 'file'){
                         if($(e.target).parents('.fCont').length) stepCheck($(e.target));
                         $(e.target).val(inpValue(e, $(e.target).data('type')));
-                    }
-                },
-                change : (e) => {
-                    if($(e.target).attr('type') === 'file'){
-                        if($(e.target).parents('.fCont').length) stepCheck($(e.target));
                     }
                 }
             });
