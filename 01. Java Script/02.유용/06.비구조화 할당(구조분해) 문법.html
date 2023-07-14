@@ -10,5 +10,61 @@
     <script>
         const log = console.log;
       
+		// 비구조화 할당
+		const obj = {a: 1, b: 2}
+		const {a, b} = obj;
+
+		log(a, b); // 1, 2
+
+		// 함수 비구조화 할당
+		const obj2 = {a: 1}
+
+		function fn({a = 2, b = 3}){ // 기본 값
+			return a + b;	
+		}
+
+		log(fn(obj2)); // 1 + 3(기본) = 4
+
+		// 비구조화 할당 이름 변경
+		const obj3 = {
+			name : 'han',
+			age : '31' 
+		}
+
+		const {name : nickName} = obj3; // obj3 객체 안에 name 을 nickName으로 선언
+		log(nickName); // han
+
+		// 배열 비구조화 할당
+		const array = [10, 20];
+		const [first, second] = array;
+
+		log(first + second); // 30
+
+		// 깊은 배열 비구조화 할당
+		const deepObj = {
+			list : {
+				user01 : {
+					name : 'hch',
+					lang : ['kr', 'jp', 'ch', 'en']
+				},
+				user02 : {
+					name : 'sin',
+					lang : ['kr']
+				}
+			}
+		}
+
+		const {
+			name,
+			lang
+		} = deepObj.list.user01;
+
+		const info = {
+			name,
+			lang
+		} 
+
+		log(info); // name : hch, lang : ['kr', 'jp', 'ch', 'en'];
+		log(info.lang[0]) // kr
     </script>
 </html>
