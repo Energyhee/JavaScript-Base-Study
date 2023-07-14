@@ -10,5 +10,19 @@
     <script>
         const log = console.log;
       
+		// function calc(n = 1){
+		// 	// const num = n || 1;
+		// 	// return num * num;
+		// 	return n * n;
+		// }
+		
+		// 파라미터 받은 값이 없을 때 기본 값 설정 및 화살표함수로 깔끔하게 표현
+		const calc = (n = 1) => n * n;
+
+		const total = calc(2);
+		log(total); // 4
+
+		const total2 = calc();
+		log(total2); // 1
     </script>
 </html>

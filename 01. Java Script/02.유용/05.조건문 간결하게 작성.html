@@ -10,5 +10,58 @@
     <script>
         const log = console.log;
       
+		// 비교해야 할 값이 많을 때는 배열 이용 가능
+		// function isAnimal(name){
+		// 	const animal = ['개', '고양이', '사자', '호랑이'];
+		// 	return animal.includes(name); 
+		// }
+
+		// 더 간결하게 작성
+		const isAnimal = (name) => ['개', '고양이', '사자', '호랑이'].includes(name);
+
+		log(isAnimal('개')); // 개 : true
+		log(isAnimal('자동차')); // 자동차 : false
+		log(isAnimal('고양이')); // 고양이 : true
+
+
+		// switch 대신 간결하게 
+		function getSound(animal){
+			const sound = {
+				개: '멍멍',
+				고양이: '냐옹',
+				참새: '짹짹',
+				비둘기: '구구구구'
+			}
+
+			return sound[animal] || '??';
+		}
+
+		log(getSound('개')); // 멍멍
+		log(getSound('포르쉐')); // ??
+		log(getSound('고양이')); // 냐옹
+
+		// 값에 따라 실행되어야 하는 소스가 다르다면
+		function searchArea(depth){
+			const area = {
+				광명(){
+					log('경기도');
+				},
+				개봉(){
+					log('서울')
+				},
+				강화(){
+					log('인천');
+				}
+			}
+			if(!area[depth]){
+				console.log('알수없음');
+				return;
+			}
+			area[depth]();
+		}
+
+		searchArea('광명'); // 경기도
+		searchArea('양양'); // 알수없음
+		searchArea('강화'); // 인천
     </script>
 </html>

@@ -10,5 +10,56 @@
     <script>
         const log = console.log;
       
+		// 논리 연산자를 조금 더 유용하게 사용하는 방법 
+		function getName(opt){
+			if(opt){
+				return opt.name;
+			}
+			return '정보가 없다';
+		}
+
+		const user = {
+			name : 'han'
+		}
+
+		const name = getName(user);
+		log(name); // han
+
+		const name2 = getName();
+		log(name2); // undefined error (false) '정보가 없다'
+
+		// && 연산자로 코드 단축
+		function getAnimal(opt){
+			return opt && opt.name;
+		}
+
+		const dog = {
+			name : '흰둥이'
+		}
+
+		const dogName = getAnimal(dog);
+		log(dogName); // 흰둥이
+
+		const dogName2 = getAnimal();
+		log(dogName2); // undefined (false)
+
+		// || 연산자로 코드 단축
+		function getArea(opt){
+			const sta = opt && opt.name 
+			// if(!sta){
+			// 	return '지역명 정보가 없다';
+			// }
+			return sta || '지역명 정보가 없다';
+		}
+
+		const area = {
+			name : '광명'
+		}
+
+		const areaName = getArea();
+		log(areaName); // 지역명 정보가 없다
+
+		const areaName2 = getArea(area);
+		log(areaName2); // 광명
     </script>
 </html>

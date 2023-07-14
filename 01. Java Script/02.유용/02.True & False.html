@@ -10,7 +10,24 @@
     <script>
         const log = console.log;
       
-		// [Truthy and Falsy] 자바스크립트의 문법은 아니지만, 꼭 알아둬야 할 개념 true & false 개념
+		log('on');
+		// [Truthy and Falsy] 자바스크립트의 문법은 아니지만, 꼭 알아둬야 할 개념 Truthy : true & Falsy : false 개념
 		// ※ 01.Java Script - 02.연산자 항목 참고
+		function print(opt){
+			// undefined & null (false 한 값 대응)
+			if(!opt.name){
+				log('정보가 없다');
+				return;
+			}
+			log(opt.name);
+		}
+
+		const person = {
+			name: null
+		}
+
+		// print(person); // 'han';
+		// print(); // undefined error(false) '정보가 없다'
+		print(person); // null error(false) '정보가 없다'
     </script>
 </html>
