@@ -21,14 +21,14 @@
     * [X] 함수
     * [X] 객체 
         
-        > *Getter, *Setter 추가 공부    
-        > 참고 문헌 :  [프로퍼티 getter와 setter](https://ko.javascript.info/property-descriptors)
+        * *Getter, *Setter 추가 공부    
+        * 참고 문헌 :  [프로퍼티 getter와 setter](https://ko.javascript.info/property-descriptors)
 
     * [X] 배열
     * [X] 반복문
     * [X] 배열 내장함수 - 
         
-        > *Reduce 추가 공부    
+        * *Reduce 추가 공부    
 
     * [X] 프로토타입과 클래스
 
@@ -38,10 +38,10 @@
 
     * [X] 삼항 연산자
     * [X] Truthy and Falsy
-    * [ ] 단축 평가 논리 계산법
-    * [ ] 함수의 기본 파라미터
-    * [ ] 조건문 더 스마트하게 쓰기
-    * [ ] 비구조화 할당(구조 분해) 문법
+    * [X] 단축 평가 논리 계산법
+    * [X] 함수의 기본 파라미터
+    * [X] 조건문 더 스마트하게 쓰기
+    * [X] 비구조화 할당(구조 분해) 문법
     * [ ] spread와 rest 문법
     * [ ] scope의 이해
 
