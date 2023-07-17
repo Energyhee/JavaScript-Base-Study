@@ -10,6 +10,96 @@
     <script>
         const log = console.log;
       
+		// ES6에서 도입된 spread와 rest 문법, 서로 완전 다른 문법이나 비슷한 부분이 있다.
+		// spread문법은 객체 혹은 배열을 펼칠 수 있다.
+
+		// 예시 객체 생성
+		// const slime = {
+		// 	name : '슬라임'
+		// };
+		// const cuteSlime = {
+		// 	name : '슬라임',
+		// 	attribute: 'cute'
+		// };
+		// const purpleCuteSlime = {
+		// 	name : '슬라임',
+		// 	attribute: 'cute',
+		// 	color: 'purple'
+		// }
+		// log(slime); // {name: '슬라임'}
+		// log(cuteSlime); // {name: '슬라임', attribute: 'cute'}
+		// log(purpleCuteSlime); // {name: '슬라임', attribute: 'cute', color: 'purple'}
+
+		// 객체 spread문법 작성
+		const slime = {
+			name : '슬라임'
+		};
+		const cuteSlime = {
+			...slime,	// ...가 spread
+			attribute: 'cute'
+		};
+		const purpleCuteSlime = {
+			...cuteSlime,	// ...가 spread
+			color: 'purple'
+		}
+		log(slime); // {name: '슬라임'}
+		log(cuteSlime); // {name: '슬라임', attribute: 'cute'}
+		log(purpleCuteSlime); // {name: '슬라임', attribute: 'cute', color: 'purple'}
+
+		// 배열 spread문법 작성
+		const animals = ['개', '고양이', '참새'];
+		const anotherAnimals = [...animals, '호랑이']
+		log(animals); // ['개', '고양이', '참새']
+		log(anotherAnimals); // ['개', '고양이', '참새', '호랑이']
+
+		// rest문법은 객체, 배열, 함수의 파라미터에서 사용가능
+		// 객체 rest문법 작성
+		const redCuteSlime = {
+			name : '슬라임',
+			attribute : 'cute',
+			color : 'red'
+		}
+		const {color, ...other} = redCuteSlime; // 비구조 할당
+		log(color); // red
+		log(other); // {name: '슬라임', attribute: 'cute'}
 		
-    </script>
+		const {attribute, ...etc} = other; // 비구조 할당
+		log(attribute); // cute
+		log(etc); // {name: '슬라임'}
+
+		// 배열 rest문법 작성
+		const numbers = [0, 1, 2, 3, 4, 5];
+		const [firstNum, ...otherNum] = numbers; // 비구조 할당
+		log(firstNum); // 0
+		log(otherNum); // [1, 2, 3, 4, 5]
+
+		// 함수 rest문법 작성
+		function fnRestNum(...num){ // 파라미터가 얼마나 받아올지 모를때 rest를 사용하면 유용하다.
+			return num; 
+		}
+		function fnCalcNum(...num){
+			return num.reduce((af, cur) => af + cur, 0);
+		}
+		const numList = fnRestNum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+		const numList2 = fnRestNum(1, 2, 3);
+		log(numList); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+		log(numList2); // [1, 2, 3]
+		const total = fnCalcNum(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+		log(total); // 55
+
+		// 함수 인자와 spread
+		function sum(...obj){ // sum 파라미터 ...rest 함수
+			return obj.reduce((af, cur) => af + cur, 0);
+		}
+		const numTest = [1, 2, 3, 4, 5];
+		const resultTest = sum(...numTest); // sum 인자 ...spread 함수
+		log(resultTest); // 15;
+
+		// 문제) 함수의 n개의 숫자들이 파라미터로 주어졌을 때 그중 가장 큰 값
+		function filterNum(...rest){
+			return rest.reduce((after, current) => (after < current ? current : after), rest[0]);
+		};
+		const result = filterNum(1, 2, 3, 4, 10, 5, 6, 7);
+		console.log(result);
+</script>
 </html>
