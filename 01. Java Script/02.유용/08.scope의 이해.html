@@ -10,5 +10,38 @@
     <script>
         const log = console.log;
       
+		// Scope 종류
+		// 1. Global Scope : 소스 모든 영역에서 사용가능
+		// 2. Function Scope : 함수 영역에서 사용가능
+		// 3. Block Scope : if, switch, for 등 특정 블럭 안에서 사용가능
+
+		const word = 'Hello';
+
+		function change(){
+			log('function changhe : ');
+			log(word); // HELLO
+		}
+
+		function otherChange(){
+			log('other changhe : ');
+			// log(word); error - 함수 내에서 word가 선언되었기 때문에
+			const word = 'BYE';
+			log(word);  // BYE
+		}
+		
+		change();
+		otherChange();
+
+		log('Global : ');
+		log(word); // Hello
+
+		// Hoisting 이해
+		// Hoisting 이란 아직 선언되지 않은 함수, 변수를 끌어올려 사용하는 작동 방식
+		myFunction(); // myFunction() 호출
+
+		function myFunction(){
+			log('HELLO WORLD'); // 함수가 선언되기 전 myFunction() 호출 했으나, 정상적으로 작동한다.
+		};
+		
     </script>
 </html>
